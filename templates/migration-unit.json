@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.1",
+  "status": "DRAFT_TEMPLATE",
+  "unit_id": null,
+  "source_sha": null,
+  "architecture_report_sha256": null,
+  "strategy": null,
+  "strategy_values": [
+    "PORT_1_TO_1",
+    "ADAPT",
+    "MINIMAL_CONTRACT",
+    "BRIDGE",
+    "REDESIGN"
+  ],
+  "scope": {
+    "behavior": null,
+    "non_goals": [],
+    "source_files": [],
+    "allowed_write_paths": [],
+    "shared_owners": {}
+  },
+  "contract": {
+    "inputs": [],
+    "outputs": [],
+    "errors": [],
+    "side_effects": [],
+    "ordering": [],
+    "encoding": [],
+    "ownership_and_lifetimes": [],
+    "ffi": [],
+    "platforms": [],
+    "approved_behavior_deviations": []
+  },
+  "dependencies": [],
+  "evidence": [],
+  "rulebook_sha256": null,
+  "verification": {
+    "baseline_ref": null,
+    "candidate_ref": null,
+    "commands": [],
+    "fixtures_sha256": null,
+    "comparator_sha256": null,
+    "mutation_checks": [],
+    "existing_failures": [],
+    "acceptance_criteria": []
+  },
+  "budget": {
+    "max_fix_rounds": 2,
+    "max_active_writers": 1,
+    "quota_available": null,
+    "approved": false
+  },
+  "rollback": null,
+  "open_questions": [],
+  "approval": {
+    "gate": "G3",
+    "status": "PENDING",
+    "by": null,
+    "at": null,
+    "artifact_sha256": null
+  }
+}

@@ -1,211 +1,62 @@
-# RustyBun experiment plan
+# Plan wykonania RustyBun v0.1
 
-## Research question
+Stan: kandydat procesu, bez uruchomionej migracji. Ten dokument zastępuje wcześniejszą kolejność, która kierowała do materiałów referencyjnych przed analizą niezależną. Nie zmienia przypiętego kodu.
 
-Can a single developer using Codex under a subscription plan reproduce meaningful progress on Bun's Zig → Rust migration by engineering the migration process rather than manually steering individual code edits?
+## Kolejność i bramki
 
-A second, more interesting question is whether we can improve on a purely mechanical translation by analysing architecture, dependencies, contracts and semantic gaps before fan-out.
+| Etap | Konkretna praca | Produkty | Warunek przejścia |
+|---|---|---|---|
+| G0 — przygotowanie | audyt repo, przypięcie wejść, role/prompty, eksport pakietów i testy narzędzi | obecny zestaw plików; manifest pakietu | narzędzia sprawdzone; brak deklarowania gotowej migracji |
+| G1 — projekt procesu | niezależny wariant → review naszej propozycji → osobne comparative review | raporty trzech rund, patch procesu, wykaz zaakceptowanych/odrzuconych zmian | Damian zatwierdza konkretną wersję procesu i budżet |
+| G2 — Architect | statyczna analiza surowego źródła, mapa i kontrakty; niezależny przegląd raportu | architecture-report, deterministyczna mapa w zakresie, rejestr luk i ryzyk | raport ma dowody; krytyczne niejasności wyjaśnione lub ograniczają zakres; decyzja Damiana przed Plannerem |
+| G3 — baseline i plan | kontrolowany build oryginału; inwentaryzacja testów; Planner wydziela jednostkę i projektuje judge | environment/run-record, baseline outputs, unit manifest, test plan | wykonalny kontrakt, realny baseline i zweryfikowany judge; akceptacja planu |
+| G4 — pilot | Implementer → A i B → potwierdzenie findingów → Fixer → ponowne review → Referee | diffy, findings, kompilacja, testy, wyniki old/new | brak potwierdzonych blokad; parity w zadeklarowanym zakresie; podpisana decyzja |
+| G5 — decyzja o skali | analiza jakości, uwagi człowieka, limitu i kosztu weryfikacji | porównanie wariantów i decyzja stop/zmień/rozszerz | nie skalujemy tylko dlatego, że istnieją pliki .rs |
 
-## Core principles
+G0 jest realizacją przygotowania, nie zgodą na G1–G5. Aktualny stan bramek zapisuje workflow/pipeline.json; rekord wykonania i decyzja z hashem są dowodem, nie samo pole statusu.
 
-1. **Evidence before implementation.** Decisions about migration order, ownership, dependencies and verification should come from repository evidence, not model intuition.
-2. **The old implementation is the executable specification.** We need a parity judge that can exercise old and new implementations through the same external surface.
-3. **Separate architecture from translation.** Before coding, decide where structure can be preserved and where a dependency should be replaced, reduced to a smaller contract or redesigned.
-4. **Deterministic artifacts beat agent memory.** Dependency maps, manifests, inventories and rulebooks are files that every later agent consumes.
-5. **Independent roles.** The intended production loop is Architect/Planner → Implementer → Reviewer A + Reviewer B → Fixer → compiler/tests/parity judge.
-6. **Adversarial review is independent.** Reviewers should not inherit the implementer's reasoning and should assume the translation is wrong until evidence says otherwise.
-7. **Human intervention changes the process first.** Prefer fixing the rulebook, inventory, decomposition or workflow over manually repairing individual translated lines.
-8. **Every run is measurable and resumable.** Progress and failures live on disk, not only in model context.
+## G1: czego oczekujemy od niezależnej oceny
 
-## Phase 0 — freeze and measure the baseline
+Pełny protokół: docs/clean-context-review.md. Minimalny input to brief, kryteria review, kontrakty I/O, propozycja procesu (dopiero w drugiej rundzie), ograniczenia narzędzi i budżetu. Historia naszej rozmowy, entuzjazm autora, journal i cudze wyniki nie należą do wejścia ślepego.
 
-- Identify and pin the exact Bun commit immediately before the Rust migration work begins.
-- Record the corresponding migration commit/PR as the reference result.
-- Build Bun from the baseline and record build time, test time and environment.
-- Record source-file counts, relevant Zig LOC and test counts.
-- Create `migration/cost-log.tsv` and a deviation log.
-- Record Codex quota/reset consumption separately from any hypothetical API-token equivalent.
+Runda porównawcza może ulepszyć proces, ale nie kasuje oryginalnej wersji ani ślepego wyniku. Operator może znać oba warianty; Architekt dostaje tylko zatwierdzony minimalny kontrakt zadania, bez gotowych decyzji dotyczących Buna.
 
-**Gate:** baseline builds and tests successfully and can be reproduced.
+## G2: zakres analizy Architekta
 
-## Phase 1 — feasibility and the parity judge
+Przejdź od entry points do odpowiedzialności, danych, zależności i obserwowalnych efektów. Rejestruj zależności wewnętrzne, biblioteki zewnętrzne, komponenty C/C++, generowany kod i zależności builda osobno. Sam graf @import nie jest kompletną mapą semantyczną.
 
-Use the Anthropic migration kit as a starting rubric, adapted to Codex and Bun:
+Skrypt analityczny ma deterministycznie emitować krawędzie z pochodzeniem i unresolved sites. Uwzględnij warunki platformowe i build configuration; oblicz silnie spójne składowe, a następnie ponownie sprawdź cykle po proponowanym podziale na crates. Nie wyprowadzaj kolejności builda z niezweryfikowanego grafu.
 
-- run the feasibility survey;
-- classify tests as portable/public-surface versus language-internal;
-- decide whether the existing test suite is sufficient as a cross-language judge;
-- if not, build the judge before translation begins;
-- validate the judge against the original implementation and deliberately injected faults.
+Dla każdej badanej granicy porównaj PORT_1_TO_1 / ADAPT / MINIMAL_CONTRACT / BRIDGE / REDESIGN. Uzasadnij wybór przez rzeczywiście używany interfejs, ownership, błędy, efekty uboczne i koszty integracji. Mały interfejs może kryć duży kontrakt: np. callback lifetime, kodowanie, ordering czy backpressure.
 
-This phase also produces the first explicit answer to:
+Nie zakładaj, że każda zależność musi być przepisana w Rust. Przypadki C/C++ i FFI wymagają osobnej decyzji, nie automatycznego zastępstwa crate'em. Nie wprowadzaj zmian implementacji na tym etapie.
 
-> Which parts of Bun should be structure-preserving translations and which parts deserve redesign or dependency substitution?
+## G3: baseline i niezależny judge
 
-**Gate:** we have a trustworthy mechanical definition of parity.
+Najpierw odtwórz środowisko dla przypiętego źródła. Zapisz wersje narzędzi, system, CPU/RAM, konfigurację i pobrane zależności. Niemożność pobrania toolchainu to BLOCKED_ENVIRONMENT, nie błąd portu. Brak builda nie blokuje statycznego G2, ale blokuje dowód gotowości G4.
 
-## Phase 2 — architecture, dependency graph and semantic-gap inventory
+Uruchom testy oryginału i sklasyfikuj existing failures, flaky i braki środowiska. Nie zmieniaj oczekiwanych wyników tylko po to, by suite był zielony. Judge używa identycznego publicznego interfejsu, wejść i comparatora dla old/new. Znane błędy bezpieczeństwa/UB dokumentuj; nie wymagaj odtwarzania UB ani luk w nowej implementacji. Każde dopuszczone odstępstwo od zachowania musi mieć jawny test i decyzję.
 
-### 2.1 Deterministic dependency graph
+Sprawdź judge na oryginale i na kilku kontrolowanych mutacjach w kopii testowej. Musi wykryć każdą wybraną mutację; nie przedstawiaj tego jako dowodu pełnego pokrycia. Baseline fixture'y i comparator zamroź przed implementacją.
 
-Build a script that parses Zig imports/build relationships and produces:
+Planner wybiera najpierw jedną funkcjonalną jednostkę o zamkniętym, testowalnym kontrakcie. Kolejne dwa trudniejsze przypadki są propozycją rozszerzenia po pierwszym wyniku — nie obowiązkiem migracji trzech arbitralnych plików.
 
-- direct in-repo dependency edges;
-- strongly connected components;
-- topological migration order where possible;
-- crate/module-level condensation;
-- a machine-readable work manifest.
+## G4: bounded execution
 
-Review the generated map adversarially on independent samples. A confirmed miss fixes the parser and regenerates the entire map.
+Przydział plików i shared ownership przed pracą. Domyślnie jeden writer, dwie niezależne sesje review. Wspólna zmiana wraca do koordynatora. Żadnych jednoczesnych edycji tych samych plików.
 
-### 2.2 Architectural classification
+Budżet roboczy do zatwierdzenia: najwyżej dwie rundy poprawek jednostki, bez automatycznego fan-outu. Po wyczerpaniu budżetu/limitu zapisz dowody i checkpoint. Samo istnienie pliku nie oznacza ukończenia: stan obejmuje PLANNED, IMPLEMENTED, REVIEWED, VERIFIED, ACCEPTED lub BLOCKED.
 
-For each subsystem or dependency boundary classify it as one of:
+Używaj tanich sprawdzeń wcześnie, gdy są dostępne. Centralizuj kosztowny pełny build, gdy pomiar uzasadnia to rozwiązanie. Zakaz kompilacji z cudzej instrukcji nie jest domyślną regułą RustyBun.
 
-- **PORT 1:1** — preserve implementation/architecture;
-- **ADAPT** — preserve behaviour but use a Rust-native implementation or crate;
-- **MINIMAL CONTRACT** — Bun consumes only a small surface of a large dependency; implement that surface rather than cloning the dependency;
-- **BRIDGE** — temporarily keep Zig/C/C++ behind FFI;
-- **REDESIGN** — structure should change in Rust, with an explicit compatibility contract.
+## Pomiary i porównanie
 
-This is where our experiment intentionally differs from blindly translating files.
+Mierz osobno: kontrakty pokryte testami, attempted/verified units, wyniki kompilacji i parity, potwierdzone findingi, regresje, liczbę rund, zmiany rulebooka, czas człowieka, czas wykonania i wykorzystanie limitu. Unknown zapisuj jako null/UNKNOWN, nie zero.
 
-### 2.3 Semantic-gap inventory
+Porównanie strukturalnego portu z podejściem kontraktowym: ten sam SHA, zakres, harness testowy, budżet i możliwie ten sam model/ustawienia; oddzielne sesje i workspace'y. Zapisuj kolejność prób i wpływ wiedzy operatora. Zmiana modelu i metody jednocześnie jest confounderem. Abonament i historyczny rachunek API nie są równoważnymi miarami kosztu.
 
-Inventory cross-file decisions that implementers must not guess, especially:
+## Git i materiały do prezentacji
 
-- ownership and lifetimes;
-- arenas and allocator semantics;
-- FFI and JavaScriptCore rooting/lifetime rules;
-- comptime/generics/reflection;
-- bytes versus strings;
-- error semantics;
-- intrusive reference counting and pointer layouts;
-- concurrency/thread affinity;
-- event-loop and syscall boundaries;
-- platform-specific code.
+Wejścia archiwalne pozostają w sources/. Nasze decyzje i prompty są wersjonowane poza nimi. Każda runda ma unikalne results/<run-id>/, manifest wejść, run-record, raport i dowody. Nie nadpisuj wyników wcześniejszej rundy. Zmiany procesu po zatwierdzeniu wprowadzaj jako osobny reviewowany commit/PR; journal aktualizuj razem z decyzją.
 
-The original Bun `PORTING.md` is evidence and a baseline rulebook, not unquestionable policy.
-
-**Gate:** dependency map, architecture decisions, gap inventory and first RustyBun rulebook are signed off.
-
-## Phase 3 — stress-test the migration rules
-
-Select a small set of intentionally difficult units. Prefer units that exercise several risky rules and dependency boundaries rather than easy files.
-
-Run two approaches independently:
-
-- **A — rulebook-faithful:** translate according to the current RustyBun rulebook;
-- **B — native Rust baseline:** solve the same behavioural problem as an experienced Rust engineer without seeing the rulebook.
-
-Then compare them with a separate inspector. In parallel run the intended production agent loop:
-
-`Planner → Implementer → Reviewer A + Reviewer B → Fixer → referee`
-
-Nothing from the bakeoff has to ship. Its main product is improved migration policy.
-
-**Gate:** a second sample does not expose a repeated systemic rule failure.
-
-## Phase 4 — controlled translation fan-out
-
-Work from the manifest in dependency-aware batches.
-
-For every unit:
-
-1. planner reads the dependency/architecture decision and defines the contract;
-2. implementer produces the Rust change;
-3. two independent adversarial reviewers inspect source versus target and rule compliance;
-4. disagreements are resolved by evidence, not majority vote;
-5. fixer applies confirmed findings only;
-6. unresolved issues become greppable `TODO(port)`, `PERF(port)` or `BUG(port)` artifacts;
-7. completion is recorded mechanically on disk.
-
-Start with small batches. Scale parallelism only after measured first-pass quality is stable.
-
-## Phase 5 — compiler convergence
-
-Compiler diagnostics become a machine queue rather than an invitation for free-form repair.
-
-- Run a controlled survey build.
-- Parse diagnostics by crate/module and dependency order.
-- Give fixers diagnostics and source context.
-- Review fixes independently.
-- Re-run the compiler centrally per round.
-- Repeated error classes indict the rulebook or shared abstraction; fix the systemic source and regenerate affected units where appropriate.
-
-**Gate:** clean build across the target workspace.
-
-## Phase 6 — behavioural convergence
-
-- Run the parity judge continuously.
-- Run the original Bun suite where portable.
-- Exercise CLI/runtime/package-manager/networking/file-system scenarios through public interfaces.
-- Track every behavioural divergence as a queue item with old/new outputs.
-- Only call parity when the mechanical judge is green and the original baseline still passes its own suite.
-
-## Phase 7 — post-parity quality and performance
-
-Only after behavioural parity:
-
-- burn down `TODO(port)`, `BUG(port)` and `PERF(port)` markers;
-- benchmark old versus new implementations;
-- audit unsafe code and FFI assumptions;
-- remove temporary Zig bridges where justified;
-- simplify architecture where the migration intentionally preserved awkward source shapes.
-
-## Agent roles for RustyBun
-
-### Architect
-
-Owns subsystem boundaries, contracts, dependency strategy and preserve/adapt/redesign decisions. Does not write production translation code.
-
-### Planner
-
-Turns an architectural decision into a bounded unit of work: inputs, dependencies, expected outputs, invariants, tests and known gaps.
-
-### Implementer
-
-Writes the code according to the plan and rulebook. It does not review its own work.
-
-### Reviewer A / Reviewer B
-
-Independent adversarial contexts. They compare behaviour, contracts, memory/lifetime assumptions and rule compliance. They cite concrete evidence.
-
-### Fixer
-
-Applies only confirmed findings and records unresolved issues explicitly.
-
-### Referee
-
-Compiler, test suite and parity judge. The referee should be as deterministic as possible and should not be replaced by model judgment.
-
-## What we measure
-
-For each batch and for the experiment overall:
-
-- source units and LOC attempted/completed;
-- wall-clock time;
-- human active-attention minutes;
-- Codex quota/reset consumption;
-- first-pass compile success;
-- compiler errors per translated unit;
-- reviewer findings per unit and confirmed-finding rate;
-- parity regressions introduced and fixed;
-- unresolved marker count;
-- number of rulebook/inventory amendments;
-- number of manual code edits by the human;
-- throughput before and after process amendments.
-
-The most interesting metric is not raw LOC generated. It is **how much correct, reviewable, parity-preserving migration progress we get per unit of human attention and subscription quota**.
-
-## First concrete milestone
-
-Do not attempt the million-line port first. The first milestone is complete when we have:
-
-1. the exact pre-migration Bun baseline pinned;
-2. a reproducible build/test baseline;
-3. a dependency-map prototype;
-4. a parity-judge decision;
-5. a first architecture/gap report;
-6. three deliberately difficult migration units run through the complete RustyBun workflow;
-7. enough measurements to decide whether scaling the experiment is justified.
+Przed pierwszym realnym runem wymagane są: G1, faktyczny model i tryb logowania, limit, uprawnienia narzędzi i izolacja. Żadne z tych pól nie zostało automatycznie zatwierdzone przez przygotowanie plików.

@@ -1,0 +1,13 @@
+test_allowlist_and_hashes (test_context_pack.ContextPackTests.test_allowlist_and_hashes) ... ok
+test_architect_requires_source (test_context_pack.ContextPackTests.test_architect_requires_source) ... ok
+test_invalid_paths_and_ref (test_context_pack.ContextPackTests.test_invalid_paths_and_ref) ... ok
+test_manifest_is_repeatable (test_context_pack.ContextPackTests.test_manifest_is_repeatable) ... ok
+test_missing_input_does_not_publish_output (test_context_pack.ContextPackTests.test_missing_input_does_not_publish_output) ... ok
+test_refuses_project_output_and_overwrite (test_context_pack.ContextPackTests.test_refuses_project_output_and_overwrite) ... ok
+test_source_excludes_controls_history_and_symlinks (test_context_pack.ContextPackTests.test_source_excludes_controls_history_and_symlinks) ... ok
+test_uncommitted_content_is_not_exported (test_context_pack.ContextPackTests.test_uncommitted_content_is_not_exported) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.334s
+
+OK
