@@ -190,6 +190,24 @@ def show_handoff(out: Path) -> str:
     if out.is_symlink():
         raise ValueError('Output root must not be a symlink')
     out = out.resolve()
+    record_path = out / 'RUN-RECORD.json'
+    # Redisplay must stay read-only, including when preparation was skipped.
+    if not record_path.exists() and not record_path.is_symlink():
+        raise ValueError(
+            f'No prepared run record found at: {record_path}\n'
+            '--show-handoff only redisplays a prepared run; it does not create one.\n'
+            'Check that you supplied the OUTPUT directory, not the input pack.\n'
+            'If no run has been prepared, run this from the RustyBun checkout:\n'
+            '  python3 scripts/prepare-review-run.py --pack INPUT_PACK '
+            '--out NEW_OUTPUT_DIR --run-id RUN_ID\n'
+            'Replace INPUT_PACK with the existing pack, NEW_OUTPUT_DIR with a new '
+            'separate directory, and RUN_ID with a new identifier.\n'
+            'Add --allow-unverified-isolation only to explicitly authorize an '
+            'exploratory design-only run; it does not verify independence.\n'
+            'Preparation prints the reviewer prompt automatically. '
+            'Do not create RUN-RECORD.json by copying the NOT_RUN template.\n'
+            'No files were changed. Existing outputs must not be overwritten.'
+        )
     record = json.loads(checked_path(out, 'RUN-RECORD.json').read_bytes())
     if (not isinstance(record, dict) or record.get('status') != 'PREPARED'
             or record.get('stage') != 'method-independent'

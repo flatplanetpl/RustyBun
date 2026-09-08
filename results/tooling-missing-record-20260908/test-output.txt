@@ -1,0 +1,13 @@
+test_broken_record_symlink_is_not_treated_as_missing_preparation (test_missing_handoff.MissingHandoffTests.test_broken_record_symlink_is_not_treated_as_missing_preparation) ... ok
+test_create_then_redisplay_still_prints_exact_prompt (test_missing_handoff.MissingHandoffTests.test_create_then_redisplay_still_prints_exact_prompt) ... ok
+test_empty_directory_remains_empty (test_missing_handoff.MissingHandoffTests.test_empty_directory_remains_empty) ... ok
+test_input_pack_passed_as_output_is_not_modified (test_missing_handoff.MissingHandoffTests.test_input_pack_passed_as_output_is_not_modified) ... ok
+test_missing_directory_explains_prepare_and_does_not_create (test_missing_handoff.MissingHandoffTests.test_missing_directory_explains_prepare_and_does_not_create) ... ok
+test_no_implicit_authorization (test_missing_handoff.MissingHandoffTests.test_no_implicit_authorization) ... ok
+test_partial_output_is_preserved (test_missing_handoff.MissingHandoffTests.test_partial_output_is_preserved) ... ok
+test_record_directory_stays_invalid (test_missing_handoff.MissingHandoffTests.test_record_directory_stays_invalid) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 6.601s
+
+OK
