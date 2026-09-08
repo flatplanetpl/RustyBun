@@ -1,0 +1,27 @@
+test_cli_prepares_without_model_execution (test_prepare_review_run.PrepareReviewTests.test_cli_prepares_without_model_execution) ... ok
+test_control_directory_blocks (test_prepare_review_run.PrepareReviewTests.test_control_directory_blocks) ... ok
+test_duplicate_manifest_entry_blocks (test_prepare_review_run.PrepareReviewTests.test_duplicate_manifest_entry_blocks) ... ok
+test_existing_v01_pack_prepares_real_metadata (test_prepare_review_run.PrepareReviewTests.test_existing_v01_pack_prepares_real_metadata) ... ok
+test_hash_mismatch_blocks_without_output (test_prepare_review_run.PrepareReviewTests.test_hash_mismatch_blocks_without_output) ... ok
+test_missing_input_blocks (test_prepare_review_run.PrepareReviewTests.test_missing_input_blocks) ... ok
+test_no_fabricated_isolation_or_runtime (test_prepare_review_run.PrepareReviewTests.test_no_fabricated_isolation_or_runtime) ... ok
+test_no_implicit_waiver (test_prepare_review_run.PrepareReviewTests.test_no_implicit_waiver) ... ok
+test_other_stage_or_source_snapshot_blocks (test_prepare_review_run.PrepareReviewTests.test_other_stage_or_source_snapshot_blocks) ... ok
+test_output_overlap_blocks (test_prepare_review_run.PrepareReviewTests.test_output_overlap_blocks) ... ok
+test_output_overwrite_blocks (test_prepare_review_run.PrepareReviewTests.test_output_overwrite_blocks) ... ok
+test_pack_is_unchanged (test_prepare_review_run.PrepareReviewTests.test_pack_is_unchanged) ... ok
+test_paths_and_ids_are_validated (test_prepare_review_run.PrepareReviewTests.test_paths_and_ids_are_validated) ... ok
+test_symlink_input_blocks (test_prepare_review_run.PrepareReviewTests.test_symlink_input_blocks) ... ok
+test_unlisted_file_blocks (test_prepare_review_run.PrepareReviewTests.test_unlisted_file_blocks) ... ok
+test_invalid_cli_options_do_not_create_files (test_prepare_review_run.ReviewHandoffTests.test_invalid_cli_options_do_not_create_files) ... ok
+test_no_authorization_stays_blocked_in_terminal_and_replay (test_prepare_review_run.ReviewHandoffTests.test_no_authorization_stays_blocked_in_terminal_and_replay) ... ok
+test_preparation_prints_exact_saved_prompt_and_access_instructions (test_prepare_review_run.ReviewHandoffTests.test_preparation_prints_exact_saved_prompt_and_access_instructions) ... ok
+test_redisplay_does_not_change_inputs_or_outputs (test_prepare_review_run.ReviewHandoffTests.test_redisplay_does_not_change_inputs_or_outputs) ... ok
+test_replay_refuses_changed_input_or_start_text (test_prepare_review_run.ReviewHandoffTests.test_replay_refuses_changed_input_or_start_text) ... ok
+test_replay_refuses_used_run_or_mismatched_record (test_prepare_review_run.ReviewHandoffTests.test_replay_refuses_used_run_or_mismatched_record) ... ok
+test_unicode_paths_in_handoff (test_prepare_review_run.ReviewHandoffTests.test_unicode_paths_in_handoff) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 12.936s
+
+OK

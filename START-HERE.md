@@ -29,13 +29,21 @@ python3 scripts/build-context-pack.py --kind independent-design --out ../RustyBu
 python3 scripts/prepare-review-run.py --pack ../RustyBun-review-01 --out ../RustyBun-review-01-output --run-id phase0-independent-20260908-01 --allow-unverified-isolation
 ```
 
-Druga komenda działa również na pakiecie wyeksportowanym ze starego commita. Weryfikuje hashe; nie modyfikuje wejść ani MANIFEST.json. Tworzy `RUN-RECORD.json` i `START-REVIEW.txt` w oddzielnym output_root. Otwórz tę drugą instrukcję i wklej ją do sesji recenzenta mającej dostęp tylko do pakietu i output_root. Nie uruchamiaj przygotowania metadanych wewnątrz ślepej sesji z dostępem do całego repo.
+Druga komenda działa również na pakiecie wyeksportowanym ze starego commita. Weryfikuje hashe; nie modyfikuje wejść ani MANIFEST.json. Tworzy `RUN-RECORD.json` i `START-REVIEW.txt` w oddzielnym output_root. **Wypisuje od razu kompletną instrukcję przekazania:** katalog wejść tylko do odczytu, katalog wyników do odczytu/zapisu, gotowy tekst pomiędzy znacznikami `BEGIN REVIEWER PROMPT` / `END REVIEWER PROMPT` oraz miejsce oczekiwanego raportu. Wklej tekst między znacznikami do sesji recenzenta mającej dostęp tylko do tych katalogów. Nie trzeba osobno otwierać pliku. Nie uruchamiaj przygotowania metadanych wewnątrz ślepej sesji z dostępem do całego repo.
+
+Jeżeli katalog wyników już przygotowano, ale zadanie jeszcze nie ruszyło, skrypt może ponownie wypisać instrukcję bez zapisu, nowego rekordu lub zmiany autoryzacji:
+
+```bash
+python3 scripts/prepare-review-run.py --show-handoff ../RustyBun-review-01-output
+```
+
+Tryb ten kontroluje spójność wejść, rekordu i zapisanej instrukcji. Nie służy do ponownego uruchamiania rozpoczętej lub zakończonej próby. Samo wypisanie/wklejenie tekstu nie nadaje agentowi dostępu do katalogów ani nie tworzy sandboxa.
 
 Flaga `--allow-unverified-isolation` oznacza świadomą zgodę operatora na **rozpoznawczy projekt procesu** przy niezweryfikowanej izolacji. Nie potwierdza izolacji ani niezależności; raport musi to ujawnić. Bez flagi przygotowanie pozostawia wykonanie zablokowane do czasu kontroli/zgody operatora. To wyjątek tylko dla `independent-design`, nie dla Architekta, migracji lub akceptacji bramek.
 
 Nieznany model/klient/ustawienia zapisujemy jako `unknown`, niesprawdzone elementy izolacji jako `null`. `PREPARED` oznacza uzupełnione metadane startowe, a nie wykonane zadanie. `started_at`, `ended_at` i pomiary uzupełnia się dopiero przy rzeczywistym wykonaniu. Nie zmieniaj `isolation_verified` na `true` dla ominięcia blokady.
 
-Brak wejść, rozbieżne hashe, niedostępny output_root lub znany wyciek wykluczonych treści nadal blokują pracę. Gdy agent zatrzymał się wyłącznie na preflight i nie dostał obcych propozycji, można dostarczyć mu instrukcję startową w tej sesji. Gdy widział dodatkowe treści — nowa sesja i osobny run_id. Dla innych ścieżek montowania kontenera jawnie dostosuj ścieżki rekordu przed startem. Istniejący katalog wyników nie jest nadpisywany; dla kolejnej próby wybierz nowy.
+Brak wejść, rozbieżne hashe, niedostępny output_root lub znany wyciek wykluczonych treści nadal blokują pracę. Gdy agent zatrzymał się wyłącznie na preflight i nie dostał obcych propozycji, można dostarczyć mu instrukcję startową w tej sesji. Gdy widział dodatkowe treści — nowa sesja i osobny run_id. Dla innych ścieżek montowania kontenera jawnie dostosuj ścieżki rekordu i zapisanej instrukcji przed startem. Istniejący katalog wyników nie jest nadpisywany; dla kolejnej próby wybierz nowy.
 
 ## Dalsze pakiety — osobne rundy
 

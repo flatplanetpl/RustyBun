@@ -30,7 +30,7 @@ Run these commands from the RustyBun checkout. Python 3.10+ and Git are required
 python3 -m unittest discover -s tests -v
 # Skip this export command if RustyBun-review-01 already exists.
 python3 scripts/build-context-pack.py --kind independent-design --out ../RustyBun-review-01
-# Prepare metadata for the existing pack, without changing its inputs.
+# Prepare metadata and print the complete reviewer handoff in the terminal.
 python3 scripts/prepare-review-run.py --pack ../RustyBun-review-01 --out ../RustyBun-review-01-output --run-id phase0-independent-20260908-01 --allow-unverified-isolation
 ```
 
@@ -39,13 +39,23 @@ The last flag is an **explicit authorization for an exploratory, design-only run
 The input pack contains `TASK.md`, `MANIFEST.json`, a run-record template and allowlisted inputs. The preparation helper verifies file hashes and creates a **separate output directory** containing:
 
 - `RUN-RECORD.json` — a `PREPARED` record with the run ID, role, stage, process SHA, manifest hash and absolute input/output paths.
-- `START-REVIEW.txt` — the operator instruction to paste into the review session. It identifies the actual record and authorizes writing only to the assigned output directory.
+- `START-REVIEW.txt` — the operator instruction. Its complete text is also printed automatically, between `BEGIN REVIEWER PROMPT` and `END REVIEWER PROMPT` markers.
 
-Give the reviewer access only to the pack and this output directory, then paste `START-REVIEW.txt`. Do not attach the main repository or this journal to the reviewer. Paths in the record must be reachable in the agent's environment; remap them explicitly when using different container mount paths. If the existing session stopped only at preflight and has not seen excluded material, the operator instruction can be supplied there. Known exposure to other proposals or conversation history requires a fresh run.
+**Follow the handoff printed by the script.** It lists the input directory to expose read-only, the output directory to expose read/write, the exact prompt to paste, and where the design report should appear. You do not need to open a separate file or reconstruct instructions from this README. Paste only the text between the markers. `START-REVIEW.txt` remains the saved copy for auditing.
+
+Already prepared the output directory, but have not started the task? Reprint its handoff without overwriting anything:
+
+```bash
+python3 scripts/prepare-review-run.py --show-handoff ../RustyBun-review-01-output
+```
+
+This read-only mode rechecks the pack, record and saved instruction. It does not create a new run, refresh timestamps, change authorization or restart a used run. It refuses stale inputs/paths/instructions and a record indicating task execution. Existing records from the previous helper are supported when still PREPARED and unchanged.
+
+Give the reviewer access only to the pack and its output directory. Do not attach the main repository or this journal. Paths in the record must be reachable in the agent's environment; remap them and the saved instruction explicitly when using different container mount paths. Known exposure to other proposals or conversation history requires a fresh run. Printing or pasting a prompt does not configure filesystem mounts or a sandbox.
 
 `PREPARED` is not `COMPLETE`: start/end times and measurements remain empty until execution. Unobservable model/client/settings remain `unknown`; unchecked isolation observations remain `null`, and `isolation_verified` stays `false`. The exploratory report must disclose that independence is unverified. Do not change this flag to `true` merely to bypass preflight. Missing inputs, mismatched hashes, inaccessible output and known contamination remain blocking.
 
-Neither script starts a model, signs in to a service or calls a paid API. The operator is responsible for the actual fresh context, filesystem permissions and disabled extra tools. Exporting a folder is not a sandbox or proof of isolation. See the [preflight regression report](results/tooling-preflight-20260908/report.md).
+Neither script starts a model, signs in to a service or calls a paid API. The operator is responsible for the actual fresh context, filesystem permissions and disabled extra tools. Exporting a folder is not a sandbox or proof of isolation. See the [preflight regression report](results/tooling-preflight-20260908/report.md) and [handoff regression report](results/tooling-handoff-20260908/report.md).
 
 ## Later source analysis
 

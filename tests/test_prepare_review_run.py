@@ -167,5 +167,86 @@ class PrepareReviewTests(unittest.TestCase):
         self.assertEqual({p.name for p in self.out.iterdir()}, {'RUN-RECORD.json', 'START-REVIEW.txt'})
 
 
+class ReviewHandoffTests(unittest.TestCase):
+    setUp = PrepareReviewTests.setUp
+    tearDown = PrepareReviewTests.tearDown
+    write_manifest = PrepareReviewTests.write_manifest
+
+    def cli(self, *args):
+        return subprocess.run([sys.executable, str(SCRIPT), *map(str, args)],
+                              capture_output=True, text=True, encoding='utf-8')
+
+    def test_preparation_prints_exact_saved_prompt_and_access_instructions(self):
+        result = self.cli('--pack', self.pack, '--out', self.out, '--run-id', 'phase0-cli',
+                          '--allow-unverified-isolation')
+        self.assertEqual(result.returncode, 0, result.stderr)
+        shown = result.stdout.split('----- BEGIN REVIEWER PROMPT -----\n')[1].split('----- END REVIEWER PROMPT -----')[0]
+        self.assertEqual(shown, (self.out / 'START-REVIEW.txt').read_text(encoding='utf-8'))
+        self.assertIn('READ ONLY input pack: ' + json.dumps(str(self.pack.resolve())), result.stdout)
+        self.assertIn('READ/WRITE output root: ' + json.dumps(str(self.out.resolve())), result.stdout)
+        self.assertIn('INDEPENDENCE UNVERIFIED', result.stdout)
+        self.assertIn('No agent started', result.stdout)
+        self.assertFalse((self.out / 'independent-design.md').exists())
+
+    def test_redisplay_does_not_change_inputs_or_outputs(self):
+        prepare.prepare_run(self.pack, self.out, 'old-run', True)
+        before = {p: p.read_bytes() for root in (self.pack, self.out) for p in root.rglob('*') if p.is_file()}
+        result = self.cli('--show-handoff', self.out)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('BEGIN REVIEWER PROMPT', result.stdout)
+        after = {p: p.read_bytes() for root in (self.pack, self.out) for p in root.rglob('*') if p.is_file()}
+        self.assertEqual(before, after)
+
+    def test_no_authorization_stays_blocked_in_terminal_and_replay(self):
+        result = self.cli('--pack', self.pack, '--out', self.out, '--run-id', 'blocked-run')
+        for shown in (result, self.cli('--show-handoff', self.out)):
+            self.assertEqual(shown.returncode, 0, shown.stderr)
+            self.assertIn('BLOCKED_ENVIRONMENT', shown.stdout)
+            self.assertIn('Execution is NOT authorized', shown.stdout)
+            self.assertNotIn('READY_EXPLORATORY', shown.stdout)
+        self.assertFalse(json.loads((self.out / 'RUN-RECORD.json').read_bytes())['operator_authorization']['allow_unverified_isolation'])
+
+    def test_replay_refuses_changed_input_or_start_text(self):
+        prepare.prepare_run(self.pack, self.out, 'original', True)
+        task = self.pack / 'TASK.md'
+        original = task.read_bytes()
+        task.write_text('tampered')
+        result = self.cli('--show-handoff', self.out)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotIn('BEGIN REVIEWER PROMPT', result.stdout)
+        task.write_bytes(original)
+        with (self.out / 'START-REVIEW.txt').open('a') as stream:
+            stream.write('Extra instruction')
+        result = self.cli('--show-handoff', self.out)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertNotIn('BEGIN REVIEWER PROMPT', result.stdout)
+
+    def test_replay_refuses_used_run_or_mismatched_record(self):
+        original = prepare.prepare_run(self.pack, self.out, 'original', True)
+        for change in ({'status': 'COMPLETE'}, {'status': 'RUNNING'}, {'started_at': '2026-09-08T12:00:00Z'}, {'output_root': '/other'},
+                       {'input_manifest_sha256': '0'*64}, {'role_id': 'architect'}):
+            record = dict(original, **change)
+            (self.out / 'RUN-RECORD.json').write_text(json.dumps(record))
+            result = self.cli('--show-handoff', self.out)
+            self.assertNotEqual(result.returncode, 0, change)
+            self.assertNotIn('BEGIN REVIEWER PROMPT', result.stdout)
+
+    def test_invalid_cli_options_do_not_create_files(self):
+        for args in (('--pack', self.pack), ('--show-handoff', self.out, '--allow-unverified-isolation'),
+                     ('--show-handoff', self.out, '--run-id', 'new'), ('--show-handoff', self.out, '--out', self.out)):
+            result = self.cli(*args)
+            self.assertNotEqual(result.returncode, 0)
+            self.assertFalse(self.out.exists())
+
+    def test_unicode_paths_in_handoff(self):
+        new_path = self.root / 'pakiet-żółć'
+        self.pack.rename(new_path)
+        self.pack = new_path
+        prepare.prepare_run(self.pack, self.out, 'unicode', True)
+        result = self.cli('--show-handoff', self.out)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn('pakiet-żółć', result.stdout)
+
+
 if __name__ == '__main__':
     unittest.main()
