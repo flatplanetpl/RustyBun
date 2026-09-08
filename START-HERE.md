@@ -1,78 +1,67 @@
-# Przekazanie RustyBun do kolejnej sesji
+# RustyBun — przekazanie do kolejnej sesji
 
-## Stan wejściowy
+## Gdzie jesteśmy
 
-Repo: `flatplanetpl/RustyBun`. To pakiet przygotowawczy v0.1 z poprawkami preflight i uruchamiania. Materiały upstream, analiza wyboru SHA, kontrakty ról, prompty, protokół recenzji i dziennik są w repo. Operator zgłosił najpierw brak rekordu, a później blokadę z powodu widocznych instrukcji i pamięci innego projektu. Nie zweryfikowaliśmy jego plików wynikowych ani ukończonego niezależnego projektu. Brak wyników parity. Nie przedstawiaj tego jako gotowej migracji.
+Pierwsza runda **independent design** stworzyła alternatywny proces wyłącznie z briefu, bez naszej propozycji. Operator przekazał treść raportu z próby `phase0-independent-20260908T154456Z`. To ukończone zadanie projektowe według dostarczonego materiału, nie migracja ani dowód niezależności. Raport zachowuje `EXPLORATORY; INDEPENDENCE UNVERIFIED`, opisuje awarię sandboxa i wewnętrznego subagenta. Oryginalnego RUN-RECORD.json z serwera nie odczytano podczas przygotowania tej zmiany.
 
-## Najbliższe zadanie
+Następna runda to **design review**: nowy recenzent otrzymuje nasz aktualny proces oraz zamrożony alternatywny projekt. Ma ocenić oba, bez naszych komentarzy i bez z góry założonego werdyktu. Dopiero osobne **comparative review** ujawnia materiały historycznej migracji. Nie myl tych trzech nazw. G1 i dalsze bramki pozostają niezatwierdzone.
 
-**Najpierw niezależna ocena procesu, nie implementacja.**
+## Teraz uruchom drugą rundę
 
-1. Sprawdź repo i testy narzędzi. Przeczytaj brief i plan jako koordynator, nie jako ślepy recenzent.
-2. Zachowaj istniejący pakiet `independent-design`. W zwykłym terminalu operatora przygotuj nową próbę poleceniem poniżej. Nie wznawiaj sesji, która widziała wykluczone treści; zachowaj jej raport blokady.
-3. Zamroź odpowiedź, manifest, rekord i instrukcję startową w `results/<run-id>/`. Wynik z niezweryfikowaną izolacją oznacz jako rozpoznawczy, nie jako dowód niezależności. Dopiero w nowej sesji podaj pakiet `design-review`, aby ocenić nasze role/prompty. Wcześniejszy wariant recenzenta można dołączyć jako jawny dodatkowy artefakt z hashem.
-4. Osobna runda `comparative-review` otrzymuje materiały referencyjne. Jej wyniki nie nadpisują ani nie są dopisywane wstecz do rundy ślepej.
-5. Koordynator proponuje zmiany procesu i przedstawia Damianowi bramkę G1. Nie traktuj tej instrukcji jako automatycznej akceptacji G1.
-6. Po G1 przygotuj `architect` na surowym SHA, w izolacji od źródeł migracji. Przeprowadź niezależny przegląd raportu Architekta. Zatrzymaj się na G2 — przed Plannerem i kodowaniem.
+W zwykłym terminalu operatora w `~/RustyBun` pobierz nowe pliki:
 
-## Jedno polecenie — nowa próba na Ubuntu
+```bash
+git pull --ff-only
+```
 
-Stary checkout musi najpierw otrzymać nowe narzędzie przez `git pull --ff-only`. Następnie w katalogu RustyBun:
+Następnie:
+
+```bash
+python3 scripts/design-review.py --update --launch --allow-unverified-isolation
+```
+
+Domyślna wcześniejsza próba to `../phase0-independent-20260908T154456Z-output`, wskazana przez operatora. Nie wybieramy automatycznie najnowszego folderu. Skrypt odczytuje jej raport i rekord, wymaga zakończenia i zgodności zapisanego SHA-256. Brak rekordu albo niezgodny hash to blokada, nie powód do wymyślania metadanych. Inny ukończony przebieg wskaż jawnie przez `--prior-run PATH`.
+
+Polecenie zamraża nasz proces z jednego commita i kopię poprzedniego raportu w nowym pakiecie; tworzy nowy run_id oraz `output_root`. Po logowaniu kodem urządzenia do posiadanego konta ChatGPT **automatycznie podaje prompt nowej sesji Codexa**. Nie trzeba składać ścieżek, kopiować plików ani wklejać promptu. To zmiana względem starego launchera independent-design, który otwiera pustą sesję.
+
+Model i poziom można podać przed startem przez `--model` i `--reasoning`, używając identyfikatorów z faktycznego klienta. Bez tych opcji klient używa swoich ustawień domyślnych, nie automatycznie najmocniejszego modelu. Nie zgaduj wartości „Ultra”/„max” ani identyfikatorów API. Faktyczne ustawienia trzeba odnotować w wyniku.
+
+Powstaną `design-review.md` (ocena obu projektów) i `process-proposal.md` (kandydat minimalnego procesu v0.2). Nie są tworzone przez samo przygotowanie. Szczegóły: [docs/design-review-command.md](docs/design-review-command.md).
+
+## Warunki wykonania
+
+`--update` działa tylko na czystym checkoutcie, wyłącznie fast-forward, i ponownie wczytuje aktualny skrypt. Nie zmienia starego pakietu ani wyników. Nie uruchamiaj przygotowania w sesji recenzenta mającej dostęp do całego repo.
+
+Flaga `--allow-unverified-isolation` dotyczy wyłącznie eksploracyjnego zadania tej rundy. Osobny profil i read-only bity nowej kopii nie stanowią pełnej izolacji. `isolation_verified` pozostaje false. Obie propozycje są tu celowo dozwolonym wejściem; historia rozmowy, ocena koordynatora i obce instrukcje nadal nie są dozwolone. Journal oraz całe repo nie trafiają do recenzenta.
+
+Po doświadczeniu z pierwszej próby drugi launcher żąda `workspace-write` z polityką `never`: nie wolno ponawiać operacji poza niesprawnym sandboxem. To nie naprawia konfiguracji serwera ani nie dowodzi działania zabezpieczeń. Zachowaj wynik blokady; nie luzuj ustawień, nie zmieniaj starego statusu i nie traktuj powrotu klienta z kodem zero jako dowodu ukończenia.
+
+## Co robi koordynator po drugiej rundzie
+
+Przeczytaj oba raporty i rzeczywisty rekord, sprawdź identyfikatory/hashe, ograniczenia i deklarowane ustawienia. Zachowaj wejścia i wyniki z jednoznacznym pochodzeniem; przed publikacją usuń sekrety z ewentualnych logów, ale nie podmieniaj zamrożonego raportu. Nie publikuj cache logowania lub pełnych prywatnych sesji.
+
+Oddziel rekomendacje recenzenta od decyzji Damiana. Zestaw zaakceptowane i odrzucone zmiany, koszt dodatkowych etapów oraz warunki pilotażu. Comparative review pozostaje osobną rundą zgodnie z planem; nie deklaruj, że ten skrypt je wykonał. Zmiany procesu stosuj dopiero jako jawny kolejny commit po decyzji, a journal aktualizuj wraz z decyzją. Po G1: Architekt na surowym źródle, potem review jego raportu i zatrzymanie przed Plannerem na G2. Nie uruchamiaj teraz migracji.
+
+## Instrukcja dla kolejnego koordynatora
+
+> Pracujesz nad flatplanetpl/RustyBun. Odczytaj aktualne AGENTS.md, ten dokument, brief, plan i instrukcję design-review. Najpierw sprawdź faktyczny stan repo i dostarczone artefakty. Nie zakładaj, że przygotowany pakiet lub zamknięcie klienta oznacza ukończony raport. Rozróżniaj independent design, design review i comparative review. Nie udawaj czystej sesji, jeśli odziedziczyłeś kontekst koordynatora. Nie zatwierdzaj bramek za Damiana. Nie uruchamiaj płatnego API ani migracji. Ważne decyzje i korekty dopisuj do docs/presentation-journal.md. Podaj dowody wykonania i następny konkretny krok.
+
+Ten tekst jest dla koordynatora, nie dla recenzenta. Recenzent otrzymuje wyłącznie wygenerowany pakiet i jawne metadane startowe.
+
+## Pozostałe polecenia
+
+Przygotowanie drugiej rundy bez logowania i modelu:
+
+```bash
+python3 scripts/design-review.py --allow-unverified-isolation
+```
+
+Pierwszą rundę powtarzaj tylko świadomie jako inny eksperyment:
 
 ```bash
 python3 scripts/independent-review.py --update --launch --allow-unverified-isolation
 ```
 
-Polecenie zastępuje ręczne tworzenie `RUN_ID`, dobieranie ścieżki wyników, uruchamianie helpera i zakładanie oddzielnego profilu. `--update` wykonuje wyłącznie `git pull --ff-only` na czystym checkoutcie i ponownie wczytuje zaktualizowany launcher. Istniejący pakiet wejściowy oraz jego process SHA nie zmieniają się. Każda próba otrzymuje nowy identyfikator i katalog; poprzednie wyniki zostają.
+[Instrukcja pierwszej rundy](docs/independent-review-command.md) · [Preflight i starsze helpery](docs/preflight-start.md) · [Protokół czystego kontekstu](docs/clean-context-review.md).
 
-Skrypt wypisuje cały handoff. Z `--launch` tworzy osobny tymczasowy HOME/CODEX_HOME/XDG, prosi o logowanie kodem urządzenia do posiadanego konta ChatGPT i otwiera pustą sesję Codex CLI w katalogu wyników. Wybierz model/poziom rozumowania, a następnie wklej tekst pomiędzy `BEGIN REVIEWER PROMPT` i `END REVIEWER PROMPT`. Wypisanie następuje także po logowaniu. Kopia instrukcji pozostaje w `START-REVIEW.txt`. Nie trzeba otwierać pliku ani składać promptu z czatu.
-
-Bez uruchamiania klienta, logowania lub sieci:
-
-```bash
-python3 scripts/independent-review.py --allow-unverified-isolation
-```
-
-Nie podawaj recenzentowi tego dokumentu, kodu launchera, journal ani całego repo. Domyślny pakiet to `../RustyBun-review-01`; inny wskaż przez `--pack`. `--output-parent` zmienia katalog nadrzędny wyników. Wartości modeli i poziomów rozumowania muszą pochodzić z rzeczywistego klienta, nie z domysłów.
-
-**Ważne ograniczenie:** osobny profil nie jest kontenerem ani blokadą wszystkich odczytów spoza pakietu. Ustawienia systemowe/administracyjne nadal obowiązują, a niektóre pliki mogą być dostępne. `isolation_verified` pozostaje false; znany wyciek treści nadal blokuje pracę. Nie luzuj bramek i nie przekonuj zablokowanego recenzenta do kontynuacji. [Uzasadnienie, referencje i obsługa błędów](docs/independent-review-command.md).
-
-## Gotowy prompt do sesji tekstowej koordynatora
-
-> Pracujesz nad publicznym repo flatplanetpl/RustyBun. Nie masz zakładać żadnej wiedzy z wcześniejszej rozmowy. Pobierz aktualny stan repo, przeczytaj AGENTS.md, START-HERE.md, docs/project-brief.md, docs/experiment-plan.md i docs/clean-context-review.md. Zrealizuj najbliższy nieukończony etap przygotowania/weryfikacji procesu. Najpierw sprawdź faktyczny stan plików i testy narzędzi. Przygotuj pakiet dla niezależnego recenzenta zgodnie z allowlistą, a nie przez przekazanie całego repo. Dostarcz rekord uruchomienia i output_root przed startem. Nie udawaj niezależnej sesji, jeśli odziedziczyłeś kontekst koordynatora. Nie rozpoczynaj migracji, nie uruchamiaj płatnego API i nie zatwierdzaj bramek za Damiana. Każdą istotną decyzję lub korektę dopisz do docs/presentation-journal.md. Zapisz produkty etapu i podaj dokładne dowody wykonania oraz następny punkt wymagający decyzji.
-
-Ten prompt jest dla koordynatora, NIE dla ślepego recenzenta. Recenzent otrzymuje wygenerowany `TASK.md`, wyłącznie pliki z manifestu oraz jawne metadane operatora: rekord uruchomienia i instrukcję startową. Launcher nie jest kolejnym agentem ani wykonawczym pipeline'em migracji.
-
-## Eksport i niższy poziom narzędzi
-
-Eksportuj tylko nieistniejący pakiet. Istniejącego nie zastępuj dla „naprawienia” uruchomienia:
-
-```bash
-python3 scripts/build-context-pack.py --kind independent-design --out ../RustyBun-review-01
-```
-
-Dotychczasowy `prepare-review-run.py` nadal działa; używa go nowe polecenie. Ręczny interfejs jest opisany w [docs/preflight-start.md](docs/preflight-start.md). `--show-handoff` tylko wyświetla istniejącą, nierozpoczętą próbę; nie przygotowuje brakującego rekordu. W trybie niskopoziomowym nowy run_id i katalog trzeba nadal podać samodzielnie.
-
-Flaga `--allow-unverified-isolation` oznacza świadomą zgodę operatora na **rozpoznawczy projekt procesu** przy niezweryfikowanej izolacji. Nie potwierdza izolacji ani niezależności; raport musi to ujawnić. Bez flagi przygotowanie pozostawia wykonanie zablokowane. To wyjątek tylko dla `independent-design`, nie dla Architekta, migracji lub akceptacji bramek.
-
-Nieznany model/klient/ustawienia zapisujemy jako `unknown`, niesprawdzone elementy izolacji jako `null`. `PREPARED` oznacza metadane startowe, nie wykonane zadanie. `launcher.CLIENT_EXITED` dotyczy procesu klienta, nie jakości ani ukończenia projektu. Właściwy status roli, daty wykonania i pomiary muszą wynikać z rzeczywistej pracy. Nie zmieniaj `isolation_verified` na true dla ominięcia blokady.
-
-Brak wejść, rozbieżne hashe, niedostępny output_root lub znany wyciek wykluczonych treści nadal blokują pracę. Gdy agent zatrzymał się wyłącznie na preflight i nie dostał obcych propozycji, można dostarczyć mu instrukcję startową w tej sesji. Gdy widział dodatkowe treści — nowa sesja i osobny run_id. Dla innych ścieżek montowania kontenera jawnie dostosuj ścieżki rekordu i zapisanej instrukcji przed startem. Istniejący katalog wyników nie jest nadpisywany.
-
-Tymczasowy profil usuwa się po normalnym zakończeniu klienta; wyniki zostają. Przed publikacją audytuj raport i metadane. Nie publikuj cache logowania ani surowych prywatnych sesji. Usunięcie profilu nie przywraca limitu konta.
-
-## Dalsze pakiety — osobne rundy
-
-```bash
-python3 scripts/build-context-pack.py --kind design-review --out ../RustyBun-review-02
-python3 scripts/build-context-pack.py --kind comparative-review --out ../RustyBun-review-03
-# Dopiero po G1:
-bash scripts/bootstrap-bun-baseline.sh
-python3 scripts/build-context-pack.py --kind architect --bun-repo work/bun --out ../RustyBun-architect-01
-```
-
-Dla tych etapów operator nadal uzupełnia osobne rekordy z szablonu i wymagane zgody. Helper i launcher pierwszej rundy ich nie autoryzują.
-
-Eksporter pobiera wersjonowane wejścia z HEAD, więc lokalne niezatwierdzone edycje nie trafiają do pakietu. Zawsze sprawdź SHA w MANIFEST.json. Dla Architekta eksportuje commit kodu, nie katalog roboczy; pomija historię Git, symlinki i znane pliki sterujące agentami, zapisując pominięcia. To nie jest gotowe środowisko builda.
-
-Dla zweryfikowanego blind review operator musi zapewnić i sprawdzić izolację od dodatkowej pamięci, historii i plików oraz odpowiednie uprawnienia. Nie montuj całego home, głównego repo ani credentiali GitHub. W interfejsie bez możliwości odizolowania repo użyj nowej rozmowy i załącz tylko pliki pakietu oraz metadane operatora; brak narzędzi do kodu oznacza review metodologii, nie weryfikację implementacji.
+`build-context-pack.py` nadal eksportuje tylko wersjonowane wejścia. Sam `--kind design-review` nie dodaje poprzedniego wyniku — do kompletnej drugiej rundy użyj nowego polecenia. Comparative review i Architect wymagają własnych rekordów oraz odpowiednich decyzji; ten launcher ich nie autoryzuje.

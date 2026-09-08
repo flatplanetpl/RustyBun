@@ -36,7 +36,10 @@
         "tests/test_context_pack.py",
         "docs/preflight-start.md",
         "scripts/prepare-review-run.py",
-        "tests/test_prepare_review_run.py"
+        "tests/test_prepare_review_run.py",
+        "scripts/independent-review.py",
+        "scripts/design-review.py",
+        "tests/test_design_review.py"
       ]
     },
     "comparative-review": {

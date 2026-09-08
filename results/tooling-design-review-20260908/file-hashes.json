@@ -1,0 +1,56 @@
+[
+  {
+    "path": "scripts/design-review.py",
+    "sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73",
+    "git_blob": "ae62ac4e5cddc856c8f9b880c76b6870ec6d5d60",
+    "bytes": 26057
+  },
+  {
+    "path": "tests/test_design_review.py",
+    "sha256": "5ab910b4bed6cbfbad3b0c8f28d57aaf119ec24936d75cd51ede6a0874572a3b",
+    "git_blob": "fab67b213ad076af88cb20cfa9e59b694d04bb58",
+    "bytes": 20680
+  },
+  {
+    "path": "prompts/08-design-review.md",
+    "sha256": "47d777c370e20aa592482098f6300b22f72a4f5603ae38d50318ac75c5f5b49f",
+    "git_blob": "10f1a53afd74d057fea938555581d9f1d434cb43",
+    "bytes": 3605
+  },
+  {
+    "path": "workflow/bundles.json",
+    "sha256": "4aabe09a4ce8fd7f7ee9c265410b13b6772c9af49f5e6af2bb88d5faa745ab92",
+    "git_blob": "78fca8850e12ee06f767006141e1b5d2c0454f21",
+    "bytes": 3624
+  },
+  {
+    "path": "workflow/pipeline.json",
+    "sha256": "10ef5a5255a957ad224eba1f734f129c48381d11f8db62a0fbb4d9384cd57209",
+    "git_blob": "17931fb17352449dee1d6ab159ce243ff7a2d8b2",
+    "bytes": 4057
+  },
+  {
+    "path": "README.md",
+    "sha256": "9e35e2b122859d067b53c27c7d861fc04081fc305ecc53bb9c52801670dcbbb0",
+    "git_blob": "17722fbd4194334102ce8c4aebc66c9155b022be",
+    "bytes": 6369
+  },
+  {
+    "path": "START-HERE.md",
+    "sha256": "881bbd3853adee2fd9f008872cb08dba2205d019c1197e8373f10ef040f998da",
+    "git_blob": "55ba595fd4764c74c78e540c8b009fdd1aa26ac5",
+    "bytes": 6034
+  },
+  {
+    "path": "docs/design-review-command.md",
+    "sha256": "1bf9349a634ba3a6c1c496e2da2ccdc5279cfd6cbc39f2a3314d58b0da957d9d",
+    "git_blob": "03e416addb47434cbef5b58540b65e516acd8a89",
+    "bytes": 9525
+  },
+  {
+    "path": "docs/presentation-journal.md",
+    "sha256": "6a9205dc0d56c2347a63a287bff4c5fefea3563ac73e8b07c850a47cfddabed6",
+    "git_blob": "6c41223e53b2e30a5bdaf28e5f61e0b61f7f3aa6",
+    "bytes": 18210
+  }
+]

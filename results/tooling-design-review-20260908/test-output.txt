@@ -1,0 +1,39 @@
+test_blocked_or_unclosed_prior_is_not_success (test_design_review.DesignReviewTests.test_blocked_or_unclosed_prior_is_not_success) ... ok
+test_changed_inputs_during_login_block (test_design_review.DesignReviewTests.test_changed_inputs_during_login_block) ... ok
+test_cli_defaults_select_explicit_prior_not_latest (test_design_review.DesignReviewTests.test_cli_defaults_select_explicit_prior_not_latest) ... ok
+test_cli_no_launch_without_tty_and_authorization (test_design_review.DesignReviewTests.test_cli_no_launch_without_tty_and_authorization) ... ok
+test_cli_show_and_conflicting_options (test_design_review.DesignReviewTests.test_cli_show_and_conflicting_options) ... ok
+test_client_exit_alone_is_not_completion (test_design_review.DesignReviewTests.test_client_exit_alone_is_not_completion) ... ok
+test_default_has_no_implicit_authorization (test_design_review.DesignReviewTests.test_default_has_no_implicit_authorization) ... ok
+test_dirty_checkout_is_not_silently_exported (test_design_review.DesignReviewTests.test_dirty_checkout_is_not_silently_exported) ... ok
+test_duplicate_or_wrong_path_hash_is_rejected (test_design_review.DesignReviewTests.test_duplicate_or_wrong_path_hash_is_rejected) ... ok
+test_existing_directory_is_never_overwritten (test_design_review.DesignReviewTests.test_existing_directory_is_never_overwritten) ... ok
+test_failed_login_never_starts_model (test_design_review.DesignReviewTests.test_failed_login_never_starts_model) ... ok
+test_fresh_ids_and_directories (test_design_review.DesignReviewTests.test_fresh_ids_and_directories) ... ok
+test_handoff_readonly_and_exact_prompt (test_design_review.DesignReviewTests.test_handoff_readonly_and_exact_prompt) ... ok
+test_hash_mismatch_prevents_pack_publication (test_design_review.DesignReviewTests.test_hash_mismatch_prevents_pack_publication) ... ok
+test_invalid_ids_and_inside_repo_output (test_design_review.DesignReviewTests.test_invalid_ids_and_inside_repo_output) ... ok
+test_missing_prior_has_actionable_file_error (test_design_review.DesignReviewTests.test_missing_prior_has_actionable_file_error) ... ok
+test_moved_closed_prior_keeps_original_identity (test_design_review.DesignReviewTests.test_moved_closed_prior_keeps_original_identity) ... ok
+test_new_input_modes_have_no_write_bits (test_design_review.DesignReviewTests.test_new_input_modes_have_no_write_bits) ... ok
+test_no_silent_hash_reconstruction (test_design_review.DesignReviewTests.test_no_silent_hash_reconstruction) ... ok
+test_preparation_not_execution_or_gate_approval (test_design_review.DesignReviewTests.test_preparation_not_execution_or_gate_approval) ... ok
+test_prior_and_old_inputs_unchanged (test_design_review.DesignReviewTests.test_prior_and_old_inputs_unchanged) ... ok
+test_profile_preserves_controls_and_has_no_escalation (test_design_review.DesignReviewTests.test_profile_preserves_controls_and_has_no_escalation) ... ok
+test_raw_record_and_session_data_not_copied (test_design_review.DesignReviewTests.test_raw_record_and_session_data_not_copied) ... ok
+test_real_exporter_freezes_both_proposals (test_design_review.DesignReviewTests.test_real_exporter_freezes_both_proposals) ... ok
+test_real_local_git_update_reexec_preserves_prior (test_design_review.DesignReviewTests.test_real_local_git_update_reexec_preserves_prior) ... ok
+test_record_artifact_absolute_and_mapping_forms (test_design_review.DesignReviewTests.test_record_artifact_absolute_and_mapping_forms) ... ok
+test_sandbox_failure_has_no_fallback (test_design_review.DesignReviewTests.test_sandbox_failure_has_no_fallback) ... ok
+test_simulated_launch_auto_submits_and_validates_outputs (test_design_review.DesignReviewTests.test_simulated_launch_auto_submits_and_validates_outputs) ... ok
+test_stale_record_prompt_or_profile_blocks (test_design_review.DesignReviewTests.test_stale_record_prompt_or_profile_blocks) ... ok
+test_symlink_prior_and_ancestor_rejected (test_design_review.DesignReviewTests.test_symlink_prior_and_ancestor_rejected) ... ok
+test_symlink_report_rejected (test_design_review.DesignReviewTests.test_symlink_report_rejected) ... ok
+test_tampered_frozen_input_blocks_handoff (test_design_review.DesignReviewTests.test_tampered_frozen_input_blocks_handoff) ... ok
+test_unlisted_input_blocks_handoff (test_design_review.DesignReviewTests.test_unlisted_input_blocks_handoff) ... ok
+test_used_run_is_not_restarted (test_design_review.DesignReviewTests.test_used_run_is_not_restarted) ... ok
+
+----------------------------------------------------------------------
+Ran 34 tests in 6.090s
+
+OK

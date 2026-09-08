@@ -26,7 +26,13 @@
       "requires": [
         "method-independent:frozen"
       ],
-      "output": "results/<run-id>/design-review.md"
+      "output": "results/<run-id>/design-review.md",
+      "operator_command": "python3 scripts/design-review.py --update --launch --allow-unverified-isolation",
+      "additional_outputs": [
+        "results/<run-id>/process-proposal.md"
+      ],
+      "local_output_layout": "phase0-design-review-<id>/output/; archive under results only after an operator publication audit",
+      "prior_result_policy": "Explicit closed independent-design run; copy report only after matching its recorded SHA-256; preserve exploratory limitations."
     },
     {
       "id": "method-comparative",
