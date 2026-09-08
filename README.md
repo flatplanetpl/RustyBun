@@ -2,11 +2,12 @@
 
 An experiment in migrating Bun from Zig to Rust: design the process and its contracts first, then run a measurable pilot using Codex under a subscription plan.
 
-**Status: process preparation.** The roles, prompts and review protocol are a v0.1 candidate, not an approved or running multi-agent system. No full Bun architecture analysis, baseline compilation or migration has been completed. Run preparation does not count as a completed review.
+**Status: process preparation.** The roles, prompts and review protocol are a v0.1 candidate, not an approved multi-agent migration system. The operator reported a review blocked by extra project context; no completed independent design has been verified here. No full Bun architecture analysis, baseline compilation or migration has been completed. Run preparation and opening a client do not count as a completed review.
 
 ## Start here
 
 - [START-HERE.md](START-HERE.md) — handoff instructions for the next model and the operator.
+- [Independent review command](docs/independent-review-command.md) — one-command preparation/start, separate Codex profile, rationale and limitations.
 - [Neutral project brief](docs/project-brief.md) — goals, constraints and unknowns without prescribing an agent topology.
 - [Execution plan](docs/experiment-plan.md) — stages, deliverables and approval gates.
 - [Roles](agents/roles.md) and [shared contract](agents/contract.md) — responsibilities and permission boundaries.
@@ -22,44 +23,61 @@ The latter adds `docs/PORTING.md` and `scripts/port-batch.ts` without changing B
 
 [Baseline analysis](docs/upstream-baseline-analysis.md) · [Pinned SHAs](upstream/bun-baseline.env) · [Source index](sources/README.md).
 
-## Prepare the first review
+## Start a new independent-design attempt
 
-Run these commands from the RustyBun checkout. Python 3.10+ and Git are required. On systems where Python is named `python`, use that command instead of `python3`.
+Use a normal operator terminal on Ubuntu/Linux, not an existing reviewer session. Requirements: Python 3.10+, Git and Codex CLI already installed for `--launch`. From an older checkout, first run `git pull --ff-only` once to obtain the new command.
+
+With the existing `../RustyBun-review-01` input pack, run from the RustyBun checkout:
+
+```bash
+python3 scripts/independent-review.py --update --launch --allow-unverified-isolation
+```
+
+The command updates a clean checkout using `git pull --ff-only`, creates a unique run ID and new output directory, verifies the unchanged input pack, prepares the run record and prints the complete handoff. It then requests ChatGPT device-code login in a fresh temporary profile and opens an empty Codex CLI session in the output directory. **Select the model/settings, then paste only the text between `BEGIN REVIEWER PROMPT` and `END REVIEWER PROMPT`.** No manual `RUN_ID`, `--out` or `--show-handoff` step is needed.
+
+The existing pack retains its original process SHA even if tooling is updated. Previous outputs, including blocked attempts, remain untouched. The expected report is `independent-design.md` in the newly printed output directory. Opening/exiting Codex is not proof that this report was completed.
+
+**Why a separate profile?** A reviewer reported seeing unrelated instructions and memory before starting the task. A new folder or conversation alone did not prevent that. The launcher separates local home/config/state and requests disabled memory, app integrations and browsing. This is **not a container or a proof of isolation**; system policy and other readable files may remain accessible. Known excluded context still blocks work. [Details, sources and failure handling](docs/independent-review-command.md).
+
+`--allow-unverified-isolation` is explicit authorization for an exploratory design-only task. It never sets `isolation_verified=true` or approves any gate. Same account, same limits; no API-key fallback or credit purchase. The temporary profile is removed on normal client exit; outputs are retained. Never publish auth caches or raw private client logs.
+
+Preparation only, without Git/network, login or client launch:
+
+```bash
+python3 scripts/independent-review.py --allow-unverified-isolation
+```
+
+Omit `--update` to keep the current launcher checkout. Use `--pack PATH` for another existing pack; `--model` and `--reasoning` accept exact values supported by the installed client. Run `python3 scripts/independent-review.py --help` for all options. No model IDs or maximum-reasoning labels are guessed.
+
+## Input export and low-level helpers
+
+Only export when the input pack does not exist; do not replace an already reviewed pack:
+
+```bash
+python3 scripts/build-context-pack.py --kind independent-design --out ../RustyBun-review-01
+```
+
+The exporter creates `TASK.md`, `MANIFEST.json`, a run-record template and allowlisted inputs. It does not start a model or create a completed runtime record. The wrapper above uses the existing `prepare-review-run.py` helper, whose manual interface remains supported:
+
+```bash
+python3 scripts/prepare-review-run.py --pack ../RustyBun-review-01 --out ../NEW_OUTPUT_DIR --run-id NEW_RUN_ID --allow-unverified-isolation
+# Redisplay only when that run is still PREPARED and has not started:
+python3 scripts/prepare-review-run.py --show-handoff ../NEW_OUTPUT_DIR
+```
+
+The helper creates `RUN-RECORD.json` and `START-REVIEW.txt`, and prints exactly what to give the reviewer. It neither logs in nor launches Codex. `--show-handoff` does not create a missing record or restart a used run. [Preflight documentation](docs/preflight-start.md).
+
+`PREPARED` is not `COMPLETE`. Actual timestamps, model/settings and measurements must come from execution; unchecked observations remain unknown. Missing inputs, mismatched hashes, unavailable outputs and known contamination remain blocking. Do not share the main repository, presentation journal or conversation history with the independent designer. Input permissions and effective sandbox controls still need operator verification.
+
+## Validation and later source analysis
 
 ```bash
 python3 -m unittest discover -s tests -v
-# Skip this export command if RustyBun-review-01 already exists.
-python3 scripts/build-context-pack.py --kind independent-design --out ../RustyBun-review-01
-# Prepare metadata and print the complete reviewer handoff in the terminal.
-python3 scripts/prepare-review-run.py --pack ../RustyBun-review-01 --out ../RustyBun-review-01-output --run-id phase0-independent-20260908-01 --allow-unverified-isolation
 ```
 
-The last flag is an **explicit authorization for an exploratory, design-only run while isolation is unverified**. It is not a claim of verified independence. Without the flag, the helper prepares metadata but leaves execution blocked pending operator checks/authorization. It supports `independent-design` only and does not approve any later stage or gate.
+[Launcher checks and limitations](results/tooling-launcher-20260908/report.md) · [Preflight checks](results/tooling-preflight-20260908/report.md) · [Handoff checks](results/tooling-handoff-20260908/report.md).
 
-The input pack contains `TASK.md`, `MANIFEST.json`, a run-record template and allowlisted inputs. The preparation helper verifies file hashes and creates a **separate output directory** containing:
-
-- `RUN-RECORD.json` — a `PREPARED` record with the run ID, role, stage, process SHA, manifest hash and absolute input/output paths.
-- `START-REVIEW.txt` — the operator instruction. Its complete text is also printed automatically, between `BEGIN REVIEWER PROMPT` and `END REVIEWER PROMPT` markers.
-
-**Follow the handoff printed by the script.** It lists the input directory to expose read-only, the output directory to expose read/write, the exact prompt to paste, and where the design report should appear. You do not need to open a separate file or reconstruct instructions from this README. Paste only the text between the markers. `START-REVIEW.txt` remains the saved copy for auditing.
-
-Already prepared the output directory, but have not started the task? Reprint its handoff without overwriting anything:
-
-```bash
-python3 scripts/prepare-review-run.py --show-handoff ../RustyBun-review-01-output
-```
-
-This read-only mode rechecks the pack, record and saved instruction. It does not create a new run, refresh timestamps, change authorization or restart a used run. It refuses stale inputs/paths/instructions and a record indicating task execution. Existing records from the previous helper are supported when still PREPARED and unchanged.
-
-Give the reviewer access only to the pack and its output directory. Do not attach the main repository or this journal. Paths in the record must be reachable in the agent's environment; remap them and the saved instruction explicitly when using different container mount paths. Known exposure to other proposals or conversation history requires a fresh run. Printing or pasting a prompt does not configure filesystem mounts or a sandbox.
-
-`PREPARED` is not `COMPLETE`: start/end times and measurements remain empty until execution. Unobservable model/client/settings remain `unknown`; unchecked isolation observations remain `null`, and `isolation_verified` stays `false`. The exploratory report must disclose that independence is unverified. Do not change this flag to `true` merely to bypass preflight. Missing inputs, mismatched hashes, inaccessible output and known contamination remain blocking.
-
-Neither script starts a model, signs in to a service or calls a paid API. The operator is responsible for the actual fresh context, filesystem permissions and disabled extra tools. Exporting a folder is not a sandbox or proof of isolation. See the [preflight regression report](results/tooling-preflight-20260908/report.md) and [handoff regression report](results/tooling-handoff-20260908/report.md).
-
-## Later source analysis
-
-Only when the relevant gate allows it, prepare the source checkout for further analysis (Linux/macOS/WSL/Git Bash):
+Only after the relevant gate permits source analysis (Linux/macOS/WSL/Git Bash):
 
 ```bash
 bash scripts/bootstrap-bun-baseline.sh

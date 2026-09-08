@@ -1,0 +1,25 @@
+test_auto_names_are_distinct_and_keep_pinned_process (test_independent_review.LauncherTests.test_auto_names_are_distinct_and_keep_pinned_process) ... ok
+test_bad_pack_and_invalid_id_do_not_create_output (test_independent_review.LauncherTests.test_bad_pack_and_invalid_id_do_not_create_output) ... ok
+test_changed_inputs_during_login_block_client_start (test_independent_review.LauncherTests.test_changed_inputs_during_login_block_client_start) ... ok
+test_cli_is_one_command_for_preparation (test_independent_review.LauncherTests.test_cli_is_one_command_for_preparation) ... ok
+test_cli_launch_needs_explicit_consent_and_terminal (test_independent_review.LauncherTests.test_cli_launch_needs_explicit_consent_and_terminal) ... ok
+test_config_has_requested_not_fabricated_model (test_independent_review.LauncherTests.test_config_has_requested_not_fabricated_model) ... ok
+test_config_is_valid_toml_when_parser_is_available (test_independent_review.LauncherTests.test_config_is_valid_toml_when_parser_is_available) ... ok
+test_default_preparation_is_offline_and_keeps_inputs (test_independent_review.LauncherTests.test_default_preparation_is_offline_and_keeps_inputs) ... ok
+test_environment_drops_keys_state_and_relative_path_entries (test_independent_review.LauncherTests.test_environment_drops_keys_state_and_relative_path_entries) ... ok
+test_launch_opens_new_profile_and_preserves_task_status (test_independent_review.LauncherTests.test_launch_opens_new_profile_and_preserves_task_status) ... ok
+test_launch_without_authorization_is_blocked (test_independent_review.LauncherTests.test_launch_without_authorization_is_blocked) ... ok
+test_launcher_updates_do_not_erase_reviewer_results (test_independent_review.LauncherTests.test_launcher_updates_do_not_erase_reviewer_results) ... ok
+test_login_failure_does_not_start_model (test_independent_review.LauncherTests.test_login_failure_does_not_start_model) ... ok
+test_output_collision_does_not_overwrite (test_independent_review.LauncherTests.test_output_collision_does_not_overwrite) ... ok
+test_output_inside_main_checkout_is_rejected (test_independent_review.LauncherTests.test_output_inside_main_checkout_is_rejected) ... ok
+test_update_failure_does_not_prepare_or_launch (test_independent_review.LauncherTests.test_update_failure_does_not_prepare_or_launch) ... ok
+test_update_reexecutes_with_original_options_without_update (test_independent_review.LauncherTests.test_update_reexecutes_with_original_options_without_update) ... ok
+test_update_refuses_dirty_checkout_before_pull (test_independent_review.LauncherTests.test_update_refuses_dirty_checkout_before_pull) ... ok
+test_update_uses_ff_only_and_has_no_reset_or_stash (test_independent_review.LauncherTests.test_update_uses_ff_only_and_has_no_reset_or_stash) ... ok
+test_used_run_is_not_restarted (test_independent_review.LauncherTests.test_used_run_is_not_restarted) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 5.871s
+
+OK
