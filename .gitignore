@@ -1,0 +1,6 @@
+# Local upstream checkouts and experiment worktrees
+/work/
+
+# Local logs / transient migration output
+*.log
+.DS_Store
