@@ -60,3 +60,15 @@ SHA/model/konfiguracja każdej próby; zakres kontraktu i fixture'y; verified un
 ## Szablon następnego wpisu
 
 ID / data / typ / status decyzji; problem; decyzja lub obserwacja; alternatywa odrzucona i powód; konsekwencja; dowód (run, commit, ścieżka); teza do prezentacji; co mogłoby ją obalić. Korekty dopisuj jawnie, nie wymazuj wcześniejszego nieudanego podejścia.
+
+## 2026-09-08 — pierwszy start zatrzymany na preflight
+
+**OBSERVATION J018 — poprawna odmowa ujawniła brak w przekazaniu pracy.** Operator wkleił komunikat agenta: dostępny był tylko szablon NOT_RUN, brakowało uzupełnionego rekordu i output_root; agent nie zmienił plików. Eksporter w commicie fbf1b25115cd2455664d78523f127101bed66516 rzeczywiście wymagał dostarczenia rekordu przez operatora. Skrócona instrukcja z rozmowy „wykonaj TASK.md” pominęła ten krok. To zdarzenie operacyjne zgłoszone przez użytkownika, nie wykonany przez nas audyt jego sesji ani ukończony niezależny projekt. Hasło: „Agent odmówił poprawnie. Błąd był w naszym handoffie.”
+
+**CORRECTION J019 — szablon to nie rekord, a przygotowanie to nie wykonanie.** Dodano [prepare-review-run.py](../scripts/prepare-review-run.py): odczyt manifestu, kontrola hashy, właściwy run_id/role_id/stage, rzeczywiste ścieżki input_root/output_root i status PREPARED. Rekord oraz instrukcja startowa trafiają poza wejściowy pakiet. started_at/ended_at i metryki pozostają niewypełnione do rzeczywistego wykonania. Odrzucono ręczne wpisanie fikcyjnego modelu, ścieżki dysku operatora albo statusu COMPLETE. Poprawka może obsłużyć stary pakiet bez zmiany SHA ocenianych wejść.
+
+**PROPOSAL J020 — jawny tryb rozpoznawczy zamiast udawanej izolacji.** Helper domyślnie nie autoryzuje pracy przy niezweryfikowanej izolacji. Operator może jawnie wybrać --allow-unverified-isolation wyłącznie dla pierwszego zadania projektowego. Wynik musi wtedy ujawnić EXPLORATORY; INDEPENDENCE UNVERIFIED; isolation_verified pozostaje false. Brak danych/niezgodne hashe/niedostępny output lub znany wyciek treści nadal blokują pracę. Nie zmieniono bramek dla Architekta i migracji. Ta opcja nie jest dowodem, że operator ją już uruchomił lub że sandbox działa. [Dokładna semantyka](preflight-start.md).
+
+**OBSERVATION J021 — testujemy również odmowę i uczciwość metadanych.** 15 nowych testów offline/CLI przeszło na Linux/Python 3.13.5. Obejmują brak nadpisywania, zachowanie wejść, wykrywanie zmiany hashy, brakujące i nadmiarowe pliki, bezpieczne ścieżki oraz brak automatycznego potwierdzania izolacji. [Raport, ograniczenia i hashe](../results/tooling-preflight-20260908/report.md). Nie wykonano jeszcze review w środowisku operatora. To nie wynik migracji.
+
+**DECISION J022 — główny README po angielsku.** Zgodnie z prośbą operatora przetłumaczono główny README i dopisano brakujący krok przygotowania rekordu. Pozostałych promptów i briefu nie przetłumaczono ani nie rozszerzono przed pierwszą rundą. Znane materiały historyczne i pierwotne wpisy tego dziennika zachowano.

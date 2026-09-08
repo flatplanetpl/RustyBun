@@ -45,3 +45,11 @@ Sprawdź manifest i hashe, zaznacz izolację konwersacji/plików/narzędzi/pami�
 Oficjalna dokumentacja opisuje automatyczne wczytywanie AGENTS.md oraz różne tryby uwierzytelniania. Weryfikacja dokumentacji: 2026-09-08. Dlatego audytujemy również instrukcje globalne i nie zakładamy, że nowy terminal oznacza nowy kontekst lub abonamentowy tryb rozliczania.
 
 Źródła techniczne: https://developers.openai.com/codex/guides/agents-md ; https://developers.openai.com/codex/auth ; https://help.openai.com/en/articles/11369540-using-codex-with-your-chatgpt-plan . Konkretne komendy startu i dostępność modelu trzeba potwierdzić w używanym kliencie. Pakiet nie tworzy kluczy ani nie zmienia sposobu logowania.
+
+## Poprawka preflight — 2026-09-08
+
+Sam eksport i TASK.md nie wystarczają: operator dostarcza dodatkowo uzupełniony rekord i output_root. Dla istniejącego pakietu independent-design służy do tego `scripts/prepare-review-run.py`; [instrukcja i semantyka](preflight-start.md). Rekord oraz wygenerowany START-REVIEW.txt są jawnymi metadanymi administracyjnymi, nie dodatkową propozycją procesu. Wejścia i manifest pozostają niezmienione.
+
+PREPARED oznacza przygotowane metadane, nie ukończony raport. Nieznane ustawienia runtime pozostają unknown, przyszłe pomiary/timestampy null. Nie zmienia to wymogu dowodów dla deklaracji COMPLETE.
+
+Wyłącznie przy independent-design operator może jawnie dopuścić run rozpoznawczy flagą --allow-unverified-isolation. Isolation_verified pozostaje false, a raport musi ujawniać niezweryfikowaną niezależność. Bez tej zgody helper nie autoryzuje wykonania. Znany wyciek treści lub problem z wejściem/outputem nadal blokuje pracę. To nie jest zgoda na pomijanie bramek dla następnych etapów ani na nazywanie runu rozpoznawczego zweryfikowanym blind review.

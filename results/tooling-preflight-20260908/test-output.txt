@@ -1,0 +1,20 @@
+test_cli_prepares_without_model_execution (test_prepare_review_run.PrepareReviewTests.test_cli_prepares_without_model_execution) ... ok
+test_control_directory_blocks (test_prepare_review_run.PrepareReviewTests.test_control_directory_blocks) ... ok
+test_duplicate_manifest_entry_blocks (test_prepare_review_run.PrepareReviewTests.test_duplicate_manifest_entry_blocks) ... ok
+test_existing_v01_pack_prepares_real_metadata (test_prepare_review_run.PrepareReviewTests.test_existing_v01_pack_prepares_real_metadata) ... ok
+test_hash_mismatch_blocks_without_output (test_prepare_review_run.PrepareReviewTests.test_hash_mismatch_blocks_without_output) ... ok
+test_missing_input_blocks (test_prepare_review_run.PrepareReviewTests.test_missing_input_blocks) ... ok
+test_no_fabricated_isolation_or_runtime (test_prepare_review_run.PrepareReviewTests.test_no_fabricated_isolation_or_runtime) ... ok
+test_no_implicit_waiver (test_prepare_review_run.PrepareReviewTests.test_no_implicit_waiver) ... ok
+test_other_stage_or_source_snapshot_blocks (test_prepare_review_run.PrepareReviewTests.test_other_stage_or_source_snapshot_blocks) ... ok
+test_output_overlap_blocks (test_prepare_review_run.PrepareReviewTests.test_output_overlap_blocks) ... ok
+test_output_overwrite_blocks (test_prepare_review_run.PrepareReviewTests.test_output_overwrite_blocks) ... ok
+test_pack_is_unchanged (test_prepare_review_run.PrepareReviewTests.test_pack_is_unchanged) ... ok
+test_paths_and_ids_are_validated (test_prepare_review_run.PrepareReviewTests.test_paths_and_ids_are_validated) ... ok
+test_symlink_input_blocks (test_prepare_review_run.PrepareReviewTests.test_symlink_input_blocks) ... ok
+test_unlisted_file_blocks (test_prepare_review_run.PrepareReviewTests.test_unlisted_file_blocks) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 1.902s
+
+OK
