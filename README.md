@@ -2,11 +2,13 @@
 
 An experiment in migrating Bun from Zig to Rust: design the process and its contracts first, then run a measurable pilot using Codex under a subscription plan.
 
-**Status: design-review results archived; process revision pending.** The second round recommends **REVISE_PROCESS** and supplies a candidate v0.2. Both reports and all 34 input hashes were checked. The original record retains role status `COMPLETE` and launcher status `LAUNCH_ERROR`; the launcher's error cause remains unknown. **EXPLORATORY; INDEPENDENCE UNVERIFIED.** G1 is pending; no Bun architecture analysis, baseline compilation or migration is claimed.
+**Status: v0.2 direction agreed; process implementation pending.** Damian has agreed the pilot decisions recorded on 2026-09-09: one bounded slice, one main sequential working session, baseline and a tested verifier before porting, a verification reserve, and accountable human edits/checkpoints. This is a decision-only update, not blanket acceptance of every detail in the reviewer's proposal. **G1–G5 remain PENDING; no migration is authorized.**
+
+The second-round reports remain archived with verdict **REVISE_PROCESS**, role status `COMPLETE`, launcher status `LAUNCH_ERROR` and **EXPLORATORY; INDEPENDENCE UNVERIFIED**. The launcher's error cause remains unknown. No Bun architecture analysis, baseline compilation or migration is claimed.
 
 ## Start here
 
-[Operator handoff](START-HERE.md) · [Project brief](docs/project-brief.md) · [Experiment plan](docs/experiment-plan.md) · [Roles](agents/roles.md) · [Shared contract](agents/contract.md) · [Prompts](prompts/) · [Presentation journal](docs/presentation-journal.md)
+[Agreed pilot decisions](docs/decisions/2026-09-09-pilot-v0.2.md) · [Operator handoff](START-HERE.md) · [Project brief](docs/project-brief.md) · [Experiment plan](docs/experiment-plan.md) · [Roles](agents/roles.md) · [Shared contract](agents/contract.md) · [Prompts](prompts/) · [Presentation journal](docs/presentation-journal.md)
 
 ## Read the second-round results
 
@@ -14,11 +16,13 @@ An experiment in migrating Bun from Zig to Rust: design the process and its cont
 
 The archive preserves 40 input/output files byte for byte, including the frozen first design and its supplied provenance. Its root `MANIFEST.json` records the archive mapping; `input/MANIFEST.json` is the original input manifest. Original absolute paths and the launcher error remain historical evidence. This is a closed run, not a workspace to restart.
 
-The review identifies gaps in baseline/judge ownership, verification reserves and accountable checkpoints, and recommends retaining negative judge controls. Reducing architecture scope or default review sessions is a proposal for Damian to decide; the current process remains in force.
+The review identifies gaps in baseline/judge ownership, verification reserves and accountable checkpoints, and recommends retaining negative judge controls. The [decision record](docs/decisions/2026-09-09-pilot-v0.2.md) now selects the direction for a separate v0.2 implementation commit. Existing scripts, prompts, templates and gate states have not been changed by this decision-only update.
 
-## Next step: comparative review, then G1 decision
+## Next step: implement the agreed process in a separate commit
 
-The existing plan requires a separate comparative review with explicitly selected historical materials and frozen current reports/candidate. Its package and execution have not been prepared or started as part of archiving. After that round, Damian decides which concrete process version and budget to approve. Archiving reports does not approve a gate or authorize a new run.
+Prepare a coherent v0.2 revision of the existing process documents, roles, prompts and templates; change tooling only where needed for that scope. Do not start a Bun port, select a slice, invent budget values or approve gates. Review the resulting changes with Damian before operational use. One main session is not merely the absence of parallel work: the earlier process already limited active writers, while the new direction also reduces mandatory session boundaries and preparation scope.
+
+The existing plan's separate comparative review with historical materials **has not been waived**. It remains required before G1; a documentation revision is not that review or a gate approval. G1 still requires the concrete process version and budget. Frozen reports and input packs must remain unchanged.
 
 [Operator handoff](START-HERE.md) describes the current state and evidence limits. To deliberately run another design review, use [the command guide](docs/design-review-command.md); rerunning the second round is not the current next step.
 

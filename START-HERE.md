@@ -2,28 +2,36 @@
 
 ## Gdzie jesteśmy
 
+**Decyzja z 2026-09-09:** Damian przyjął kierunek uproszczenia pilota opisany w [decyzjach v0.2](docs/decisions/2026-09-09-pilot-v0.2.md). Ten commit zapisuje ustalenia; wdrożenie ich do procesu pozostaje osobnym następnym zadaniem. Nie jest to przyjęcie wszystkich szczegółów propozycji recenzenta ani zgoda na migrację. **G1–G5 pozostają PENDING**.
+
 **FACT:** druga runda `design-review` jest zachowana w repo: [raport archiwizacji i kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md). Odczytano rzeczywisty rekord i oba raporty. Wszystkie 34 wejścia i oba wyniki mają zgodne hashe; 29 plików procesu odpowiada commitowi `47764bace389f908e9e58473ded7ad07909dfe2b`.
 
 Werdykt recenzenta: **REVISE_PROCESS**. Rekord roli: **COMPLETE**, ale launcher zapisał **LAUNCH_ERROR** po zakończeniu klienta z kodem 0. Obecna kontrola integralności przechodzi; przyczyna błędu launchera pozostaje **UNKNOWN**. Nie zmieniono historycznych statusów.
 
-Oba raporty zachowują **EXPLORATORY; INDEPENDENCE UNVERIFIED**. Faktyczny model, reasoning, quota i niezależność nie są potwierdzone. Kandydat v0.2 nie został przyjęty; **G1–G5 pozostają PENDING**. Nie wykonano migracji.
+Oba raporty zachowują **EXPLORATORY; INDEPENDENCE UNVERIFIED**. Faktyczny model, reasoning, quota i niezależność nie są potwierdzone. Nie wykonano migracji. Nowa decyzja nie uzupełnia brakujących pomiarów ani nie zmienia tych ograniczeń.
 
 ## Co przeczytać teraz
 
-1. [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md): ocena naszego procesu A i wcześniejszego projektu B, findingi DR-01–DR-04, tabela rekomendacji.
-2. [Process proposal](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md): kandydat minimalnego procesu v0.2 do decyzji Damiana.
+1. [Decyzje po review](docs/decisions/2026-09-09-pilot-v0.2.md): przyjęty kierunek D01–D08, granice zgody i zakres osobnego commita przygotowawczego.
+2. [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md) i [process proposal](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md): zamrożone rekomendacje, nie instrukcje do automatycznego wykonania.
 3. [Rzeczywisty RUN-RECORD](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json) i [raport kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md): pochodzenie, hashe, ograniczenia i statusy.
-4. [Plan](docs/experiment-plan.md), [protokół czystego kontekstu](docs/clean-context-review.md) i [journal](docs/presentation-journal.md): obowiązujące bramki oraz historia decyzji.
+4. [Plan](docs/experiment-plan.md), [protokół czystego kontekstu](docs/clean-context-review.md) i [journal](docs/presentation-journal.md): dotychczasowe reguły i historia, których ten zapis decyzji jeszcze nie przebudowuje.
 
 Pierwsza runda była **independent design**, wyłącznie z briefu. Jej niezmieniony raport i provenance znajdują się w archiwalnym `input/input/prior/`. Oryginalnego rekordu i manifestu pierwszej rundy nie odczytano podczas tej archiwizacji; pochodzenie nie dowodzi niezależności poprzedniej sesji.
 
-## Następny etap
+## Następne zadanie przygotowawcze — osobny commit v0.2
 
-Zgodnie z obowiązującym planem następne jest osobne **comparative review**: nowy pakiet i sesja z jawnie dobranymi materiałami historycznymi, zamrożonymi wynikami obecnej rundy oraz kandydatem v0.2. Najpierw przygotuj konkretną listę wejść i ich hashe, zakres, rekord i warunki wykonania. Żaden nowy pakiet ani run tej rundy nie powstał podczas archiwizacji.
+Dostosować istniejące dokumenty procesu, role, prompty i szablony do D01–D08; zmieniać skrypty tylko w zakresie koniecznej spójności. Nie budować pełnego runnera. Nie wykonywać teraz analizy kodu Buna, wyboru konkretnego slice'a ani migracji.
 
-Produktem ma być zestawienie przyjętych, zmienionych i odrzuconych zaleceń z uzasadnieniami oraz kosztami dodatkowych etapów. Rekomendacje recenzenta oddziel od decyzji Damiana. Obecnie nie ma decyzji o przyjęciu lub odrzuceniu zmian procesu. G1 wymaga decyzji Damiana o konkretnej wersji i budżecie.
+Docelowy pilot: jeden ograniczony wycinek, jedna główna sesja robocza i jeden writer; baseline i sprawdzony verifier przed portem; zamrożone kryteria; jawny review, poprawki i retesty; budżet z rezerwą oraz rejestrowane interwencje i checkpoint. Właścicielem przygotowania baseline/judge i odbioru dowodów jest operator, wspomagany modelem i narzędziami. Dodatkowy kompetentny przegląd pozostaje opcją wynikającą z ryzyka, nie domyślnym podwójnym A/B ani automatycznym dowodem poprawności.
 
-Zmiany procesu zastosuj dopiero w osobnym commicie po decyzji. Journal aktualizuj wraz z nią. Potem, po G1: Architekt na surowym źródle, review jego raportu i zatrzymanie na G2 przed Plannerem. Obecne wymagania G2 i A/B obowiązują, dopóki jawnie nie przyjęto innej wersji.
+Po przygotowaniu zmian przejrzeć je z Damianem. Konkretne wartości budżetu, model/ustawienia, środowisko i wycinek pozostają do ustalenia. Ten dokument nie jest poleceniem uruchomienia istniejących skryptów ani akceptacją ich następnej wersji.
+
+## Co nadal musi poprzedzić G1
+
+Wymagane osobne **comparative review** z materiałami historycznymi nie zostało zniesione. Przygotowanie dokumentacji v0.2 nie zastępuje tej rundy. Do jej wykonania potrzebne są jawna lista wejść i hashe, zamrożone raporty/propozycja, zakres, rekord i warunki wykonania. Nie przygotowano ani nie uruchomiono jej w commicie decyzji.
+
+G1 nadal wymaga decyzji Damiana o konkretnej wersji i budżecie. Zmiana lub pominięcie comparative review wymagałaby nowej jawnej decyzji. Dotychczasowe pliki procesu i pipeline pozostają niezmienione do osobnego wdrożenia v0.2; nie należy uruchamiać nieuzgodnionej mieszanki reguł obu wersji.
 
 ## Zachowanie dowodów
 
@@ -39,6 +47,6 @@ Powtórzenie design review byłoby nową, świadomie wybraną próbą; nie jest 
 
 ## Instrukcja dla kolejnego koordynatora
 
-> Odczytaj AGENTS.md, ten dokument, brief, plan oraz archiwum drugiej rundy. Sprawdź aktualny Git i hashe. Rozróżniaj COMPLETE roli, LAUNCH_ERROR launchera, rekomendację REVISE_PROCESS i decyzję bramki PENDING. Nie udawaj ślepej sesji i nie zatwierdzaj bramek za Damiana. Następna wymagana runda to comparative review; zmiana procesu wymaga osobnej decyzji. Zapisuj istotne decyzje i korekty w docs/presentation-journal.md. Podaj dowody i następny konkretny krok.
+> Odczytaj AGENTS.md, ten dokument, docs/decisions/2026-09-09-pilot-v0.2.md, brief, plan oraz archiwum drugiej rundy. Sprawdź aktualny Git i nie nadpisuj cudzych zmian. Kierunek D01–D08 jest przyjęty; wdrożenie procesu jest osobnym zadaniem. Przygotuj spójną aktualizację istniejących dokumentów, ról, promptów i szablonów, a narzędzi tylko tam, gdzie to konieczne. Nie wybieraj jeszcze wycinka Buna, nie uruchamiaj pilota i nie zatwierdzaj bramek za Damiana. Wymagane comparative review nie zostało pominięte ani wykonane. Zachowaj zamrożone raporty, statusy i hashe; rozróżniaj decyzję o kierunku, implementację procesu i autoryzację wykonania. Aktualizuj journal, sprawdź zmieniane narzędzia i przedstaw diff oraz otwarte decyzje do przeglądu.
 
-Lokalna kontrola koordynatora: [92/92 testy narzędzi](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt). Nie jest to wynik testów Buna ani dowód skuteczności sandboxa.
+Historyczna kontrola koordynatora przy archiwizacji: [92/92 testy narzędzi](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt). Nie jest to wynik nowego uruchomienia testów w commicie decyzji, testów Buna ani dowód skuteczności sandboxa.
