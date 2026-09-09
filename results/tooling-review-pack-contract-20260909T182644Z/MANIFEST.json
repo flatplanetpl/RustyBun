@@ -1,0 +1,208 @@
+{
+  "schema_version": "0.1",
+  "kind": "tooling-review-pack-process-contract-correction",
+  "base_commit": "874c55a8f85a0c080bd50bcf69aafca850988c6b",
+  "created_at": "2026-09-09T18:35:53.420785+00:00",
+  "status": "TOOLING_VERIFIED_NOT_PROCESS_APPROVED",
+  "self_hash_policy": "This manifest excludes its own hash; the local Git commit binds the entire change. Export fixture commits are not RustyBun release commits.",
+  "changed_files": [
+    "README.md",
+    "START-HERE.md",
+    "docs/clean-context-review.md",
+    "docs/design-review-command.md",
+    "docs/plans/001-review-pack-process-contract.md",
+    "docs/presentation-journal.md",
+    "results/tooling-review-pack-contract-20260909T182644Z/MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/before-comparative-review.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/before-design-review.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.raw.txt.gz",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/consistency.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.raw.txt.gz",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/integrity.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/package-acceptance.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/package-runs.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+    "results/tooling-review-pack-contract-20260909T182644Z/reproduction.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/test-output.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/test-run.json",
+    "tests/test_process_contract.py",
+    "tests/test_workflow_contract.py",
+    "workflow/bundles.json"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "033f828831a902eddeca7d02cd73b5249348292b9953ff5724bbfae25c4f9399",
+      "bytes": 7436
+    },
+    {
+      "path": "START-HERE.md",
+      "sha256": "9dc0e089cbacff466d8162436a4a8f05c38d6168c3a98da9bd00a1845a8e22a7",
+      "bytes": 7343
+    },
+    {
+      "path": "docs/clean-context-review.md",
+      "sha256": "44dc17975cc5c3c95b415808c93d29d127084a1ff0ca474421d450281cfdeb42",
+      "bytes": 9352
+    },
+    {
+      "path": "docs/design-review-command.md",
+      "sha256": "7d5dd9d0ca813df8df1cc5f6251efc86512b6f8e988e19e123efc6505d00edd1",
+      "bytes": 11238
+    },
+    {
+      "path": "docs/plans/001-review-pack-process-contract.md",
+      "sha256": "3ca8a6e874f50f99b0d312764580c6ba44eb1d3bbc13bad0d9903f182f074d42",
+      "bytes": 2423
+    },
+    {
+      "path": "docs/presentation-journal.md",
+      "sha256": "7563805eb7aca9dd9b7a4bf79ff1313af8dbb858202aff0883fa1cc5c04bfda2",
+      "bytes": 31067
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/before-comparative-review.txt",
+      "sha256": "d0866b3ba4bafe265476dcc46e3e7f7be8b6c782b2009bb70f9a866fb5daa502",
+      "bytes": 4192
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/before-design-review.txt",
+      "sha256": "032f9cf1911a77f2f5aaf23603c5e3bde684348ec2770fc907b0b1ddabbc3d38",
+      "bytes": 4243
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-MANIFEST.json",
+      "sha256": "2d369b0d7a89c7de92d5badad7e78f16144de09cc384c698e6386c8263bc424e",
+      "bytes": 7765
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.raw.txt.gz",
+      "sha256": "193f56ebf7ce9a342815f7166282ea90b9e7a956ba1cc73988858ecf89024530",
+      "bytes": 2138
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.txt",
+      "sha256": "52956a06b4c425e90406b7c24fc9cb240619c00b932ecbc916fe5e91ac0af9db",
+      "bytes": 74786
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/consistency.json",
+      "sha256": "8876bf1389f9034c030bbd7ba28303de9583048104d66f5a2daa222566b437e0",
+      "bytes": 22541
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/design-review-MANIFEST.json",
+      "sha256": "6dd7fe37a00810e1728a35128ea3cfa1cf0e12e08e42da1278d4750314529a0a",
+      "bytes": 5976
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.raw.txt.gz",
+      "sha256": "3799bf5515336fd4dee2eaf9bc477f55e7c8ab45c4f94bdbd444b8d44b98723a",
+      "bytes": 2152
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.txt",
+      "sha256": "1b345a679aa7d1266c104c45f86080c0d3ca77b1ef16f9528cd70d00aaeff736",
+      "bytes": 74136
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/integrity.json",
+      "sha256": "a759cc76335668b849e029939bb473e6d91131f9f8681e6deb09cf0498dc03c4",
+      "bytes": 20174
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/package-acceptance.txt",
+      "sha256": "37c2b03dd0ec78aa84e8d363e24d7c2be51b187c240ac36393e9a0ccee65b1e3",
+      "bytes": 987
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/package-runs.json",
+      "sha256": "7c0c04446b880e35df788f1d651d0d0367603d7f7f33c20a037911a10eb6280b",
+      "bytes": 16419
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "sha256": "b63676872709bc856d3a8f31793301140dd7889fd792510aa3314d936fcb32ec",
+      "bytes": 9954
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/reproduction.json",
+      "sha256": "ba21aee965aed1b2342927553c54f425d4459493683f9cce4bf217d5f0959f9d",
+      "bytes": 830
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/test-output.txt",
+      "sha256": "e841e620cd494e32417df8e3bec632c92e43f7d078909d139d388d595b29c579",
+      "bytes": 15477
+    },
+    {
+      "path": "results/tooling-review-pack-contract-20260909T182644Z/test-run.json",
+      "sha256": "b7f05ea679700c5010afd9f8a3fe67dd9dc4ea95e81ab64f3df2c03a84ddd9c4",
+      "bytes": 420
+    },
+    {
+      "path": "tests/test_process_contract.py",
+      "sha256": "464a844eb38040e2f5c1896f19d9be3fa719f415662a8fac34933f9423ffa2e7",
+      "bytes": 7082
+    },
+    {
+      "path": "tests/test_workflow_contract.py",
+      "sha256": "7b97f13050ccda3697658d5e00faf403992815b50270a3d361836b7783259a06",
+      "bytes": 9593
+    },
+    {
+      "path": "workflow/bundles.json",
+      "sha256": "0207769dd31096cc0efd4f457669964417a3a53a48ee8bff948659a310266fc6",
+      "bytes": 3810
+    }
+  ],
+  "tooling_sources": [
+    {
+      "path": "scripts/bootstrap-bun-baseline.sh",
+      "sha256": "da58f66beccd7bcfa3ab85e4dac49ef2a23fc3efacdd7adfa8437652bc5a5a6d",
+      "bytes": 1791
+    },
+    {
+      "path": "scripts/build-context-pack.py",
+      "sha256": "de8b632148cbcee11092a3fa89578f58198067bee24ed302df8adcafbdcae73e",
+      "bytes": 9090
+    },
+    {
+      "path": "scripts/design-review.py",
+      "sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73",
+      "bytes": 26057
+    },
+    {
+      "path": "scripts/independent-review.py",
+      "sha256": "e736c6f10da55d7b7d17a27d73c3778de0297b931ef6d53dcb2b43df3d3dc668",
+      "bytes": 13383
+    },
+    {
+      "path": "scripts/prepare-review-run.py",
+      "sha256": "2a7e53fffb8f1da7edb60bf3c4f26a244e13093d1736eedb2f3fe2e6bb6a81aa",
+      "bytes": 17551
+    }
+  ],
+  "gate_statuses": {
+    "G1": "PENDING",
+    "G2": "PENDING",
+    "G3": "PENDING",
+    "G4": "PENDING",
+    "G5": "PENDING"
+  },
+  "not_run": [
+    "methodology-review",
+    "Bun-baseline",
+    "Bun-verifier",
+    "migration",
+    "parity",
+    "model-calls",
+    "sandbox-runtime",
+    "remote-publish",
+    "Damian-acceptance"
+  ]
+}

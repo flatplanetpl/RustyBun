@@ -1,0 +1,11 @@
+test_exported_contract_rejects_missing_required_files (__main__.RecordedPackChecks.test_exported_contract_rejects_missing_required_files) ... ok
+test_exported_contract_rejects_optional_review (__main__.RecordedPackChecks.test_exported_contract_rejects_optional_review) ... ok
+test_exported_contract_rejects_two_writers (__main__.RecordedPackChecks.test_exported_contract_rejects_two_writers) ... ok
+test_exported_contract_requires_baseline_before_implementation (__main__.RecordedPackChecks.test_exported_contract_requires_baseline_before_implementation) ... ok
+test_exported_contract_requires_verifier_before_implementation (__main__.RecordedPackChecks.test_exported_contract_requires_verifier_before_implementation) ... ok
+test_exported_process_contract_runs_without_repository_context (__main__.RecordedPackChecks.test_exported_process_contract_runs_without_repository_context) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 11.177s
+
+OK

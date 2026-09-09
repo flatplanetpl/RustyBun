@@ -56,6 +56,20 @@ python3 -m unittest discover -s tests -v
 
 The tests exercise real local Git/export/preflight and simulated client calls; they do not run models or Bun. CLI and exporter manifest format remain unchanged; new process configuration/templates use version 0.2. Old packs are never rewritten to match new templates.
 
+New design-review and comparative-review exports include a portable process
+contract test. From the pack's `input` directory containing `tests/`, run:
+
+```bash
+python3 -I -B -m unittest discover -s tests -p test_process_contract.py -v
+```
+
+The [correction plan](docs/plans/001-review-pack-process-contract.md) and
+[verification report](results/tooling-review-pack-contract-20260909T182644Z/report.md)
+document the audit gap: the earlier 104 passing repository tests did not run the
+shipped contract checks inside restricted exports. Repository completeness stays
+in `test_workflow_contract.py`; portable checks use only supplied inputs. The input
+boundaries and pending gates are preserved.
+
 Only after the relevant gate and source-access authorization:
 
 ```bash

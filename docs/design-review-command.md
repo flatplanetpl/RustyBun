@@ -72,6 +72,22 @@ phase0-design-review-<timestamp>-<suffix>/
 
 New input files receive read-only permission bits; old files' permissions are not changed. Their owner can still change permissions, so this is not an immutable mount or a security boundary. The launcher rechecks input integrity before launch, after login and after client exit. COMPLETE requires both reports, their matching recorded hashes and execution timestamps. Client exit alone returns a non-success result (code 3 when the client itself exited zero without a completed review). The script never changes the reviewer's task status to COMPLETE or approves a gate.
 
+## Check the exported process contract
+
+From the `input/input` directory of the run shown above (the directory containing
+`tests/`, `workflow/` and `templates/`), run:
+
+```bash
+python3 -I -B -m unittest discover -s tests -p test_process_contract.py -v
+```
+
+New design-review and comparative-review packs ship this portable module. It
+checks v0.2 configuration and prompt references using only packaged inputs.
+Repository completeness and exporter integration tests run in the coordinator's
+checkout. The previous `test_workflow_contract.py` export depended on omitted
+repository files; frozen older packs retain that limitation. These checks do not
+perform a methodology review, validate sandbox isolation or approve G1–G5.
+
 ## Sandbox and scope
 
 This round reuses the existing profile/environment helpers: a new HOME/CODEX_HOME/XDG set, restricted inherited environment, requested disabled memory, app integrations, browsing and subagents. The main repo and coordinator history are not supplied as task inputs. The new command additionally requests **`workspace-write` with approval policy `never`**: no escalation outside the sandbox when it fails. It does not use a bypass flag. A sandbox failure is a blocker, not permission to repeat file operations without it.

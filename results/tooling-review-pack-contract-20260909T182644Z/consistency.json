@@ -1,0 +1,649 @@
+{
+  "checked_at": "2026-09-09T18:35:53.408019+00:00",
+  "kind": "offline-static-correction-checks",
+  "base_commit": "874c55a8f85a0c080bd50bcf69aafca850988c6b",
+  "markdown_files_checked": 7,
+  "local_links_checked": 114,
+  "local_link_scope": "Local inline Markdown target paths in changed documents, including the new report; external URLs and heading anchors not checked",
+  "json_files_checked": [
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/MANIFEST.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/MANIFEST.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/RUN-RECORD.template.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prior/provenance.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/migration-unit.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/run-record.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/workflow/bundles.json",
+    "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/workflow/pipeline.json",
+    "results/tooling-design-review-20260908/file-hashes.json",
+    "results/tooling-process-v02-20260909T174417Z/MANIFEST.json",
+    "results/tooling-process-v02-20260909T174417Z/consistency.json",
+    "results/tooling-process-v02-20260909T174417Z/integrity.json",
+    "results/tooling-process-v02-20260909T174417Z/test-run.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/consistency.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/integrity.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/package-runs.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/reproduction.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/test-run.json",
+    "templates/migration-unit.json",
+    "templates/run-record.json",
+    "workflow/bundles.json",
+    "workflow/pipeline.json"
+  ],
+  "diff_check_command": [
+    "git",
+    "diff",
+    "--check",
+    "874c55a8f85a0c080bd50bcf69aafca850988c6b"
+  ],
+  "diff_check_exit_code": 0,
+  "moved_tests_with_identical_ast": [
+    "test_active_contract_versions_and_pending_gates",
+    "test_one_sequential_slice_without_mandatory_separate_reviewers",
+    "test_baseline_and_verifier_precede_g3_and_implementation",
+    "test_review_and_retests_follow_candidate_changes",
+    "test_comparative_review_remains_before_g1",
+    "test_budgets_have_unapproved_limits_and_reserves",
+    "test_protocol_and_negative_controls_are_requirements_not_results",
+    "test_checkpoint_has_no_fabricated_execution"
+  ],
+  "split_reference_assertions_preserved": true,
+  "exported_input_hashes_match_final_worktree": true,
+  "publication_screened": [
+    "results/tooling-review-pack-contract-20260909T182644Z/before-comparative-review.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/before-design-review.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.raw.txt.gz",
+    "results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-MANIFEST.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.raw.txt.gz",
+    "results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/integrity.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/package-acceptance.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/package-runs.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+    "results/tooling-review-pack-contract-20260909T182644Z/reproduction.json",
+    "results/tooling-review-pack-contract-20260909T182644Z/test-output.txt",
+    "results/tooling-review-pack-contract-20260909T182644Z/test-run.json"
+  ],
+  "publication_check_limit": "Targeted credential-pattern scan plus coordinator review of new logs and metadata; not an exhaustive secret detector",
+  "initial_staged_diff_check": "Detected 12 trailing spaces in unittest logs; exact raw logs retained in gzip, readable text copies trim trailing whitespace",
+  "raw_log_normalization_verified": true,
+  "document_review_kind": "SELF_REVIEW",
+  "errors": [],
+  "local_links": [
+    {
+      "document": "README.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/project-brief.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "prompts/",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "workflow/pipeline.json",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/upstream-baseline-analysis.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "upstream/bun-baseline.env",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "sources/README.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/plans/001-review-pack-process-contract.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/plans/001-review-pack-process-contract.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "docs/clean-context-review.md",
+      "target": "../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/clean-context-review.md",
+      "target": "preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "../START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "../results/tooling-design-review-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "upstream-baseline-analysis.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../sources/github.com/oven-sh/bun/commit-46d3bc29/docs/PORTING.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../sources/github.com/Lumafy/sumner-method/workflows/multi-agent-orchestration.ts",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-validation-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/prepare-review-run.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-preflight-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-handoff-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-missing-record-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/independent-review.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-launcher-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/design-review.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-design-review-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "plans/001-review-pack-process-contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../docs/plans/001-review-pack-process-contract.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "before-design-review.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "before-comparative-review.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "reproduction.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "test-run.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "design-review-checks.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "comparative-review-checks.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "package-runs.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "package-acceptance.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "integrity.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "consistency.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "design-review-checks.raw.txt.gz",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "comparative-review-checks.raw.txt.gz",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "design-review-MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "comparative-review-MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../README.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../docs/plans/001-review-pack-process-contract.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/before-comparative-review.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/before-design-review.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/comparative-review-MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.raw.txt.gz",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/comparative-review-checks.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/consistency.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/design-review-MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.raw.txt.gz",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/design-review-checks.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/integrity.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/package-acceptance.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/package-runs.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/reproduction.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../results/tooling-review-pack-contract-20260909T182644Z/test-run.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../tests/test_process_contract.py",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../tests/test_workflow_contract.py",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-review-pack-contract-20260909T182644Z/report.md",
+      "target": "../../workflow/bundles.json",
+      "exists": true
+    }
+  ]
+}

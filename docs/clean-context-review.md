@@ -26,6 +26,28 @@ Bieżące pakiety design-review i comparative-review zawierają zapis decyzji ja
 
 Wrapper design-review dołącza zamrożony independent design i provenance. Sam eksport comparative-review zawiera skonfigurowane dokumenty i materiały, ale nie dodaje automatycznie wcześniejszych raportów ani propozycji. Operator ma je jawnie wskazać, sprawdzić hashe i ująć w finalnym manifeście nowego pakietu przed osobną rundą. Ich brak oznacza BLOCKED_INPUT. Nie zmieniaj zamrożonych pakietów; nie budujemy nowego launchera porównawczego.
 
+## Kontrole procesu wewnątrz pakietu
+
+W nowych eksportach design-review i comparative-review przejdź do katalogu
+`input` wewnątrz pakietu, gdzie znajdują się `tests/`, `workflow/` i `templates/`:
+
+```bash
+python3 -I -B -m unittest discover -s tests -p test_process_contract.py -v
+```
+
+Moduł sprawdza dostarczony kontrakt v0.2 i referencje do promptów. Korzysta tylko
+z biblioteki standardowej Pythona i jawnych wejść pakietu; nie wymaga całego repo,
+narzędzi innych rund ani materiałów historycznych spoza allowlisty. Brak wymaganego
+pliku lub osłabienie kontrolowanej reguły daje niepowodzenie. `-I` pomija ustawienia
+importu z otoczenia Pythona, a `-B` wyłącza zapis bytecode; nie zapewniają sandboxa.
+
+Kontrole kompletności repo i integracji eksportera pozostają w
+`tests/test_workflow_contract.py` i działają w pełnej suite koordynatora.
+Starszy eksport tego modułu wymagał całego repo i nie był uruchamialny w obu
+ograniczonych pakietach. Zamrożonych pakietów nie poprawiamy; nowe zawierają
+`test_process_contract.py`. Wynik tych testów to kontrola konfiguracji, bez
+zatwierdzenia bramek, dowodu izolacji czy zastąpienia właściwego review.
+
 ## Co jeszcze jest inputem
 
 Nie tylko opisy agentów. Recenzent potrzebuje: celu i non-goals; budżetu i jego niewiadomych; dostępnych narzędzi/uprawnień; formatów przekazania pracy; warunków zakończenia i eskalacji; reguł własności plików; definicji parity; sposobu pomiaru; wersji wszystkich ocenianych artefaktów.

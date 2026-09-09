@@ -1,0 +1,43 @@
+{
+  "base_commit": "874c55a8f85a0c080bd50bcf69aafca850988c6b",
+  "runs": [
+    {
+      "kind": "design-review",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_workflow_contract.py",
+        "-v"
+      ],
+      "cwd": "<export>/input",
+      "exit_code": 1,
+      "log": "before-design-review.txt"
+    },
+    {
+      "kind": "comparative-review",
+      "command": [
+        "/usr/bin/python3",
+        "-I",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-p",
+        "test_workflow_contract.py",
+        "-v"
+      ],
+      "cwd": "<export>/input",
+      "exit_code": 1,
+      "log": "before-comparative-review.txt"
+    }
+  ]
+}

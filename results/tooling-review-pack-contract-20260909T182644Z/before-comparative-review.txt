@@ -1,0 +1,46 @@
+test_current_review_packs_export_committed_v02_with_valid_hashes (test_workflow_contract.CurrentPackIntegrationTests.test_current_review_packs_export_committed_v02_with_valid_hashes) ... ERROR
+test_preflight_preserves_actual_v02_metadata_without_starting_a_run (test_workflow_contract.CurrentPackIntegrationTests.test_preflight_preserves_actual_v02_metadata_without_starting_a_run) ... ERROR
+test_active_contract_versions_and_pending_gates (test_workflow_contract.WorkflowContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_workflow_contract.WorkflowContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ok
+test_budgets_have_unapproved_limits_and_reserves (test_workflow_contract.WorkflowContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_workflow_contract.WorkflowContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_workflow_contract.WorkflowContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_workflow_contract.WorkflowContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_references_resolve_and_bundles_preserve_context_boundaries (test_workflow_contract.WorkflowContractTests.test_pipeline_references_resolve_and_bundles_preserve_context_boundaries) ... FAIL
+test_protocol_and_negative_controls_are_requirements_not_results (test_workflow_contract.WorkflowContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_workflow_contract.WorkflowContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+ERROR: test_current_review_packs_export_committed_v02_with_valid_hashes (test_workflow_contract.CurrentPackIntegrationTests.test_current_review_packs_export_committed_v02_with_valid_hashes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpw12jnnlu/comparative-review/input/tests/test_workflow_contract.py", line 163, in setUp
+    shutil.copyfile(ROOT / name, destination)
+  File "/usr/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpw12jnnlu/comparative-review/input/scripts/independent-review.py'
+
+======================================================================
+ERROR: test_preflight_preserves_actual_v02_metadata_without_starting_a_run (test_workflow_contract.CurrentPackIntegrationTests.test_preflight_preserves_actual_v02_metadata_without_starting_a_run)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpw12jnnlu/comparative-review/input/tests/test_workflow_contract.py", line 163, in setUp
+    shutil.copyfile(ROOT / name, destination)
+  File "/usr/lib/python3.12/shutil.py", line 260, in copyfile
+    with open(src, 'rb') as fsrc:
+         ^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpw12jnnlu/comparative-review/input/scripts/independent-review.py'
+
+======================================================================
+FAIL: test_pipeline_references_resolve_and_bundles_preserve_context_boundaries (test_workflow_contract.WorkflowContractTests.test_pipeline_references_resolve_and_bundles_preserve_context_boundaries)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpw12jnnlu/comparative-review/input/tests/test_workflow_contract.py", line 137, in test_pipeline_references_resolve_and_bundles_preserve_context_boundaries
+    self.assertTrue((ROOT / name).is_file(), name)
+AssertionError: False is not true : scripts/independent-review.py
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.045s
+
+FAILED (failures=1, errors=2)

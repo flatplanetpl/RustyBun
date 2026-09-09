@@ -3,6 +3,8 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import subprocess
+import sys
 import tempfile
 import unittest
 
@@ -19,118 +21,9 @@ def read_json(name):
 
 class WorkflowContractTests(unittest.TestCase):
     def setUp(self):
-        self.pipeline = read_json('workflow/pipeline.json')
         self.bundles = read_json('workflow/bundles.json')['bundles']
-        self.unit = read_json('templates/migration-unit.json')
-        self.record = read_json('templates/run-record.json')
-        self.stages = {stage['id']: stage for stage in self.pipeline['stages']}
 
-    def test_active_contract_versions_and_pending_gates(self):
-        for name in ('workflow/pipeline.json', 'workflow/bundles.json',
-                     'templates/migration-unit.json', 'templates/run-record.json'):
-            with self.subTest(path=name):
-                self.assertEqual(read_json(name)['schema_version'], '0.2')
-        self.assertFalse(self.pipeline['executable_runner'])
-        for gate in self.pipeline['gates'].values():
-            self.assertEqual(gate['status'], 'PENDING')
-            self.assertIsNone(gate['approved_by'])
-            self.assertEqual(gate['artifact_hashes'], [])
-
-    def test_one_sequential_slice_without_mandatory_separate_reviewers(self):
-        execution = self.pipeline['execution']
-        self.assertEqual(execution['mode'], 'sequential')
-        self.assertEqual(execution['main_working_sessions'], 1)
-        self.assertEqual(execution['max_units'], 1)
-        self.assertEqual(self.pipeline['limits']['max_active_writers'], 1)
-        self.assertNotIn('reviewer_instances', self.pipeline['limits'])
-        self.assertIn('review', self.stages)
-        self.assertTrue(self.pipeline['review_policy']['required'])
-        for old_stage in ('review-A', 'review-B', 'architecture-review'):
-            self.assertNotIn(old_stage, self.stages)
-        self.assertNotIn('bundle', self.stages['architect'])
-        self.assertEqual(self.stages['architect']['gate_after'], 'G2')
-
-    def test_baseline_and_verifier_precede_g3_and_implementation(self):
-        self.assertIn('G2:approved', self.stages['baseline-verifier']['requires'])
-        for stage in ('planner', 'implementer', 'referee'):
-            with self.subTest(stage=stage):
-                required = self.stages[stage]['requires']
-                self.assertIn('baseline:validated', required)
-                self.assertIn('verifier:validated', required)
-        self.assertEqual(self.stages['planner']['gate_after'], 'G3')
-        required = self.stages['implementer']['requires']
-        for prerequisite in ('G3:approved', 'protocol:frozen',
-                             'review-plan:approved', 'budget:approved', 'verification-reserve:available'):
-            self.assertIn(prerequisite, required)
-        order = list(self.stages)
-        self.assertLess(order.index('baseline-verifier'), order.index('planner'))
-        self.assertLess(order.index('planner'), order.index('implementer'))
-
-    def test_review_and_retests_follow_candidate_changes(self):
-        self.assertEqual(self.stages['fixer']['next'], 'review')
-        self.assertIn('verification-reserve:available', self.stages['fixer']['requires'])
-        self.assertIn('findings:confirmed', self.stages['fixer']['requires'])
-        self.assertIn('review:frozen', self.stages['fixer']['requires'])
-        self.assertIn('candidate:reviewed', self.stages['referee']['requires'])
-        self.assertIn('candidate:no-confirmed-blockers', self.stages['referee']['requires'])
-        self.assertEqual(self.pipeline['review_policy']['candidate_hash_must_match'], True)
-
-    def test_comparative_review_remains_before_g1(self):
-        comparative = self.stages['method-comparative']
-        self.assertEqual(comparative['gate_after'], 'G1')
-        self.assertIn('method-review:frozen', comparative['requires'])
-        self.assertIn('G1:approved', self.stages['architect']['requires'])
-
-    def test_budgets_have_unapproved_limits_and_reserves(self):
-        budget = self.unit['budget']
-        self.assertIsNone(self.pipeline['limits']['max_fix_rounds'])
-        self.assertIsNone(budget['max_fix_rounds'])
-        self.assertFalse(budget['approved'])
-        self.assertIsNone(budget['approved_by'])
-        for resource in ('wall_seconds', 'human_attention_minutes', 'model_resource'):
-            self.assertIsNone(budget[resource]['limit'])
-            self.assertIsNone(budget[resource]['verification_reserve'])
-            self.assertIsNone(self.record['budget'][resource]['used'])
-            self.assertIsNone(self.record['budget'][resource]['remaining'])
-        self.assertIsNone(budget['model_resource']['unit'])
-        self.assertIsNone(self.record['budget']['fix_rounds_used'])
-
-    def test_protocol_and_negative_controls_are_requirements_not_results(self):
-        verification = self.unit['verification']
-        self.assertEqual(verification['owner'], 'Damian')
-        self.assertEqual(verification['status'], 'NOT_RUN')
-        self.assertEqual(verification['baseline_evidence'], [])
-        self.assertEqual(verification['verifier_evidence'], [])
-        self.assertEqual(verification['mutation_checks'], [])
-        self.assertEqual(set(verification['negative_control_requirements']),
-                         {'wrong_result', 'empty_test_set', 'missing_output',
-                          'timeout', 'wrong_implementation'})
-        for component in ('fixtures_sha256', 'tests_sha256', 'normalization_sha256',
-                          'comparator_sha256', 'protocol_manifest_sha256'):
-            self.assertIsNone(verification[component])
-        self.assertTrue(self.unit['review']['required'])
-        self.assertIsNone(self.unit['review']['kind'])
-        self.assertIsNone(self.unit['review']['approved_by'])
-
-    def test_checkpoint_has_no_fabricated_execution(self):
-        checkpoint = self.record['checkpoint']
-        for field in ('at', 'input_manifest_sha256', 'protocol_sha256',
-                      'candidate_sha256', 'last_confirmed_state', 'next_allowed_action'):
-            self.assertIsNone(checkpoint[field])
-        self.assertEqual(checkpoint['evidence_artifacts'], [])
-        self.assertEqual(checkpoint['open_findings'], [])
-        self.assertEqual(checkpoint['budget_snapshot'], self.record['budget'])
-        self.assertEqual(self.record['interventions'], [])
-        self.assertIsNone(self.record['session']['previous_run_record_sha256'])
-        self.assertEqual(self.record['status'], 'NOT_RUN')
-
-    def test_pipeline_references_resolve_and_bundles_preserve_context_boundaries(self):
-        tasks = self.pipeline['stages'] + self.pipeline['optional_tasks']
-        self.assertEqual(len(tasks), len({task['id'] for task in tasks}))
-        for task in tasks:
-            self.assertTrue((ROOT / task['prompt']).is_file(), task['id'])
-            if 'bundle' in task:
-                self.assertEqual(self.bundles[task['bundle']]['task'], task['prompt'])
+    def test_bundles_preserve_context_boundaries_and_repository_inputs_exist(self):
         for kind, bundle in self.bundles.items():
             self.assertEqual(len(bundle['inputs']), len(set(bundle['inputs'])))
             for name in bundle['inputs']:
@@ -142,7 +35,8 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertNotIn(DECISIONS, self.bundles['architect']['inputs'])
         for kind in ('design-review', 'comparative-review'):
             self.assertIn(DECISIONS, self.bundles[kind]['inputs'])
-            self.assertIn('tests/test_workflow_contract.py', self.bundles[kind]['inputs'])
+            self.assertIn('tests/test_process_contract.py', self.bundles[kind]['inputs'])
+            self.assertNotIn('tests/test_workflow_contract.py', self.bundles[kind]['inputs'])
 
 
 class CurrentPackIntegrationTests(unittest.TestCase):
@@ -164,6 +58,27 @@ class CurrentPackIntegrationTests(unittest.TestCase):
         git(self.repo, 'add', '.')
         git(self.repo, 'commit', '-m', 'Offline copy of current process inputs')
 
+    def run_process_contract(self, input_root):
+        self.assertTrue((input_root / 'tests/test_process_contract.py').is_file())
+        return subprocess.run(
+            [sys.executable, '-I', '-B', '-m', 'unittest', 'discover',
+             '-s', 'tests', '-p', 'test_process_contract.py', '-v'],
+            cwd=input_root, capture_output=True, text=True, timeout=30)
+
+    def test_exported_process_contract_runs_without_repository_context(self):
+        for kind in ('design-review', 'comparative-review'):
+            with self.subTest(kind=kind):
+                out = self.base / kind
+                pack.build_pack(self.repo, kind, out)
+                before = {p.relative_to(out): p.read_bytes()
+                          for p in out.rglob('*') if p.is_file()}
+                result = self.run_process_contract(out / 'input')
+                self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+                self.assertNotIn('Ran 0 tests', result.stderr)
+                after = {p.relative_to(out): p.read_bytes()
+                         for p in out.rglob('*') if p.is_file()}
+                self.assertEqual(before, after)
+
     def test_current_review_packs_export_committed_v02_with_valid_hashes(self):
         for kind in ('design-review', 'comparative-review'):
             with self.subTest(kind=kind):
@@ -171,6 +86,9 @@ class CurrentPackIntegrationTests(unittest.TestCase):
                 manifest = pack.build_pack(self.repo, kind, out)
                 self.assertEqual(manifest['schema_version'], '0.1')
                 self.assertFalse(manifest['isolation_verified'])
+                inputs = {p.relative_to(out / 'input').as_posix()
+                          for p in (out / 'input').rglob('*') if p.is_file()}
+                self.assertEqual(inputs, set(read_json('workflow/bundles.json')['bundles'][kind]['inputs']))
                 for item in manifest['files']:
                     self.assertEqual(hashlib.sha256((out / item['path']).read_bytes()).hexdigest(),
                                      item['sha256'])
@@ -178,6 +96,74 @@ class CurrentPackIntegrationTests(unittest.TestCase):
                                  (ROOT / 'workflow/pipeline.json').read_bytes())
                 self.assertEqual((out / 'input' / DECISIONS).read_bytes(), (ROOT / DECISIONS).read_bytes())
                 self.assertEqual(json.loads((out / 'RUN-RECORD.template.json').read_bytes())['schema_version'], '0.2')
+
+    def assert_mutation_rejected(self, name, mutate, expected_errors, expected_test):
+        for kind in ('design-review', 'comparative-review'):
+            with self.subTest(kind=kind, mutation=name):
+                out = self.base / f'{kind}-{name}'
+                pack.build_pack(self.repo, kind, out)
+                mutated = self.base / f'{kind}-{name}-mutated'
+                shutil.copytree(out / 'input', mutated)
+                mutate(mutated)
+                result = self.run_process_contract(mutated)
+                self.assertEqual(result.returncode, 1, result.stdout + result.stderr)
+                for expected_error in expected_errors:
+                    self.assertIn(expected_error, result.stderr)
+                self.assertIn(expected_test, result.stderr)
+                self.assertNotIn('Ran 0 tests', result.stderr)
+
+    def test_exported_contract_rejects_missing_required_files(self):
+        for name in ('workflow/pipeline.json', 'workflow/bundles.json',
+                     'templates/migration-unit.json', 'templates/run-record.json'):
+            self.assert_mutation_rejected(
+                Path(name).stem, lambda root: (root / name).unlink(),
+                ('FileNotFoundError: [Errno 2] No such file or directory:', f"/{name}'"),
+                'ERROR: test_active_contract_versions_and_pending_gates')
+
+    def test_exported_contract_rejects_optional_review(self):
+        for name, field, test in (
+                ('workflow/pipeline.json', 'review_policy',
+                 'test_one_sequential_slice_without_mandatory_separate_reviewers'),
+                ('templates/migration-unit.json', 'review',
+                 'test_protocol_and_negative_controls_are_requirements_not_results')):
+            def mutate(root):
+                path = root / name
+                data = json.loads(path.read_bytes())
+                data[field]['required'] = False
+                path.write_text(json.dumps(data))
+
+            self.assert_mutation_rejected(Path(name).stem, mutate,
+                                          ('AssertionError: False is not true',), f'FAIL: {test}')
+
+    def test_exported_contract_rejects_two_writers(self):
+        def mutate(root):
+            path = root / 'workflow/pipeline.json'
+            data = json.loads(path.read_bytes())
+            data['limits']['max_active_writers'] = 2
+            path.write_text(json.dumps(data))
+
+        self.assert_mutation_rejected(
+            'two-writers', mutate, ('AssertionError: 2 != 1',),
+            'FAIL: test_one_sequential_slice_without_mandatory_separate_reviewers')
+
+    def assert_prerequisite_required(self, prerequisite):
+        for stage_id in ('planner', 'implementer', 'referee'):
+            def mutate(root):
+                path = root / 'workflow/pipeline.json'
+                data = json.loads(path.read_bytes())
+                stage = next(stage for stage in data['stages'] if stage['id'] == stage_id)
+                stage['requires'].remove(prerequisite)
+                path.write_text(json.dumps(data))
+
+            self.assert_mutation_rejected(
+                stage_id, mutate, (f"AssertionError: '{prerequisite}' not found",),
+                'FAIL: test_baseline_and_verifier_precede_g3_and_implementation')
+
+    def test_exported_contract_requires_baseline_before_implementation(self):
+        self.assert_prerequisite_required('baseline:validated')
+
+    def test_exported_contract_requires_verifier_before_implementation(self):
+        self.assert_prerequisite_required('verifier:validated')
 
     def test_preflight_preserves_actual_v02_metadata_without_starting_a_run(self):
         out = self.base / 'independent-pack'

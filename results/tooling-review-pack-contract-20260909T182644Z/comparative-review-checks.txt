@@ -1,0 +1,949 @@
+test_exported_contract_rejects_missing_required_files / comparative-review-pipeline-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ERROR
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ERROR
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ERROR
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ERROR
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ERROR
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ERROR
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ERROR
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ERROR
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ERROR
+
+======================================================================
+ERROR: test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+======================================================================
+ERROR: test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 15, in setUp
+    self.pipeline = read_json('workflow/pipeline.json')
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-pipeline-mutated/workflow/pipeline.json'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.004s
+
+FAILED (errors=9)
+
+test_exported_contract_rejects_missing_required_files / comparative-review-bundles-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ERROR
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ERROR
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ERROR
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ERROR
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ERROR
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ERROR
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ERROR
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ERROR
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ERROR
+
+======================================================================
+ERROR: test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+======================================================================
+ERROR: test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 16, in setUp
+    self.bundles = read_json('workflow/bundles.json')['bundles']
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-bundles-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-bundles-mutated/workflow/bundles.json'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+FAILED (errors=9)
+
+test_exported_contract_rejects_missing_required_files / comparative-review-migration-unit-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ERROR
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ERROR
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ERROR
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ERROR
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ERROR
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ERROR
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ERROR
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ERROR
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ERROR
+
+======================================================================
+ERROR: test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+======================================================================
+ERROR: test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 17, in setUp
+    self.unit = read_json('templates/migration-unit.json')
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-migration-unit-mutated/templates/migration-unit.json'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+FAILED (errors=9)
+
+test_exported_contract_rejects_missing_required_files / comparative-review-run-record-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ERROR
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ERROR
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ERROR
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ERROR
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ERROR
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ERROR
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ERROR
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ERROR
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ERROR
+
+======================================================================
+ERROR: test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+======================================================================
+ERROR: test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 18, in setUp
+    self.record = read_json('templates/run-record.json')
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/tmp/tmpumceb66p/comparative-review-run-record-mutated/tests/test_process_contract.py", line 10, in read_json
+    return json.loads((ROOT / name).read_bytes())
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1021, in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmpumceb66p/comparative-review-run-record-mutated/templates/run-record.json'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.007s
+
+FAILED (errors=9)
+
+test_exported_contract_rejects_optional_review / comparative-review-pipeline-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ok
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... FAIL
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpknvwb4lt/comparative-review-pipeline-mutated/tests/test_process_contract.py", line 40, in test_one_sequential_slice_without_mandatory_separate_reviewers
+    self.assertTrue(self.pipeline['review_policy']['required'])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.008s
+
+FAILED (failures=1)
+
+test_exported_contract_rejects_optional_review / comparative-review-migration-unit-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ok
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... FAIL
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpknvwb4lt/comparative-review-migration-unit-mutated/tests/test_process_contract.py", line 104, in test_protocol_and_negative_controls_are_requirements_not_results
+    self.assertTrue(self.unit['review']['required'])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)
+
+test_exported_contract_rejects_two_writers / comparative-review-two-writers-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ok
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... FAIL
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpb3tjxuxu/comparative-review-two-writers-mutated/tests/test_process_contract.py", line 37, in test_one_sequential_slice_without_mandatory_separate_reviewers
+    self.assertEqual(self.pipeline['limits']['max_active_writers'], 1)
+AssertionError: 2 != 1
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_baseline_before_implementation / comparative-review-planner-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='planner') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='planner')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp_zg2bnt9/comparative-review-planner-mutated/tests/test_process_contract.py", line 51, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('baseline:validated', required)
+AssertionError: 'baseline:validated' not found in ['G2:approved', 'verifier:validated']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_baseline_before_implementation / comparative-review-implementer-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='implementer') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='implementer')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp_zg2bnt9/comparative-review-implementer-mutated/tests/test_process_contract.py", line 51, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('baseline:validated', required)
+AssertionError: 'baseline:validated' not found in ['G3:approved', 'verifier:validated', 'protocol:frozen', 'review-plan:approved', 'budget:approved', 'verification-reserve:available']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_baseline_before_implementation / comparative-review-referee-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='referee') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='referee')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmp_zg2bnt9/comparative-review-referee-mutated/tests/test_process_contract.py", line 51, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('baseline:validated', required)
+AssertionError: 'baseline:validated' not found in ['candidate:reviewed', 'candidate:no-confirmed-blockers', 'verifier:validated', 'protocol:frozen', 'G3:approved']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.005s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_verifier_before_implementation / comparative-review-planner-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='planner') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='planner')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpf65pduaj/comparative-review-planner-mutated/tests/test_process_contract.py", line 52, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('verifier:validated', required)
+AssertionError: 'verifier:validated' not found in ['G2:approved', 'baseline:validated']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.006s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_verifier_before_implementation / comparative-review-implementer-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='implementer') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='implementer')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpf65pduaj/comparative-review-implementer-mutated/tests/test_process_contract.py", line 52, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('verifier:validated', required)
+AssertionError: 'verifier:validated' not found in ['G3:approved', 'baseline:validated', 'protocol:frozen', 'review-plan:approved', 'budget:approved', 'verification-reserve:available']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.011s
+
+FAILED (failures=1)
+
+test_exported_contract_requires_verifier_before_implementation / comparative-review-referee-mutated
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ...
+  test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='referee') ... FAIL
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+======================================================================
+FAIL: test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) (stage='referee')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/tmpf65pduaj/comparative-review-referee-mutated/tests/test_process_contract.py", line 52, in test_baseline_and_verifier_precede_g3_and_implementation
+    self.assertIn('verifier:validated', required)
+AssertionError: 'verifier:validated' not found in ['candidate:reviewed', 'candidate:no-confirmed-blockers', 'baseline:validated', 'protocol:frozen', 'G3:approved']
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.008s
+
+FAILED (failures=1)
+
+test_exported_process_contract_runs_without_repository_context / input
+test_active_contract_versions_and_pending_gates (test_process_contract.ProcessContractTests.test_active_contract_versions_and_pending_gates) ... ok
+test_baseline_and_verifier_precede_g3_and_implementation (test_process_contract.ProcessContractTests.test_baseline_and_verifier_precede_g3_and_implementation) ... ok
+test_budgets_have_unapproved_limits_and_reserves (test_process_contract.ProcessContractTests.test_budgets_have_unapproved_limits_and_reserves) ... ok
+test_checkpoint_has_no_fabricated_execution (test_process_contract.ProcessContractTests.test_checkpoint_has_no_fabricated_execution) ... ok
+test_comparative_review_remains_before_g1 (test_process_contract.ProcessContractTests.test_comparative_review_remains_before_g1) ... ok
+test_one_sequential_slice_without_mandatory_separate_reviewers (test_process_contract.ProcessContractTests.test_one_sequential_slice_without_mandatory_separate_reviewers) ... ok
+test_pipeline_prompts_and_bundle_tasks_resolve (test_process_contract.ProcessContractTests.test_pipeline_prompts_and_bundle_tasks_resolve) ... ok
+test_protocol_and_negative_controls_are_requirements_not_results (test_process_contract.ProcessContractTests.test_protocol_and_negative_controls_are_requirements_not_results) ... ok
+test_review_and_retests_follow_candidate_changes (test_process_contract.ProcessContractTests.test_review_and_retests_follow_candidate_changes) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.008s
+
+OK

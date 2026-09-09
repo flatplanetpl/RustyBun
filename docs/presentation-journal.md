@@ -136,3 +136,36 @@ ID / data / typ / status decyzji; problem; decyzja lub obserwacja; alternatywa o
 **OBSERVATION J046 — FACT: 104 lokalne testy narzędzi przeszły.** `python3 -m unittest discover -s tests -v`: 104/104 OK, czas suite 8.141 s. Dodano 12 testów: kontrakty konfiguracji, rzeczywiste aktualne szablony i eksport na tymczasowym lokalnym repo Git oraz zachowanie nowych pól przez oba helpery przygotowania. Najpierw testy kontraktu ujawniły brak v0.2, wymaganych pól i zależności w bazie. Końcowa suite używa rzeczywistych lokalnych operacji plików/Git i jawnie symulowanych wywołań klienta. Nie uruchomiono modelu, logowania, Buna ani migracji. [Raport, log i mapowanie D01–D08](../results/tooling-process-v02-20260909T174417Z/report.md).
 
 **OBSERVATION J047 — FACT: wcześniejsze dowody są zachowane.** Sprawdzono 40 plików archiwizacji i 34 wejścia drugiej rundy według ich manifestów. Wszystkie 87 wcześniej śledzonych plików w results/, sources/ i upstream/ odpowiadają blobom z `b1ba7a9f946cd0de6c1c79869faeaa110ac96782`. COMPLETE, LAUNCH_ERROR i ograniczenia niezależności zachowano. Przegląd zmian przygotowawczych jest samoprzeglądem tej sesji; akceptacja Damiana i G1–G5 pozostają PENDING. Nie wykonano comparative review, wyboru wycinka, baseline/verifiera Buna, praktycznej próby wznowienia pilota ani pomiaru jego kosztu. Nadal otwarte są środowisko, wycinek, model/ustawienia, budżet/rezerwa i konkretny plan review. Hipoteza J042 pozostaje niezmierzona.
+
+## 2026-09-09 — uruchamialne kontrole procesu w pakietach review
+
+**DECISION J048 — wykonanie zaakceptowanej korekty po audycie.** Damian polecił
+wdrożyć [plan 001](plans/001-review-pack-process-contract.md): wydzielić przenośne
+kontrole v0.2, pozostawić integrację i kompletność repo u koordynatora, sprawdzić
+rzeczywiste eksporty i przygotować jeden lokalny commit. Każdy pakiet zamienia
+wyłącznie `test_workflow_contract.py` na `test_process_contract.py`; pozostałe
+wejścia są zachowane. Zakres nie obejmuje nowych agentów, runnera, zmian schematów,
+comparative review, pilota ani push. G1–G5 nadal PENDING.
+
+**CORRECTION J049 — wynik pełnej suite nie dowodził uruchamialności testów pakietu.**
+FACT: reprodukcja na konfiguracji z `874c55a` daje w każdym eksporcie jedno
+niepowodzenie i dwa błędy. Eksportowany moduł sprawdzał pliki wszystkich pakietów
+oraz budował fixture z całego repo; ograniczone wejścia nie mogły tego spełnić.
+J046 zachowuje prawdziwy wynik 104 testów w repo, lecz nie dowodzi kontroli wewnątrz
+pakietów. Przenośny moduł zachowuje asercje kontraktu i promptów; pełna suite
+sprawdza teraz uruchomienie w osobnych procesach z katalogu `input` oraz odmowę
+przy mutacjach konfiguracji. [Reprodukcja i nowe dowody](../results/tooling-review-pack-contract-20260909T182644Z/report.md).
+
+**OBSERVATION J050 — FACT: nowe dowody obejmują wykonanie kontroli po eksporcie.**
+Pełna suite: 111/111 OK, 22.116 s. W osobnym zapisie odbioru oba pakiety uruchomiły
+po 9/9 testów przenośnych w procesie `python3 -I -B`, z katalogu `input`, bez
+zmiany eksportowanych plików. Wszystkie 26 mutacji kopii odrzucono z oczekiwanego
+powodu: usuwanie każdego z czterech wymaganych plików, opcjonalny review w obu
+konfiguracjach, dwóch writerów i brak baseline/verifiera w każdym z trzech etapów.
+Zachowano 93 wcześniejsze pliki results/sources/upstream oraz hashe 40 plików
+archiwum i 34 wejść. Osiem przeniesionych testów ma identyczne AST, a dotychczasowy
+test referencji rozdzielono między oba moduły bez usunięcia asercji. To
+SELF_REVIEW koordynatora i testy narzędzi; nie niezależny review ani odbiór Damiana.
+Nie wykonano comparative review, baseline/verifiera Buna, migracji, parity,
+wywołań modeli ani publikacji. Środowisko pilota, wycinek, model, budżet/rezerwa
+i plan review pozostają do ustalenia. [Logi i zakres](../results/tooling-review-pack-contract-20260909T182644Z/report.md).

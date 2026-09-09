@@ -14,6 +14,9 @@ Budżet obejmuje przygotowanie i rezerwę na review, rozstrzygnięcie uwag, popr
 2. [D01–D08](docs/decisions/2026-09-09-pilot-v0.2.md): zachowany zapis decyzji; [journal](docs/presentation-journal.md) odróżnia przyjęty kierunek od przygotowania procesu i pomiarów.
 3. [Raport przygotowania](results/tooling-process-v02-20260909T174417Z/report.md): mapowanie decyzji na zmiany i kontrole, lista plików i ograniczenia dowodów.
 4. [Protokół kontekstów](docs/clean-context-review.md): odrębne rundy metody oraz opcjonalne niezależne zadania kontrolne.
+5. [Plan korekty 001](docs/plans/001-review-pack-process-contract.md) i
+   [raport uruchamialności testów pakietów](results/tooling-review-pack-contract-20260909T182644Z/report.md):
+   podział kontroli procesu i całego repo oraz dowody z rzeczywistych eksportów.
 
 ## Następny krok i kwestie otwarte
 
@@ -42,6 +45,20 @@ Werdykt to REVISE_PROCESS, rola COMPLETE, launcher LAUNCH_ERROR przy zapisanym k
 [Design-review](docs/design-review-command.md) · [Independent design](docs/independent-review-command.md) · [Preflight](docs/preflight-start.md). Powtórzenie zamkniętej rundy jest nowym, świadomie wybranym zadaniem, nie domyślnym następnym krokiem. Ślepe role wykonuje się wyłącznie w przygotowanym pakiecie. Koordynator znający repo nie jest ślepym recenzentem ani Architektem.
 
 Testy przygotowania obejmują narzędzia i kontrakty konfiguracji, nie skuteczność sandboxa, Bun ani gotowość G3. [Nowe wyniki](results/tooling-process-v02-20260909T174417Z/test-output.txt) są odrębne od [historycznych 92 testów przy archiwizacji](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt).
+
+Audyt commita `874c55a` ujawnił, że 104 zielone testy całego repo nie sprawdzały
+uruchamialności eksportowanego modułu kontraktu: w obu pakietach miał on jedno
+niepowodzenie i dwa błędy z powodu niedostarczonych plików. Nowe eksporty zawierają
+przenośny `test_process_contract.py`; `test_workflow_contract.py` pozostaje w repo.
+Z katalogu `input` pakietu, zawierającego `tests/`, wykonaj:
+
+```bash
+python3 -I -B -m unittest discover -s tests -p test_process_contract.py -v
+```
+
+W układzie launchera design-review jest to `<run>/input/input`. Kontrola nie
+zmienia wejść ani nie zastępuje review. Archiwalne pakiety i wyniki pozostają
+niezmienione; nowe dowody są w raporcie korekty wskazanym wyżej.
 
 ## Instrukcja dla kolejnego koordynatora
 

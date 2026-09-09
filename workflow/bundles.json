@@ -41,7 +41,7 @@
         "scripts/design-review.py",
         "tests/test_design_review.py",
         "docs/decisions/2026-09-09-pilot-v0.2.md",
-        "tests/test_workflow_contract.py"
+        "tests/test_process_contract.py"
       ]
     },
     "comparative-review": {
@@ -85,7 +85,7 @@
         "scripts/prepare-review-run.py",
         "tests/test_prepare_review_run.py",
         "docs/decisions/2026-09-09-pilot-v0.2.md",
-        "tests/test_workflow_contract.py"
+        "tests/test_process_contract.py"
       ]
     },
     "architect": {
