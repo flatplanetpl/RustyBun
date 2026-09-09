@@ -1,0 +1,29 @@
+# Fresh, per-run Codex profile. Requested controls, not verified isolation.
+forced_login_method = "chatgpt"
+cli_auth_credentials_store = "file"
+web_search = "disabled"
+project_root_markers = []
+sandbox_mode = "workspace-write"
+approval_policy = "never"
+
+[features]
+memories = false
+apps = false
+multi_agent = false
+shell_snapshot = false
+skill_mcp_dependency_install = false
+
+[memories]
+use_memories = false
+generate_memories = false
+
+[apps._default]
+enabled = false
+
+[sandbox_workspace_write]
+network_access = false
+exclude_slash_tmp = true
+exclude_tmpdir_env_var = true
+
+[shell_environment_policy]
+experimental_use_profile = false

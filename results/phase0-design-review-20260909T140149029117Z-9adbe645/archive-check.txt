@@ -1,0 +1,8 @@
+Archive check at 2026-09-09T15:02:16.805750+00:00
+Base commit: 47764bace389f908e9e58473ded7ad07909dfe2b
+PASS: 40 archived files match import hashes/sizes and original bytes; original file modes unchanged.
+PASS: original input manifest digest and all 34 input hashes/sizes match within the archive.
+PASS: both output hashes, process/run identity and original COMPLETE/LAUNCH_ERROR/PENDING/false metadata preserved.
+PASS: read-only verify_run(original, prepared_only=False); historic launcher error not reproduced by this check.
+PASS: tracked changes limited to four documentation files; active scripts/tests/process contracts/pipeline and Git index unchanged.
+NOT RUN: comparative review, process v0.2 adoption, G1-G5 approvals, Architect, Bun baseline/build/migration/parity, new agent sessions, commit/push.

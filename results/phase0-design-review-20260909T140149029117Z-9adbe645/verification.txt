@@ -1,0 +1,26 @@
+$ Read-only verification of the original run using scripts/design-review.py at 47764bace389f908e9e58473ded7ad07909dfe2b
+verify_run(prepared_only=False): PASS
+{"file": "design-review.md", "expected": "c852575bcd7fe6ff7b5dfe4ff94e6c65a8f58d3118b301e3e6eae1e35ff03f5e", "actual": "c852575bcd7fe6ff7b5dfe4ff94e6c65a8f58d3118b301e3e6eae1e35ff03f5e", "matches": true, "bytes": 22209}
+{"file": "process-proposal.md", "expected": "4f95f983fd7d90b2724636d0f9b924e3c96eb333775d3c21083e4f210b0ede6d", "actual": "4f95f983fd7d90b2724636d0f9b924e3c96eb333775d3c21083e4f210b0ede6d", "matches": true, "bytes": 23537}
+gate_decision: {"gate": null, "status": "PENDING", "by": null, "at": null, "artifact_hashes": []}
+launcher: LAUNCH_ERROR
+
+$ Git blob comparison and scoped publication pattern screening
+Git origin: 29 frozen process files match the recorded commit
+{
+  "files_screened": 40,
+  "candidate_sensitive_matches_without_values": [
+    {
+      "file": "input/input/tests/test_context_pack.py",
+      "line": 23,
+      "kind": "email"
+    },
+    {
+      "file": "input/input/tests/test_design_review.py",
+      "line": 38,
+      "kind": "email"
+    }
+  ]
+}
+
+Manual resolution: both email matches are fixture@example.invalid, a synthetic Git fixture identity.

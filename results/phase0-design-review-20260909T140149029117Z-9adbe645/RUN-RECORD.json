@@ -1,0 +1,261 @@
+{
+  "schema_version": "0.1",
+  "status": "COMPLETE",
+  "run_id": "phase0-design-review-20260909T140149029117Z-9adbe645",
+  "stage": "method-review",
+  "started_at": "2026-09-09T14:03:03+00:00",
+  "ended_at": "2026-09-09T14:15:22+00:00",
+  "source_sha": null,
+  "process_sha": "47764bace389f908e9e58473ded7ad07909dfe2b",
+  "input_manifest_sha256": "20a1fd6b327312dcbfc0819768e03c140df0d69e1fd6d86772c73ca20314a2c0",
+  "extra_inputs": [],
+  "runtime": {
+    "client_version": "unknown",
+    "requested_model": "unknown",
+    "actual_model": "unknown",
+    "settings": {
+      "observed_session_policy": {
+        "sandbox_mode": "workspace-write",
+        "approval_policy": "never",
+        "network_access": "restricted",
+        "writable_root": "/home/ubuntu/phase0-design-review-20260909T140149029117Z-9adbe645/output"
+      },
+      "source": "session-provided permissions; enforcement not independently audited",
+      "shell_for_review_commands": "bash, login=false after initial state discovery",
+      "multi_agent_tools_exposed": true,
+      "subagents_used": false,
+      "skills_catalog_exposed": true,
+      "skill_files_read": false
+    },
+    "auth_mode": "unknown",
+    "os": "Linux 6.8.0-139-generic",
+    "hardware": null,
+    "toolchain": {
+      "python": "3.12.3"
+    },
+    "allowed_tools": [
+      "read_manifest_inputs",
+      "read_authorized_output_metadata",
+      "write_design_review_and_process_proposal",
+      "update_run_record",
+      "local_python_stdlib_integrity_checks",
+      "local_text_reads_and_searches"
+    ]
+  },
+  "isolation": {
+    "fresh_conversation": null,
+    "no_resume": null,
+    "memory_checked": null,
+    "global_instructions_checked": null,
+    "only_manifest_inputs_mounted": null,
+    "source_read_only": null,
+    "network_disabled": null,
+    "connectors_disabled": null,
+    "notes": [
+      "General session instructions and a tools/skills catalog are visible; no skill files read. No excluded project proposal or prior conversation content observed.",
+      "Output requested PROFILE.toml differs from available capabilities: multi-agent tools are exposed. They were not used. Profile settings do not certify effective isolation.",
+      "User requested continuation; actual run record was PREPARED with null execution timestamps and no reports. No earlier task work was reconstructed from conversation history. Freshness and no-resume remain unverified.",
+      "All shell calls so far succeeded under default execution policy; no sandbox failure observed and no escalation requested. No out-of-scope write or network probe performed.",
+      "All 34 manifest-listed file hashes/sizes checked; pack-only enumeration found no unlisted files. This does not prove read-only enforcement or absence of accessible external context."
+    ]
+  },
+  "measurements": {
+    "wall_seconds": 739.0,
+    "human_attention_minutes": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "quota_before": null,
+    "quota_after": null,
+    "observed_api_cost": null,
+    "attempted_units": null,
+    "verified_units": null,
+    "scope": "Current design-review task from integrity checking to artifact finalization; excludes launcher/startup and initial metadata discovery; no migration measurements."
+  },
+  "commands": [
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_id": "35e8d8",
+      "executables": [
+        "pwd",
+        "rg --files"
+      ],
+      "scope": "assigned output only",
+      "result": "Initial read-only discovery of three administrative files; exit 0."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_id": "c63c32",
+      "executables": [
+        "cat START-REVIEW.txt PROFILE.toml RUN-RECORD.json",
+        "rg --files --hidden"
+      ],
+      "scope": "assigned output; excluded hidden project-control trees from search",
+      "result": "Read actual PREPARED record and scoped authorization; no review reports present; exit 0."
+    },
+    {
+      "record_kind": "tool_summary",
+      "tool": "functions.exec/get_goal",
+      "scope": "available tool metadata and active thread goal status only",
+      "result": "No goal present; no external data returned. No task was created and no outside project context was sought."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_id": "5929ee",
+      "executable": "python3",
+      "script_source": "reviewer-authored inline standard-library script; not input code",
+      "operation": "Set started_at and IN_PROGRESS in actual output record; check expected manifest digest; print manifest.",
+      "result": "Manifest matched; exit 0."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_id": "61edb4",
+      "executable": "python3",
+      "script_source": "reviewer-authored inline standard-library script",
+      "operation": "Verify all 34 file hashes, sizes and contained regular paths; read AGENTS, TASK, provenance and role/contract documents.",
+      "result": "All 34 matched; exit 0."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_ids": [
+        "f8a103",
+        "350b9d",
+        "6bea6c"
+      ],
+      "executable": "python3",
+      "script_source": "reviewer-authored inline file reads with line numbering",
+      "operation": "Read project documents, prior proposal, workflow, templates and prompts; recover sections lost to output truncation.",
+      "result": "Exit 0; substantive proposals read in full. Broad output rendering was partly truncated; recovered document portions explicitly."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "executable": "rg -n",
+      "scope": "the four manifest-listed helper scripts and three manifest-listed test files",
+      "operation": "Search function/test declarations and integrity/status/isolation terms.",
+      "result": "Exit 0; broad search output was truncated and is not claimed as full code coverage."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_ids": [
+        "966edf",
+        "752eaa",
+        "d06ac2"
+      ],
+      "executables": [
+        "python3",
+        "rg -n"
+      ],
+      "script_source": "reviewer-authored standard-library reads and metadata updates",
+      "operation": "Read selected helper/test ranges; enumerate only pack entries against manifest; record observable Python/OS and session policy without certifying enforcement.",
+      "result": "Exit 0; no unlisted pack files; no helper/test code executed."
+    },
+    {
+      "record_kind": "tool_summary",
+      "tool": "apply_patch",
+      "scope": "design-review.md and process-proposal.md inside output_root",
+      "operation": "Create the two required review deliverables.",
+      "result": "Both files created; no input patch applied."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "chunk_id": "f70054",
+      "executable": "python3",
+      "script_source": "reviewer-authored inline standard-library validation",
+      "operation": "Recheck all input hashes/sizes, manifest/process identity, provenance, protected metadata and profile digest; validate output labels, hashes and rubric arithmetic.",
+      "result": "Exit 0; 34 input files unchanged; both outputs present; scores 15/20 and 16/20; no source tests executed."
+    },
+    {
+      "record_kind": "command_summary",
+      "tool": "exec_command",
+      "executable": "python3",
+      "script_source": "reviewer-authored inline finalization script (this call)",
+      "operation": "Hash both reports, set role completion and ended_at, calculate wall duration, preserve protected fields, write and reread final run record.",
+      "result": "Completion is conditional on final assertions passing; see terminal result for this call."
+    }
+  ],
+  "output_artifacts": [
+    {
+      "path": "design-review.md",
+      "sha256": "c852575bcd7fe6ff7b5dfe4ff94e6c65a8f58d3118b301e3e6eae1e35ff03f5e"
+    },
+    {
+      "path": "process-proposal.md",
+      "sha256": "4f95f983fd7d90b2724636d0f9b924e3c96eb333775d3c21083e4f210b0ede6d"
+    }
+  ],
+  "limitations": [
+    "Profile separation is not a filesystem jail or verified independence.",
+    "Prior completion/hash checked locally; prior session and input manifest not audited.",
+    "No Bun source, build, migration or gate approval is part of this task.",
+    "EXPLORATORY; INDEPENDENCE UNVERIFIED. This is one design-review round using both explicitly authorized proposals.",
+    "Runtime model, authentication, quota, tokens, human attention and hardware were not independently measured. Launcher client version is an operator-recorded observation, not a new client probe.",
+    "Only static reading of selected helper/test code; no input scripts or their tests executed.",
+    "Initial read-only output discovery preceded started_at; measured task duration begins with integrity checking, not client startup.",
+    "Review verdict REVISE_PROCESS is a recommendation only. No gate has been approved, no comparative-review or code migration performed.",
+    "Helper/test inspection was sampled. Some broad search output was truncated; exact read ranges and scope are documented in design-review.md.",
+    "Commands are compact operation summaries, not standalone executable transcripts; full inline invocations and tool output remain in the current tool transcript.",
+    "Both proposals and prior/provenance.json were intentionally authorized. Prior manifest/session independence was not re-audited; matching the prior report hash verifies only this copy."
+  ],
+  "checkpoint": null,
+  "gate_decision": {
+    "gate": null,
+    "status": "PENDING",
+    "by": null,
+    "at": null,
+    "artifact_hashes": []
+  },
+  "role_id": "design-reviewer",
+  "output_root": "/home/ubuntu/phase0-design-review-20260909T140149029117Z-9adbe645/output",
+  "prepared_at": "2026-09-09T14:01:49+00:00",
+  "input_root": "/home/ubuntu/phase0-design-review-20260909T140149029117Z-9adbe645/input",
+  "prior_run_id": "phase0-independent-20260908T154456Z",
+  "isolation_verified": false,
+  "operator_authorization": {
+    "scope": "design-review-only",
+    "allow_unverified_isolation": true,
+    "migration_allowed": false,
+    "paid_api_allowed": false,
+    "gate_approval_allowed": false
+  },
+  "preflight": {
+    "status": "READY_EXPLORATORY",
+    "inputs_verified": true,
+    "isolation_verified": false
+  },
+  "launcher": {
+    "status": "LAUNCH_ERROR",
+    "script_sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73",
+    "shared_launcher_sha256": "e736c6f10da55d7b7d17a27d73c3778de0297b931ef6d53dcb2b43df3d3dc668",
+    "profile_config_sha256": "6205ebcdd34276076e24c56c28743d4bb314427adb61b15f9e340097ad81d9c1",
+    "requested_model": "unknown",
+    "requested_reasoning_effort": "unknown",
+    "requested_approval_policy": "never",
+    "isolation_verified": false,
+    "attempted_at": "2026-09-09T14:01:49+00:00",
+    "client_version_observed": "codex-cli 0.153.4",
+    "client_started_at": "2026-09-09T14:02:16+00:00",
+    "exit_code": 0,
+    "client_ended_at": "2026-09-09T14:51:58+00:00",
+    "closed_at": "2026-09-09T14:51:58+00:00",
+    "temporary_profile_removed": true
+  },
+  "review_result": {
+    "verdict": "REVISE_PROCESS",
+    "label": "EXPLORATORY; INDEPENDENCE UNVERIFIED",
+    "confirmed_design_findings": [
+      "DR-01",
+      "DR-02",
+      "DR-03",
+      "DR-04"
+    ],
+    "scenario_validation": "not_run; proposed future checks only",
+    "role_completion_is_gate_approval": false
+  }
+}

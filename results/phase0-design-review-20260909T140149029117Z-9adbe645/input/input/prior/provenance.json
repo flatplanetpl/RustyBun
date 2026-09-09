@@ -1,0 +1,22 @@
+{
+  "schema_version": "1",
+  "kind": "prior-design-provenance",
+  "run_id": "phase0-independent-20260908T154456Z",
+  "reported_status": "COMPLETED",
+  "reported_started_at": "2026-09-08T15:49:57.250096+00:00",
+  "reported_ended_at": "2026-09-08T16:01:35.648315+00:00",
+  "prior_process_sha": "fbf1b25115cd2455664d78523f127101bed66516",
+  "prior_input_manifest_sha256": "852073a2a6a9dfda0f356b10ed873b38b6bf1ad404c108243fac9234fe5ed30e",
+  "record_sha256": "850ddaa18c7fa0b27c39ca5cdebe8ca2abbc1171dbac4482c05469d518c551b9",
+  "report_sha256": "3199eb780759c64d26309dc7c882d9f242d74a50129600a8adc04be326136421",
+  "reported_isolation_verified": false,
+  "actual_model_reported": "unknown",
+  "client_version_reported": "unknown",
+  "report_matches_recorded_hash": true,
+  "original_manifest_rechecked": false,
+  "limits": [
+    "A matching hash verifies this copy, not the prior session or its independence.",
+    "The prior report is copied verbatim; retain its stated limitations.",
+    "The original run record and input manifest are not supplied to the reviewer."
+  ]
+}

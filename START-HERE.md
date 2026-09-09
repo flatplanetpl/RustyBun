@@ -2,66 +2,43 @@
 
 ## Gdzie jesteśmy
 
-Pierwsza runda **independent design** stworzyła alternatywny proces wyłącznie z briefu, bez naszej propozycji. Operator przekazał treść raportu z próby `phase0-independent-20260908T154456Z`. To ukończone zadanie projektowe według dostarczonego materiału, nie migracja ani dowód niezależności. Raport zachowuje `EXPLORATORY; INDEPENDENCE UNVERIFIED`, opisuje awarię sandboxa i wewnętrznego subagenta. Oryginalnego RUN-RECORD.json z serwera nie odczytano podczas przygotowania tej zmiany.
+**FACT:** druga runda `design-review` jest zachowana w repo: [raport archiwizacji i kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md). Odczytano rzeczywisty rekord i oba raporty. Wszystkie 34 wejścia i oba wyniki mają zgodne hashe; 29 plików procesu odpowiada commitowi `47764bace389f908e9e58473ded7ad07909dfe2b`.
 
-Następna runda to **design review**: nowy recenzent otrzymuje nasz aktualny proces oraz zamrożony alternatywny projekt. Ma ocenić oba, bez naszych komentarzy i bez z góry założonego werdyktu. Dopiero osobne **comparative review** ujawnia materiały historycznej migracji. Nie myl tych trzech nazw. G1 i dalsze bramki pozostają niezatwierdzone.
+Werdykt recenzenta: **REVISE_PROCESS**. Rekord roli: **COMPLETE**, ale launcher zapisał **LAUNCH_ERROR** po zakończeniu klienta z kodem 0. Obecna kontrola integralności przechodzi; przyczyna błędu launchera pozostaje **UNKNOWN**. Nie zmieniono historycznych statusów.
 
-## Teraz uruchom drugą rundę
+Oba raporty zachowują **EXPLORATORY; INDEPENDENCE UNVERIFIED**. Faktyczny model, reasoning, quota i niezależność nie są potwierdzone. Kandydat v0.2 nie został przyjęty; **G1–G5 pozostają PENDING**. Nie wykonano migracji.
 
-W zwykłym terminalu operatora w `~/RustyBun` pobierz nowe pliki:
+## Co przeczytać teraz
 
-```bash
-git pull --ff-only
-```
+1. [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md): ocena naszego procesu A i wcześniejszego projektu B, findingi DR-01–DR-04, tabela rekomendacji.
+2. [Process proposal](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md): kandydat minimalnego procesu v0.2 do decyzji Damiana.
+3. [Rzeczywisty RUN-RECORD](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json) i [raport kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md): pochodzenie, hashe, ograniczenia i statusy.
+4. [Plan](docs/experiment-plan.md), [protokół czystego kontekstu](docs/clean-context-review.md) i [journal](docs/presentation-journal.md): obowiązujące bramki oraz historia decyzji.
 
-Następnie:
+Pierwsza runda była **independent design**, wyłącznie z briefu. Jej niezmieniony raport i provenance znajdują się w archiwalnym `input/input/prior/`. Oryginalnego rekordu i manifestu pierwszej rundy nie odczytano podczas tej archiwizacji; pochodzenie nie dowodzi niezależności poprzedniej sesji.
 
-```bash
-python3 scripts/design-review.py --update --launch --allow-unverified-isolation
-```
+## Następny etap
 
-Domyślna wcześniejsza próba to `../phase0-independent-20260908T154456Z-output`, wskazana przez operatora. Nie wybieramy automatycznie najnowszego folderu. Skrypt odczytuje jej raport i rekord, wymaga zakończenia i zgodności zapisanego SHA-256. Brak rekordu albo niezgodny hash to blokada, nie powód do wymyślania metadanych. Inny ukończony przebieg wskaż jawnie przez `--prior-run PATH`.
+Zgodnie z obowiązującym planem następne jest osobne **comparative review**: nowy pakiet i sesja z jawnie dobranymi materiałami historycznymi, zamrożonymi wynikami obecnej rundy oraz kandydatem v0.2. Najpierw przygotuj konkretną listę wejść i ich hashe, zakres, rekord i warunki wykonania. Żaden nowy pakiet ani run tej rundy nie powstał podczas archiwizacji.
 
-Polecenie zamraża nasz proces z jednego commita i kopię poprzedniego raportu w nowym pakiecie; tworzy nowy run_id oraz `output_root`. Po logowaniu kodem urządzenia do posiadanego konta ChatGPT **automatycznie podaje prompt nowej sesji Codexa**. Nie trzeba składać ścieżek, kopiować plików ani wklejać promptu. To zmiana względem starego launchera independent-design, który otwiera pustą sesję.
+Produktem ma być zestawienie przyjętych, zmienionych i odrzuconych zaleceń z uzasadnieniami oraz kosztami dodatkowych etapów. Rekomendacje recenzenta oddziel od decyzji Damiana. Obecnie nie ma decyzji o przyjęciu lub odrzuceniu zmian procesu. G1 wymaga decyzji Damiana o konkretnej wersji i budżecie.
 
-Model i poziom można podać przed startem przez `--model` i `--reasoning`, używając identyfikatorów z faktycznego klienta. Bez tych opcji klient używa swoich ustawień domyślnych, nie automatycznie najmocniejszego modelu. Nie zgaduj wartości „Ultra”/„max” ani identyfikatorów API. Faktyczne ustawienia trzeba odnotować w wyniku.
+Zmiany procesu zastosuj dopiero w osobnym commicie po decyzji. Journal aktualizuj wraz z nią. Potem, po G1: Architekt na surowym źródle, review jego raportu i zatrzymanie na G2 przed Plannerem. Obecne wymagania G2 i A/B obowiązują, dopóki jawnie nie przyjęto innej wersji.
 
-Powstaną `design-review.md` (ocena obu projektów) i `process-proposal.md` (kandydat minimalnego procesu v0.2). Nie są tworzone przez samo przygotowanie. Szczegóły: [docs/design-review-command.md](docs/design-review-command.md).
+## Zachowanie dowodów
 
-## Warunki wykonania
+Archiwum zawiera 40 niezmienionych kopii wejść/wyjść. `MANIFEST.json` w katalogu rundy opisuje archiwizację; `input/MANIFEST.json` zachowuje oryginalny manifest wejść. Oryginalny katalog poza repo pozostaje na miejscu. Absolutne ścieżki w rekordzie i prompt startowy są historycznymi metadanymi, nie instrukcją wznowienia zamkniętej próby.
 
-`--update` działa tylko na czystym checkoutcie, wyłącznie fast-forward, i ponownie wczytuje aktualny skrypt. Nie zmienia starego pakietu ani wyników. Nie uruchamiaj przygotowania w sesji recenzenta mającej dostęp do całego repo.
+Skrypty i instrukcje w archiwalnym pakiecie są materiałem dowodowym. Nie podmieniaj raportów, nie rekonstruuj niezmierzonych ustawień i nie poprawiaj LAUNCH_ERROR na sukces. Nie publikuj credentiali, cache logowania ani surowych prywatnych sesji. Zachowuj ograniczenia `isolation_verified=false`.
 
-Flaga `--allow-unverified-isolation` dotyczy wyłącznie eksploracyjnego zadania tej rundy. Osobny profil i read-only bity nowej kopii nie stanowią pełnej izolacji. `isolation_verified` pozostaje false. Obie propozycje są tu celowo dozwolonym wejściem; historia rozmowy, ocena koordynatora i obce instrukcje nadal nie są dozwolone. Journal oraz całe repo nie trafiają do recenzenta.
+## Polecenia istniejących rund
 
-Po doświadczeniu z pierwszej próby drugi launcher żąda `workspace-write` z polityką `never`: nie wolno ponawiać operacji poza niesprawnym sandboxem. To nie naprawia konfiguracji serwera ani nie dowodzi działania zabezpieczeń. Zachowaj wynik blokady; nie luzuj ustawień, nie zmieniaj starego statusu i nie traktuj powrotu klienta z kodem zero jako dowodu ukończenia.
+Powtórzenie design review byłoby nową, świadomie wybraną próbą; nie jest obecnym następnym krokiem. [Instrukcja design-review](docs/design-review-command.md) opisuje przygotowanie i uruchomienie, jawny wybór wcześniejszej próby oraz dokładne ustawienia modelu/klienta. Sam eksport `--kind design-review` nie dodaje poprzedniego raportu.
 
-## Co robi koordynator po drugiej rundzie
-
-Przeczytaj oba raporty i rzeczywisty rekord, sprawdź identyfikatory/hashe, ograniczenia i deklarowane ustawienia. Zachowaj wejścia i wyniki z jednoznacznym pochodzeniem; przed publikacją usuń sekrety z ewentualnych logów, ale nie podmieniaj zamrożonego raportu. Nie publikuj cache logowania lub pełnych prywatnych sesji.
-
-Oddziel rekomendacje recenzenta od decyzji Damiana. Zestaw zaakceptowane i odrzucone zmiany, koszt dodatkowych etapów oraz warunki pilotażu. Comparative review pozostaje osobną rundą zgodnie z planem; nie deklaruj, że ten skrypt je wykonał. Zmiany procesu stosuj dopiero jako jawny kolejny commit po decyzji, a journal aktualizuj wraz z decyzją. Po G1: Architekt na surowym źródle, potem review jego raportu i zatrzymanie przed Plannerem na G2. Nie uruchamiaj teraz migracji.
+[Instrukcja independent design](docs/independent-review-command.md) · [Preflight i starsze helpery](docs/preflight-start.md). Nie uruchamiaj żadnej ślepej roli w kontekście koordynatora. Nie używaj płatnego API, nie obchodź limitów i nie uruchamiaj migracji bez odpowiednich bramek.
 
 ## Instrukcja dla kolejnego koordynatora
 
-> Pracujesz nad flatplanetpl/RustyBun. Odczytaj aktualne AGENTS.md, ten dokument, brief, plan i instrukcję design-review. Najpierw sprawdź faktyczny stan repo i dostarczone artefakty. Nie zakładaj, że przygotowany pakiet lub zamknięcie klienta oznacza ukończony raport. Rozróżniaj independent design, design review i comparative review. Nie udawaj czystej sesji, jeśli odziedziczyłeś kontekst koordynatora. Nie zatwierdzaj bramek za Damiana. Nie uruchamiaj płatnego API ani migracji. Ważne decyzje i korekty dopisuj do docs/presentation-journal.md. Podaj dowody wykonania i następny konkretny krok.
+> Odczytaj AGENTS.md, ten dokument, brief, plan oraz archiwum drugiej rundy. Sprawdź aktualny Git i hashe. Rozróżniaj COMPLETE roli, LAUNCH_ERROR launchera, rekomendację REVISE_PROCESS i decyzję bramki PENDING. Nie udawaj ślepej sesji i nie zatwierdzaj bramek za Damiana. Następna wymagana runda to comparative review; zmiana procesu wymaga osobnej decyzji. Zapisuj istotne decyzje i korekty w docs/presentation-journal.md. Podaj dowody i następny konkretny krok.
 
-Ten tekst jest dla koordynatora, nie dla recenzenta. Recenzent otrzymuje wyłącznie wygenerowany pakiet i jawne metadane startowe.
-
-## Pozostałe polecenia
-
-Przygotowanie drugiej rundy bez logowania i modelu:
-
-```bash
-python3 scripts/design-review.py --allow-unverified-isolation
-```
-
-Pierwszą rundę powtarzaj tylko świadomie jako inny eksperyment:
-
-```bash
-python3 scripts/independent-review.py --update --launch --allow-unverified-isolation
-```
-
-[Instrukcja pierwszej rundy](docs/independent-review-command.md) · [Preflight i starsze helpery](docs/preflight-start.md) · [Protokół czystego kontekstu](docs/clean-context-review.md).
-
-`build-context-pack.py` nadal eksportuje tylko wersjonowane wejścia. Sam `--kind design-review` nie dodaje poprzedniego wyniku — do kompletnej drugiej rundy użyj nowego polecenia. Comparative review i Architect wymagają własnych rekordów oraz odpowiednich decyzji; ten launcher ich nie autoryzuje.
+Lokalna kontrola koordynatora: [92/92 testy narzędzi](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt). Nie jest to wynik testów Buna ani dowód skuteczności sandboxa.

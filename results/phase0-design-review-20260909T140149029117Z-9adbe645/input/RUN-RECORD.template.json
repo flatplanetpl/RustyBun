@@ -1,0 +1,58 @@
+{
+  "schema_version": "0.1",
+  "status": "NOT_RUN",
+  "run_id": null,
+  "stage": null,
+  "started_at": null,
+  "ended_at": null,
+  "source_sha": null,
+  "process_sha": null,
+  "input_manifest_sha256": null,
+  "extra_inputs": [],
+  "runtime": {
+    "client_version": null,
+    "requested_model": null,
+    "actual_model": null,
+    "settings": {},
+    "auth_mode": null,
+    "os": null,
+    "hardware": null,
+    "toolchain": {},
+    "allowed_tools": []
+  },
+  "isolation": {
+    "fresh_conversation": null,
+    "no_resume": null,
+    "memory_checked": null,
+    "global_instructions_checked": null,
+    "only_manifest_inputs_mounted": null,
+    "source_read_only": null,
+    "network_disabled": null,
+    "connectors_disabled": null,
+    "notes": []
+  },
+  "measurements": {
+    "wall_seconds": null,
+    "human_attention_minutes": null,
+    "input_tokens": null,
+    "output_tokens": null,
+    "quota_before": null,
+    "quota_after": null,
+    "observed_api_cost": null,
+    "attempted_units": null,
+    "verified_units": null
+  },
+  "commands": [],
+  "output_artifacts": [],
+  "limitations": [],
+  "checkpoint": null,
+  "gate_decision": {
+    "gate": null,
+    "status": "PENDING",
+    "by": null,
+    "at": null,
+    "artifact_hashes": []
+  },
+  "role_id": null,
+  "output_root": null
+}

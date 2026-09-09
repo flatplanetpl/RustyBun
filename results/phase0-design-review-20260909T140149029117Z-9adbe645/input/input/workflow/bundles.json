@@ -1,0 +1,97 @@
+{
+  "schema_version": "0.1",
+  "source_sha": "0a7bed5873ad9cc8c2c9203ecf05c1e8754dc49f",
+  "bundles": {
+    "independent-design": {
+      "task": "prompts/07-independent-design.md",
+      "inputs": [
+        "docs/project-brief.md"
+      ]
+    },
+    "design-review": {
+      "task": "prompts/08-design-review.md",
+      "inputs": [
+        "docs/project-brief.md",
+        "docs/experiment-plan.md",
+        "agents/roles.md",
+        "agents/contract.md",
+        "workflow/pipeline.json",
+        "templates/architecture-report.md",
+        "templates/migration-unit.json",
+        "templates/review-report.md",
+        "templates/run-record.json",
+        "prompts/01-architect.md",
+        "prompts/02-planner.md",
+        "prompts/03-implementer.md",
+        "prompts/04-reviewer.md",
+        "prompts/05-fixer.md",
+        "prompts/06-referee-operator.md",
+        "prompts/10-architecture-review.md",
+        "docs/clean-context-review.md",
+        "workflow/bundles.json",
+        "prompts/07-independent-design.md",
+        "prompts/08-design-review.md",
+        "prompts/09-comparative-review.md",
+        "scripts/build-context-pack.py",
+        "tests/test_context_pack.py",
+        "docs/preflight-start.md",
+        "scripts/prepare-review-run.py",
+        "tests/test_prepare_review_run.py",
+        "scripts/independent-review.py",
+        "scripts/design-review.py",
+        "tests/test_design_review.py"
+      ]
+    },
+    "comparative-review": {
+      "task": "prompts/09-comparative-review.md",
+      "inputs": [
+        "docs/project-brief.md",
+        "docs/experiment-plan.md",
+        "agents/roles.md",
+        "agents/contract.md",
+        "workflow/pipeline.json",
+        "templates/architecture-report.md",
+        "templates/migration-unit.json",
+        "templates/review-report.md",
+        "templates/run-record.json",
+        "prompts/01-architect.md",
+        "prompts/02-planner.md",
+        "prompts/03-implementer.md",
+        "prompts/04-reviewer.md",
+        "prompts/05-fixer.md",
+        "prompts/06-referee-operator.md",
+        "prompts/10-architecture-review.md",
+        "sources/README.md",
+        "sources/github.com/oven-sh/bun/commit-46d3bc29/docs/PORTING.md",
+        "sources/github.com/oven-sh/bun/commit-46d3bc29/scripts/port-batch.ts",
+        "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/00-feasibility.md",
+        "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/01-dependency-map.md",
+        "sources/github.com/anthropics/code-migration-kit-with-claude-code/templates/RULEBOOK.md",
+        "sources/github.com/anthropics/code-migration-kit-with-claude-code/LICENSE",
+        "sources/github.com/Lumafy/sumner-method/prompts/orchestrator.md",
+        "sources/github.com/Lumafy/sumner-method/workflows/multi-agent-orchestration.ts",
+        "sources/github.com/Lumafy/sumner-method/LICENSE",
+        "sources/github.com/oven-sh/bun/commit-46d3bc29/LICENSE.md",
+        "docs/clean-context-review.md",
+        "workflow/bundles.json",
+        "prompts/07-independent-design.md",
+        "prompts/08-design-review.md",
+        "prompts/09-comparative-review.md",
+        "scripts/build-context-pack.py",
+        "tests/test_context_pack.py",
+        "docs/preflight-start.md",
+        "scripts/prepare-review-run.py",
+        "tests/test_prepare_review_run.py"
+      ]
+    },
+    "architect": {
+      "task": "prompts/01-architect.md",
+      "inputs": [
+        "docs/project-brief.md",
+        "agents/contract.md",
+        "templates/architecture-report.md"
+      ],
+      "requires_bun": true
+    }
+  }
+}

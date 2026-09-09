@@ -1,0 +1,150 @@
+{
+  "schema_version": "0.1",
+  "status": "DESIGN_CANDIDATE_NOT_APPROVED",
+  "executable_runner": false,
+  "policy": "docs/experiment-plan.md",
+  "limits": {
+    "max_active_writers": 1,
+    "reviewer_instances": 2,
+    "max_fix_rounds": 2,
+    "paid_api_allowed": false,
+    "auto_merge_allowed": false,
+    "approved": false
+  },
+  "stages": [
+    {
+      "id": "method-independent",
+      "prompt": "prompts/07-independent-design.md",
+      "bundle": "independent-design",
+      "requires": [],
+      "output": "results/<run-id>/independent-design.md"
+    },
+    {
+      "id": "method-review",
+      "prompt": "prompts/08-design-review.md",
+      "bundle": "design-review",
+      "requires": [
+        "method-independent:frozen"
+      ],
+      "output": "results/<run-id>/design-review.md",
+      "operator_command": "python3 scripts/design-review.py --update --launch --allow-unverified-isolation",
+      "additional_outputs": [
+        "results/<run-id>/process-proposal.md"
+      ],
+      "local_output_layout": "phase0-design-review-<id>/output/; archive under results only after an operator publication audit",
+      "prior_result_policy": "Explicit closed independent-design run; copy report only after matching its recorded SHA-256; preserve exploratory limitations."
+    },
+    {
+      "id": "method-comparative",
+      "prompt": "prompts/09-comparative-review.md",
+      "bundle": "comparative-review",
+      "requires": [
+        "method-review:frozen"
+      ],
+      "output": "results/<run-id>/comparative-review.md",
+      "gate_after": "G1"
+    },
+    {
+      "id": "architect",
+      "prompt": "prompts/01-architect.md",
+      "bundle": "architect",
+      "requires": [
+        "G1:approved"
+      ],
+      "output": "results/<run-id>/architecture-report.md"
+    },
+    {
+      "id": "architecture-review",
+      "prompt": "prompts/10-architecture-review.md",
+      "requires": [
+        "architect:frozen"
+      ],
+      "output": "results/<run-id>/architecture-review.md",
+      "gate_after": "G2"
+    },
+    {
+      "id": "planner",
+      "prompt": "prompts/02-planner.md",
+      "requires": [
+        "G2:approved"
+      ],
+      "output": "results/<run-id>/migration-unit.json",
+      "gate_after": "G3"
+    },
+    {
+      "id": "implementer",
+      "prompt": "prompts/03-implementer.md",
+      "requires": [
+        "G3:approved"
+      ],
+      "output": "isolated worktree + candidate diff"
+    },
+    {
+      "id": "review-A",
+      "prompt": "prompts/04-reviewer.md",
+      "focus": "behavior",
+      "requires": [
+        "implementer:frozen"
+      ],
+      "output": "results/<run-id>/review-A.md"
+    },
+    {
+      "id": "review-B",
+      "prompt": "prompts/04-reviewer.md",
+      "focus": "ownership-ffi-integration",
+      "requires": [
+        "implementer:frozen"
+      ],
+      "output": "results/<run-id>/review-B.md"
+    },
+    {
+      "id": "fixer",
+      "prompt": "prompts/05-fixer.md",
+      "requires": [
+        "review-A:frozen",
+        "review-B:frozen",
+        "findings:confirmed"
+      ],
+      "output": "new candidate hash; re-review mandatory"
+    },
+    {
+      "id": "referee",
+      "prompt": "prompts/06-referee-operator.md",
+      "requires": [
+        "candidate:reviewed",
+        "baseline:validated",
+        "judge:validated"
+      ],
+      "output": "results/<run-id>/verification.json",
+      "gate_after": "G4"
+    }
+  ],
+  "gates": {
+    "G1": {
+      "status": "PENDING",
+      "approved_by": null,
+      "artifact_hashes": []
+    },
+    "G2": {
+      "status": "PENDING",
+      "approved_by": null,
+      "artifact_hashes": []
+    },
+    "G3": {
+      "status": "PENDING",
+      "approved_by": null,
+      "artifact_hashes": []
+    },
+    "G4": {
+      "status": "PENDING",
+      "approved_by": null,
+      "artifact_hashes": []
+    },
+    "G5": {
+      "status": "PENDING",
+      "approved_by": null,
+      "artifact_hashes": []
+    }
+  },
+  "resume_policy": "Check input and output hashes; changed artifacts invalidate downstream acceptance. File existence alone is not completion."
+}

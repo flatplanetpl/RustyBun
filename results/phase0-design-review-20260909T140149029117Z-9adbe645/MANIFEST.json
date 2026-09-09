@@ -1,0 +1,306 @@
+{
+  "schema_version": "1",
+  "kind": "design-review-archive",
+  "run_id": "phase0-design-review-20260909T140149029117Z-9adbe645",
+  "archived_at": "2026-09-09T14:57:19.087435+00:00",
+  "archive_base_commit": "47764bace389f908e9e58473ded7ad07909dfe2b",
+  "original_run_root": "/home/ubuntu/phase0-design-review-20260909T140149029117Z-9adbe645",
+  "archive_root": "results/phase0-design-review-20260909T140149029117Z-9adbe645",
+  "process_sha": "47764bace389f908e9e58473ded7ad07909dfe2b",
+  "input_manifest_path": "input/MANIFEST.json",
+  "input_manifest_sha256": "20a1fd6b327312dcbfc0819768e03c140df0d69e1fd6d86772c73ca20314a2c0",
+  "reported_role_status": "COMPLETE",
+  "reported_launcher_status": "LAUNCH_ERROR",
+  "reported_verdict": "REVISE_PROCESS",
+  "isolation_verified": false,
+  "gate_approval": "PENDING",
+  "copy_policy": "Byte-for-byte input tree and five output files; output files placed at archive root. Original absolute paths retained as provenance, not current launch paths.",
+  "redactions": [],
+  "publication_screening": {
+    "scope": "All 40 supplied text files; credential/private-key/JWT/credential-URL/email patterns and inspection of output reports/metadata and prior report.",
+    "findings": "Only two fixture@example.invalid email matches in frozen tests; no credential values or private session transcripts identified. Generic /home/ubuntu run paths retained for provenance.",
+    "limit": "Scoped review, not a guarantee that all sensitive data patterns can be detected."
+  },
+  "files": [
+    {
+      "path": "input/AGENTS.md",
+      "source_relative_path": "input/AGENTS.md",
+      "sha256": "e84550941ec3f3d00b76323e44c509324d00d59f605d8e8ee88fef94d163f3a7",
+      "bytes": 468,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/MANIFEST.json",
+      "source_relative_path": "input/MANIFEST.json",
+      "sha256": "20a1fd6b327312dcbfc0819768e03c140df0d69e1fd6d86772c73ca20314a2c0",
+      "bytes": 6222,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/RUN-RECORD.template.json",
+      "source_relative_path": "input/RUN-RECORD.template.json",
+      "sha256": "a1194b785124cab3d2fed19e64063dd4680846654f35bdea93a25a18c039ad71",
+      "bytes": 1291,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/TASK.md",
+      "source_relative_path": "input/TASK.md",
+      "sha256": "47d777c370e20aa592482098f6300b22f72a4f5603ae38d50318ac75c5f5b49f",
+      "bytes": 3605,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/agents/contract.md",
+      "source_relative_path": "input/input/agents/contract.md",
+      "sha256": "dad2bf35711a83b4b9c5321717e0acdea91ee75032b789174320fdd8becaf45e",
+      "bytes": 1649,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/agents/roles.md",
+      "source_relative_path": "input/input/agents/roles.md",
+      "sha256": "15327f180061625019260ab8b577740436fc87adcb3b25710e937c156be2bb19",
+      "bytes": 3071,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/docs/clean-context-review.md",
+      "source_relative_path": "input/input/docs/clean-context-review.md",
+      "sha256": "6bb58ccd5881ae49bc7be5ddf158166bd383bdb37ad09f19a6edcbc16f1d0d4f",
+      "bytes": 5972,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/docs/experiment-plan.md",
+      "source_relative_path": "input/input/docs/experiment-plan.md",
+      "sha256": "4878552c6055be9fa229d46dd24e4c4adc892e914039d494356b912f92436fbd",
+      "bytes": 6940,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/docs/preflight-start.md",
+      "source_relative_path": "input/input/docs/preflight-start.md",
+      "sha256": "2fe45742b463603ae3165ae4c615021a3f4d9571ce6d147019ff71f6ef423fb8",
+      "bytes": 5685,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/docs/project-brief.md",
+      "source_relative_path": "input/input/docs/project-brief.md",
+      "sha256": "f41b14a079c14f9acc57c8a969472cd8ac44ad534daa561d3ef7d5c3c8ffd9d8",
+      "bytes": 2453,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prior/independent-design.md",
+      "source_relative_path": "input/input/prior/independent-design.md",
+      "sha256": "3199eb780759c64d26309dc7c882d9f242d74a50129600a8adc04be326136421",
+      "bytes": 22688,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prior/provenance.json",
+      "source_relative_path": "input/input/prior/provenance.json",
+      "sha256": "3d0f9fce6bcb3a7a821b8a559160599f7ffd11b3fc77f097f6aecd33aeeda046",
+      "bytes": 1073,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/01-architect.md",
+      "source_relative_path": "input/input/prompts/01-architect.md",
+      "sha256": "77df8cf4ffe3f25ca3b50f52849a5cb815eebe34261dee2d3d6ed00b29bc8f0a",
+      "bytes": 1315,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/02-planner.md",
+      "source_relative_path": "input/input/prompts/02-planner.md",
+      "sha256": "b6985102882c662958828550168c3ba3231823631dd18af51f962af49d53408c",
+      "bytes": 1019,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/03-implementer.md",
+      "source_relative_path": "input/input/prompts/03-implementer.md",
+      "sha256": "027715b1755c8b0ae49dc7e65969eacab513df2c41770592add8c9cd9223474c",
+      "bytes": 781,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/04-reviewer.md",
+      "source_relative_path": "input/input/prompts/04-reviewer.md",
+      "sha256": "7f6a88f887b6d1e6fc558dd727052bb51ac3d94a0c6854dc2e8412488fab38d2",
+      "bytes": 967,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/05-fixer.md",
+      "source_relative_path": "input/input/prompts/05-fixer.md",
+      "sha256": "83a4d32f72dd01a04c45ab5f8f7960bc9d67a39e02d751b8b0e82d7c1ea939c4",
+      "bytes": 781,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/06-referee-operator.md",
+      "source_relative_path": "input/input/prompts/06-referee-operator.md",
+      "sha256": "eea1e3288d7fd3c543d43a1d5668d93aab092145a3fb860461e1d7af88590bc7",
+      "bytes": 835,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/07-independent-design.md",
+      "source_relative_path": "input/input/prompts/07-independent-design.md",
+      "sha256": "cd1fe9488b211a3fb20fc725b10fc203a27683af7f013eadac71b2cbb3f71530",
+      "bytes": 989,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/08-design-review.md",
+      "source_relative_path": "input/input/prompts/08-design-review.md",
+      "sha256": "47d777c370e20aa592482098f6300b22f72a4f5603ae38d50318ac75c5f5b49f",
+      "bytes": 3605,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/09-comparative-review.md",
+      "source_relative_path": "input/input/prompts/09-comparative-review.md",
+      "sha256": "592152acd88129f211d05a8b39201c7a401b0c3c4bdf21b3948187ea3b291c69",
+      "bytes": 985,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/prompts/10-architecture-review.md",
+      "source_relative_path": "input/input/prompts/10-architecture-review.md",
+      "sha256": "e605602e44535fba16d8e0cdc9e5ac296834d9813dc531e69fd48369f286fe30",
+      "bytes": 899,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/scripts/build-context-pack.py",
+      "source_relative_path": "input/input/scripts/build-context-pack.py",
+      "sha256": "de8b632148cbcee11092a3fa89578f58198067bee24ed302df8adcafbdcae73e",
+      "bytes": 9090,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/scripts/design-review.py",
+      "source_relative_path": "input/input/scripts/design-review.py",
+      "sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73",
+      "bytes": 26057,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/scripts/independent-review.py",
+      "source_relative_path": "input/input/scripts/independent-review.py",
+      "sha256": "e736c6f10da55d7b7d17a27d73c3778de0297b931ef6d53dcb2b43df3d3dc668",
+      "bytes": 13383,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/scripts/prepare-review-run.py",
+      "source_relative_path": "input/input/scripts/prepare-review-run.py",
+      "sha256": "2a7e53fffb8f1da7edb60bf3c4f26a244e13093d1736eedb2f3fe2e6bb6a81aa",
+      "bytes": 17551,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/templates/architecture-report.md",
+      "source_relative_path": "input/input/templates/architecture-report.md",
+      "sha256": "696c1accf0b318b832d58d064060fed07827941b778f2cdf7f4c5021f9c69203",
+      "bytes": 1392,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/templates/migration-unit.json",
+      "source_relative_path": "input/input/templates/migration-unit.json",
+      "sha256": "0f20679bd08384ba1c0f3824a71104b6b7bb3808b32aa575ab0e0ebe14ccc6db",
+      "bytes": 1265,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/templates/review-report.md",
+      "source_relative_path": "input/input/templates/review-report.md",
+      "sha256": "6bc95bf749976ec69102b552a2599de1f3c8e92ceabbc58ed22c9ec15acf959a",
+      "bytes": 945,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/templates/run-record.json",
+      "source_relative_path": "input/input/templates/run-record.json",
+      "sha256": "a1194b785124cab3d2fed19e64063dd4680846654f35bdea93a25a18c039ad71",
+      "bytes": 1291,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/tests/test_context_pack.py",
+      "source_relative_path": "input/input/tests/test_context_pack.py",
+      "sha256": "ff06d1bb0f4b31ba03e2d9f2dcb330c305659de3e050c7fd53c1e6cc4070e4f8",
+      "bytes": 5506,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/tests/test_design_review.py",
+      "source_relative_path": "input/input/tests/test_design_review.py",
+      "sha256": "5ab910b4bed6cbfbad3b0c8f28d57aaf119ec24936d75cd51ede6a0874572a3b",
+      "bytes": 20680,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/tests/test_prepare_review_run.py",
+      "source_relative_path": "input/input/tests/test_prepare_review_run.py",
+      "sha256": "5e402bfb0ae2c1fdebd0f749de9e2af5464dad9fe9d8a5655b6705376e559d9e",
+      "bytes": 12965,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/workflow/bundles.json",
+      "source_relative_path": "input/input/workflow/bundles.json",
+      "sha256": "4aabe09a4ce8fd7f7ee9c265410b13b6772c9af49f5e6af2bb88d5faa745ab92",
+      "bytes": 3624,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "input/input/workflow/pipeline.json",
+      "source_relative_path": "input/input/workflow/pipeline.json",
+      "sha256": "10ef5a5255a957ad224eba1f734f129c48381d11f8db62a0fbb4d9384cd57209",
+      "bytes": 4057,
+      "source_mode": "0o400"
+    },
+    {
+      "path": "PROFILE.toml",
+      "source_relative_path": "output/PROFILE.toml",
+      "sha256": "6205ebcdd34276076e24c56c28743d4bb314427adb61b15f9e340097ad81d9c1",
+      "bytes": 633,
+      "source_mode": "0o600"
+    },
+    {
+      "path": "RUN-RECORD.json",
+      "source_relative_path": "output/RUN-RECORD.json",
+      "sha256": "05fe622b5dcb1f9224297977a20c086fc94e6b97212a2edd933f438d33b5e39d",
+      "bytes": 11659,
+      "source_mode": "0o600"
+    },
+    {
+      "path": "START-REVIEW.txt",
+      "source_relative_path": "output/START-REVIEW.txt",
+      "sha256": "bf3a3ee84b6183b0ff7010681575eb1aa81c43fc40077cdf9c8ad03fe70fde34",
+      "bytes": 2108,
+      "source_mode": "0o600"
+    },
+    {
+      "path": "design-review.md",
+      "source_relative_path": "output/design-review.md",
+      "sha256": "c852575bcd7fe6ff7b5dfe4ff94e6c65a8f58d3118b301e3e6eae1e35ff03f5e",
+      "bytes": 22209,
+      "source_mode": "0o600"
+    },
+    {
+      "path": "process-proposal.md",
+      "source_relative_path": "output/process-proposal.md",
+      "sha256": "4f95f983fd7d90b2724636d0f9b924e3c96eb333775d3c21083e4f210b0ede6d",
+      "bytes": 23537,
+      "source_mode": "0o600"
+    }
+  ]
+}

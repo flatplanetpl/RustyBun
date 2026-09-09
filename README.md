@@ -2,39 +2,25 @@
 
 An experiment in migrating Bun from Zig to Rust: design the process and its contracts first, then run a measurable pilot using Codex under a subscription plan.
 
-**Status: process design, before migration.** The operator supplied a first alternative design, labelled `EXPLORATORY; INDEPENDENCE UNVERIFIED`. Its on-server completion record has not been independently inspected here. The next step is a design review of our committed process together with that frozen alternative. No full Bun architecture analysis, baseline compilation, migration or G1 approval is claimed.
+**Status: design-review results archived; process revision pending.** The second round recommends **REVISE_PROCESS** and supplies a candidate v0.2. Both reports and all 34 input hashes were checked. The original record retains role status `COMPLETE` and launcher status `LAUNCH_ERROR`; the launcher's error cause remains unknown. **EXPLORATORY; INDEPENDENCE UNVERIFIED.** G1 is pending; no Bun architecture analysis, baseline compilation or migration is claimed.
 
 ## Start here
 
 [Operator handoff](START-HERE.md) · [Project brief](docs/project-brief.md) · [Experiment plan](docs/experiment-plan.md) · [Roles](agents/roles.md) · [Shared contract](agents/contract.md) · [Prompts](prompts/) · [Presentation journal](docs/presentation-journal.md)
 
-## Next step: review both process proposals
+## Read the second-round results
 
-From an older checkout, first fetch the new command:
+[Archive and verification report](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md) · [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md) · [Candidate v0.2](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md) · [Original run record](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json)
 
-```bash
-git pull --ff-only
-```
+The archive preserves 40 input/output files byte for byte, including the frozen first design and its supplied provenance. Its root `MANIFEST.json` records the archive mapping; `input/MANIFEST.json` is the original input manifest. Original absolute paths and the launcher error remain historical evidence. This is a closed run, not a workspace to restart.
 
-Then, in the normal Ubuntu operator terminal at `~/RustyBun`:
+The review identifies gaps in baseline/judge ownership, verification reserves and accountable checkpoints, and recommends retaining negative judge controls. Reducing architecture scope or default review sessions is a proposal for Damian to decide; the current process remains in force.
 
-```bash
-python3 scripts/design-review.py --update --launch --allow-unverified-isolation
-```
+## Next step: comparative review, then G1 decision
 
-This selects the previously identified run `../phase0-independent-20260908T154456Z-output`, checks its completion record and report hash, freezes our committed proposal plus that report in a new context pack, and prepares a separate output directory. It opens Codex in a fresh profile and **automatically submits the saved prompt after device login**. No manual run ID, output path or prompt copying is needed. A different prior run must be selected explicitly with `--prior-run PATH`; the command never guesses the latest run.
+The existing plan requires a separate comparative review with explicitly selected historical materials and frozen current reports/candidate. Its package and execution have not been prepared or started as part of archiving. After that round, Damian decides which concrete process version and budget to approve. Archiving reports does not approve a gate or authorize a new run.
 
-Expected outputs are `design-review.md` and `process-proposal.md` in the printed `output_root`. The reviewer must explain what to keep, change, defer or reject in each proposal, and recommend a minimal pilot process without weakening evidence. Its recommendation does not approve G1 or begin migration.
-
-Use `--model EXACT_CLIENT_ID` and optionally `--reasoning CLIENT_SUPPORTED_VALUE` before launch for a specific model. Without them the installed client's defaults are used, **not necessarily the strongest model**. No model IDs or reasoning labels are guessed. Requirements: Python 3.10+, Git, and an installed Codex CLI in a Linux interactive terminal for launch.
-
-Preparation only, no login/model/network:
-
-```bash
-python3 scripts/design-review.py --allow-unverified-isolation
-```
-
-**Read [the design-review command guide](docs/design-review-command.md)** for record formats, paths, permissions, redisplay, failure handling and the difference between this round and the first one. `--update` fast-forwards only a clean checkout and re-executes updated tooling; it never changes the old pack or results.
+[Operator handoff](START-HERE.md) describes the current state and evidence limits. To deliberately run another design review, use [the command guide](docs/design-review-command.md); rerunning the second round is not the current next step.
 
 ## Independent design is a different task
 
