@@ -1,0 +1,448 @@
+{
+  "base_commit": "b1ba7a9f946cd0de6c1c79869faeaa110ac96782",
+  "archive_files_checked": 40,
+  "input_files_checked": 34,
+  "protected_files_checked": 87,
+  "mismatches": [],
+  "historical_role_status": "COMPLETE",
+  "historical_launcher_status": "LAUNCH_ERROR",
+  "scripts_unchanged": true,
+  "journal_history_preserved": true,
+  "protected_files": [
+    {
+      "path": "results/README.md",
+      "git_blob": "cdac1eba9ef6dbcb1e256004bae572d6742e8457",
+      "sha256": "a668efa0e5c005d7f4ca107f26e4904cab29c8b0e5b98037657398ab8430d7fb"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/MANIFEST.json",
+      "git_blob": "11f7ab2cc334c4c89b6339ca87cb2390a88a1b8e",
+      "sha256": "5a621e4620e4a2255412760e3a78a94416e5f254a99fee05163dcda52f8b4609"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/PROFILE.toml",
+      "git_blob": "c83460515d6c0bcecebf97d072e0bc3980f4674d",
+      "sha256": "6205ebcdd34276076e24c56c28743d4bb314427adb61b15f9e340097ad81d9c1"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "git_blob": "f24ff026fe8afd4cddf0c93c56b09ffbd35eea49",
+      "sha256": "05fe622b5dcb1f9224297977a20c086fc94e6b97212a2edd933f438d33b5e39d"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/START-REVIEW.txt",
+      "git_blob": "eb59abe1edb9acc51b471ffa51acb289cb932b69",
+      "sha256": "bf3a3ee84b6183b0ff7010681575eb1aa81c43fc40077cdf9c8ad03fe70fde34"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/archive-check.txt",
+      "git_blob": "688cdf00df1d6d58df01d0aeebb0d94888a02f81",
+      "sha256": "1af957a69d7375afcd05562a6f2271404281c0449193dd1101e37156047f1c8e"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "git_blob": "76c256fc086fc4180561f5f9ca04d1b9e969df1b",
+      "sha256": "c852575bcd7fe6ff7b5dfe4ff94e6c65a8f58d3118b301e3e6eae1e35ff03f5e"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/AGENTS.md",
+      "git_blob": "f35955c5cfb30603fd1070c58360ad2b176a4118",
+      "sha256": "e84550941ec3f3d00b76323e44c509324d00d59f605d8e8ee88fef94d163f3a7"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/MANIFEST.json",
+      "git_blob": "3a610659bb4d56919f833f640ad496acaffe3846",
+      "sha256": "20a1fd6b327312dcbfc0819768e03c140df0d69e1fd6d86772c73ca20314a2c0"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/RUN-RECORD.template.json",
+      "git_blob": "89c5c162e32df4168d59821c9fa955e53e7b9978",
+      "sha256": "a1194b785124cab3d2fed19e64063dd4680846654f35bdea93a25a18c039ad71"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/TASK.md",
+      "git_blob": "10f1a53afd74d057fea938555581d9f1d434cb43",
+      "sha256": "47d777c370e20aa592482098f6300b22f72a4f5603ae38d50318ac75c5f5b49f"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/agents/contract.md",
+      "git_blob": "2aeb503a099707b3e5c11c8a92cbb32c3188b269",
+      "sha256": "dad2bf35711a83b4b9c5321717e0acdea91ee75032b789174320fdd8becaf45e"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/agents/roles.md",
+      "git_blob": "520661cf59749ad3b101d00fb0ba314a4a397466",
+      "sha256": "15327f180061625019260ab8b577740436fc87adcb3b25710e937c156be2bb19"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/clean-context-review.md",
+      "git_blob": "066bd424a1d9c6b1ade4f9a4ca09eb699f315d9b",
+      "sha256": "6bb58ccd5881ae49bc7be5ddf158166bd383bdb37ad09f19a6edcbc16f1d0d4f"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/experiment-plan.md",
+      "git_blob": "c010d2aa54900deaee8e3a88c754bff004d83ed7",
+      "sha256": "4878552c6055be9fa229d46dd24e4c4adc892e914039d494356b912f92436fbd"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/preflight-start.md",
+      "git_blob": "842c463b586fa99a63041408c404b070cc72259d",
+      "sha256": "2fe45742b463603ae3165ae4c615021a3f4d9571ce6d147019ff71f6ef423fb8"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/project-brief.md",
+      "git_blob": "47c4c8a4d31310a292015784005a95480748de3c",
+      "sha256": "f41b14a079c14f9acc57c8a969472cd8ac44ad534daa561d3ef7d5c3c8ffd9d8"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prior/independent-design.md",
+      "git_blob": "ad26d27ef0f68decb7eceb1c3b5365784c6f24d3",
+      "sha256": "3199eb780759c64d26309dc7c882d9f242d74a50129600a8adc04be326136421"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prior/provenance.json",
+      "git_blob": "7c01b059033a5cf5a878403f46779f77e86384fc",
+      "sha256": "3d0f9fce6bcb3a7a821b8a559160599f7ffd11b3fc77f097f6aecd33aeeda046"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/01-architect.md",
+      "git_blob": "6a938c34aee6ada53473f5f89d40d8cf15808f1b",
+      "sha256": "77df8cf4ffe3f25ca3b50f52849a5cb815eebe34261dee2d3d6ed00b29bc8f0a"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/02-planner.md",
+      "git_blob": "ef27f78c6097ed40e39371b5f0f84a96091d77ae",
+      "sha256": "b6985102882c662958828550168c3ba3231823631dd18af51f962af49d53408c"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/03-implementer.md",
+      "git_blob": "0c84c8e3783480e49f14375cf457d1affc170724",
+      "sha256": "027715b1755c8b0ae49dc7e65969eacab513df2c41770592add8c9cd9223474c"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/04-reviewer.md",
+      "git_blob": "aa3d0235d2553c16f3ec96676153617d2a12dd1d",
+      "sha256": "7f6a88f887b6d1e6fc558dd727052bb51ac3d94a0c6854dc2e8412488fab38d2"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/05-fixer.md",
+      "git_blob": "222116bd1cc6097ca721b3655b5103432a927b45",
+      "sha256": "83a4d32f72dd01a04c45ab5f8f7960bc9d67a39e02d751b8b0e82d7c1ea939c4"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/06-referee-operator.md",
+      "git_blob": "fff16f4154cb6484265294ca1d75c794134c98fe",
+      "sha256": "eea1e3288d7fd3c543d43a1d5668d93aab092145a3fb860461e1d7af88590bc7"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/07-independent-design.md",
+      "git_blob": "7831c6e5315dc95dab8a07230024808617beb4fd",
+      "sha256": "cd1fe9488b211a3fb20fc725b10fc203a27683af7f013eadac71b2cbb3f71530"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/08-design-review.md",
+      "git_blob": "10f1a53afd74d057fea938555581d9f1d434cb43",
+      "sha256": "47d777c370e20aa592482098f6300b22f72a4f5603ae38d50318ac75c5f5b49f"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/09-comparative-review.md",
+      "git_blob": "f27cb621361ec365432c2fb4296eb7086734e22b",
+      "sha256": "592152acd88129f211d05a8b39201c7a401b0c3c4bdf21b3948187ea3b291c69"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/prompts/10-architecture-review.md",
+      "git_blob": "fb57eba5a9252649750e010a895d93a46feb1420",
+      "sha256": "e605602e44535fba16d8e0cdc9e5ac296834d9813dc531e69fd48369f286fe30"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/scripts/build-context-pack.py",
+      "git_blob": "e5b57587e7d93b4f52a11e5588f837b4f9f7e764",
+      "sha256": "de8b632148cbcee11092a3fa89578f58198067bee24ed302df8adcafbdcae73e"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/scripts/design-review.py",
+      "git_blob": "ae62ac4e5cddc856c8f9b880c76b6870ec6d5d60",
+      "sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/scripts/independent-review.py",
+      "git_blob": "dfdbfe66344476e9c09a99710dbe7a32d7b559df",
+      "sha256": "e736c6f10da55d7b7d17a27d73c3778de0297b931ef6d53dcb2b43df3d3dc668"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/scripts/prepare-review-run.py",
+      "git_blob": "9f4700ae0b8d49da7cff0747894c3d55be7dd2d7",
+      "sha256": "2a7e53fffb8f1da7edb60bf3c4f26a244e13093d1736eedb2f3fe2e6bb6a81aa"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/architecture-report.md",
+      "git_blob": "e5d0ca5a49cf9feb095cd304b11bf835d26c6492",
+      "sha256": "696c1accf0b318b832d58d064060fed07827941b778f2cdf7f4c5021f9c69203"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/migration-unit.json",
+      "git_blob": "1482daac43cef1c11f62ed5df07b236ca3c8f4a4",
+      "sha256": "0f20679bd08384ba1c0f3824a71104b6b7bb3808b32aa575ab0e0ebe14ccc6db"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/review-report.md",
+      "git_blob": "7f5ac0f460f3cf3735f97582873db6fc3f0e7288",
+      "sha256": "6bc95bf749976ec69102b552a2599de1f3c8e92ceabbc58ed22c9ec15acf959a"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/templates/run-record.json",
+      "git_blob": "89c5c162e32df4168d59821c9fa955e53e7b9978",
+      "sha256": "a1194b785124cab3d2fed19e64063dd4680846654f35bdea93a25a18c039ad71"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/tests/test_context_pack.py",
+      "git_blob": "b48150f4b0bdaab092918c2001262bc2ce17c96e",
+      "sha256": "ff06d1bb0f4b31ba03e2d9f2dcb330c305659de3e050c7fd53c1e6cc4070e4f8"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/tests/test_design_review.py",
+      "git_blob": "fab67b213ad076af88cb20cfa9e59b694d04bb58",
+      "sha256": "5ab910b4bed6cbfbad3b0c8f28d57aaf119ec24936d75cd51ede6a0874572a3b"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/tests/test_prepare_review_run.py",
+      "git_blob": "1a5946354ca39ef789da0021c46ad53b93729f26",
+      "sha256": "5e402bfb0ae2c1fdebd0f749de9e2af5464dad9fe9d8a5655b6705376e559d9e"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/workflow/bundles.json",
+      "git_blob": "78fca8850e12ee06f767006141e1b5d2c0454f21",
+      "sha256": "4aabe09a4ce8fd7f7ee9c265410b13b6772c9af49f5e6af2bb88d5faa745ab92"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/workflow/pipeline.json",
+      "git_blob": "17931fb17352449dee1d6ab159ce243ff7a2d8b2",
+      "sha256": "10ef5a5255a957ad224eba1f734f129c48381d11f8db62a0fbb4d9384cd57209"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "git_blob": "5f4a9270087bbada5e0b178596fff9dd843517d6",
+      "sha256": "4f95f983fd7d90b2724636d0f9b924e3c96eb333775d3c21083e4f210b0ede6d"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "git_blob": "d2211856f9ba7d08dc4cd63385c06721935a31f6",
+      "sha256": "0fbcc3134bf52c279fd251cdc03320f6681ba495f4286c2f55ea73631def9297"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt",
+      "git_blob": "3240cc1f64d8c982c6818ba8ed9606d07ddab4ff",
+      "sha256": "352ca99b9088932a8a038cb24773ec13982eb7021f563dde82310dd0a096fa02"
+    },
+    {
+      "path": "results/phase0-design-review-20260909T140149029117Z-9adbe645/verification.txt",
+      "git_blob": "e33d4693e88041aca576753450054548b6dbf894",
+      "sha256": "7dcc51c10f89de0cbe71d9ddf0988a0a38037f611015fa22c40e80f892e39d13"
+    },
+    {
+      "path": "results/tooling-design-review-20260908/file-hashes.json",
+      "git_blob": "47afa623bc9a9ef1cc6db24de9e057ad55425223",
+      "sha256": "4093802482dcad5c200e65e05873a1e255ca5619ae37b3dff4a9dcd316cd4355"
+    },
+    {
+      "path": "results/tooling-design-review-20260908/report.md",
+      "git_blob": "4ec01152930c2dc595363633d42c8dae56ac5b72",
+      "sha256": "11678732e5742b55cf51a5b3ca902c7f134ec964950fc1516111b35766b3c554"
+    },
+    {
+      "path": "results/tooling-design-review-20260908/test-output.txt",
+      "git_blob": "e9333073bee26089943d3809c2b38bba53440acb",
+      "sha256": "b5e7271dbe498a5e15eddffc777c98bcb802232429c77cd88ba871265929e9db"
+    },
+    {
+      "path": "results/tooling-handoff-20260908/legacy-compatibility.txt",
+      "git_blob": "03b286e6fdc67962c7c16c6ef55e2b3e33e30551",
+      "sha256": "3753d0ef17a1f0708010992688657729c75027afb5427e8507888dfdc767e3f2"
+    },
+    {
+      "path": "results/tooling-handoff-20260908/report.md",
+      "git_blob": "3f5b809331b865a180930208b77c4eaa1af5b459",
+      "sha256": "3c043d33089cecf99a610223b28e6614dc69c27d3bfc51788c98ec21cd9a462c"
+    },
+    {
+      "path": "results/tooling-handoff-20260908/test-output.txt",
+      "git_blob": "61fe79900f81454a4be36781c05628c69c6642f9",
+      "sha256": "47028fc32d9bde0b2a55f081fc38ba89b7656d21a4ee85554bd4b1cb0d55209f"
+    },
+    {
+      "path": "results/tooling-launcher-20260908/git-integration.txt",
+      "git_blob": "a34dd37f6f7c7d4decbfff251bd3fca65e8d4c2c",
+      "sha256": "6a5946b93fe07b3593e3cc8bbaefd392f62c406c4ad08bad24520fd37fb06720"
+    },
+    {
+      "path": "results/tooling-launcher-20260908/report.md",
+      "git_blob": "248319e2afcc36e838085430fffb95324b7b3c75",
+      "sha256": "643211f3f69006cc6f10196e6f9c4bb84d229aa2054e418d2dc1fe8c5ff92bf8"
+    },
+    {
+      "path": "results/tooling-launcher-20260908/test-output.txt",
+      "git_blob": "b5f6521672d169ebda6b6fa19111472f711c4cac",
+      "sha256": "58f3a070cab7f208f5e940113d8630649febcd04d7916a582382f8038a6647a0"
+    },
+    {
+      "path": "results/tooling-missing-record-20260908/report.md",
+      "git_blob": "2d47500548157146b1c033acf6b0e3a4d09cf687",
+      "sha256": "5de30955bffc287973600c082acc63ae89f3b2e34c09999b3ae1ab7641c62f11"
+    },
+    {
+      "path": "results/tooling-missing-record-20260908/test-output.txt",
+      "git_blob": "e876e6e5b27ee1211a540bbb2fc41f42a1401cdb",
+      "sha256": "56db17c30154cbb3c7249ba07a06c1d1836d653c14d5fb5a6f15abc5f17d08e2"
+    },
+    {
+      "path": "results/tooling-preflight-20260908/report.md",
+      "git_blob": "3ea25d99d4c8bd7df5e00554ede55f05510464a9",
+      "sha256": "c99611d39690572a4d09c2cab62009c76220224550286a92979262b086db23b7"
+    },
+    {
+      "path": "results/tooling-preflight-20260908/test-output.txt",
+      "git_blob": "a4cbf6164812f4c2c4254605c71ec426879b6ef9",
+      "sha256": "15f2a89d618ae645c6f47a084a6d0f88f2e1f5b63b8a25fa0426cfe9739cca63"
+    },
+    {
+      "path": "results/tooling-validation-20260908/report.md",
+      "git_blob": "bea6968a5f8cf4460a95fddbb72828469456a5c7",
+      "sha256": "6b3d5e9cc0ad5dc6b3ab4bbe9468162e88ca713d4989f9468c4d4cf93a51e7c2"
+    },
+    {
+      "path": "results/tooling-validation-20260908/test-output.txt",
+      "git_blob": "5921ceedf91a32074c36949b23bd5e7ae2d1157b",
+      "sha256": "e67052e3e55636961e33c873c8a747cac3830ee4b1d04b5aaa969c8e5cc4a489"
+    },
+    {
+      "path": "sources/README.md",
+      "git_blob": "593c2b9f40442881b5538a1687684b443627501b",
+      "sha256": "0201a55973cd3490b69cb5df1b4623a5dbc0d8d57f180840d4842e62ffee98df"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/LICENSE",
+      "git_blob": "8726a4c9bd53863ce831534782d6231645c6342a",
+      "sha256": "410d60fcc086452024c652c21f4c47135a6ddef6ed6a88eb68b8e6505f955958"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/README.md",
+      "git_blob": "03c5b2757f6785d1de310ee8fc4955176a69c114",
+      "sha256": "f93c6c4dafd7f753976468d14f27b57f353fddd29239112c6342c3f9fbacca43"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/SOURCE.md",
+      "git_blob": "534a2b51c9e4c41a5d82508cebcc53d4ca812f77",
+      "sha256": "af3b9ec730d7d2af32096deb546fc6af5685e7bf1c53a246245d33082299bd23"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/prompts/adversarial-reviewer.md",
+      "git_blob": "3285331fa57361e62a0abe7030e58e76c763149c",
+      "sha256": "bf22a0803ce83715d141813b07fbf4dc703b6e243ec7c2d4c3adbb3f166f5f87"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/prompts/fixer.md",
+      "git_blob": "7f5fd5e731f9bdc4308a246dc79c9c7411a1d1bc",
+      "sha256": "b610782de6a5b5b0e1cdffd8a212491de83d97fc96a3a275f8584d30a3baa520"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/prompts/implementer.md",
+      "git_blob": "27ceb8518c4a24fbeadbbfdf394f36b02dc9fcfd",
+      "sha256": "dd319a0071eb2e02365bd4cbf471864688db63283114dbbb52ae01f214737f49"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/prompts/orchestrator.md",
+      "git_blob": "1539e54f5eee4669c6ecf0660920b19bb04cf32d",
+      "sha256": "52fd052d424c09e72be5c3ea86a00f1e8b17f05ea4b133ef3082d0a9549136ed"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/workflows/dynamic-workflow.claude.md",
+      "git_blob": "0b07080fd23047b360072c0e53f95dcb77b91669",
+      "sha256": "e73daffa19b6d6fefc320a13b04a86eb447a0fc225e43024375b11f4708eb51a"
+    },
+    {
+      "path": "sources/github.com/Lumafy/sumner-method/workflows/multi-agent-orchestration.ts",
+      "git_blob": "56a544f28d4c7c723b872a8a99ae09a6d4bf61db",
+      "sha256": "0ea723ff0b5165e4b5964b2cdba4e43c48e140b2a38c62c94e4dd01b4a623d12"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/LICENSE",
+      "git_blob": "d8231b30e0e8c4cb6403526c1acb947256bc4a64",
+      "sha256": "3931387797255796f648e75437284ab5b7169754208f92a56b6ae617898c661a"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/SOURCE.md",
+      "git_blob": "28e7fcf87ce2f44b93b2442227f549a28c7fc255",
+      "sha256": "5e1b403669541dfed7f517b1566d03cc950ddcd7ecf8ae60f22959e627173d6f"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/00-feasibility.md",
+      "git_blob": "6ee55d74858a5a0019b90cf2a81503e6a9454dff",
+      "sha256": "45480affcc41a3fa4ea73edc25233f23d95b675c3a884676bc5b1893c05d777c"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/00b-judge-setup.md",
+      "git_blob": "f1a860505f3ebad265cfeab003aa3c52448aae0b",
+      "sha256": "b032093c70adfa702f7bba19e7db657edef68f973ccf68648dbf10478f388c0a"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/01-dependency-map.md",
+      "git_blob": "effb067f325de437e2d403a7deb2816fdca00ca0",
+      "sha256": "8071df8a21c56386e0c23d96c2c4c63f49dabebaa6c1eb4a179454c563f5f334"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/02-gap-inventory.md",
+      "git_blob": "611d8ca801f76066e62a84d5b256a54296dcc855",
+      "sha256": "aff5ca1051242e83e9da515fe6711e47ce68a30f251904a41fcb82cec8cf9fd9"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/03-stress-test.md",
+      "git_blob": "1d568c445db15b8739a2b37dba1e57cfb1f996b4",
+      "sha256": "237ea8ca63261397a93ebbb89ca7d8183b3c5ceffd84974e449481f96bb262b7"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/04-translation-kickoff.md",
+      "git_blob": "eb7ad31a0cfe65b9a8b2737d9631d87bfd27982c",
+      "sha256": "a38468306931e0c23159c5403dce8491e99d9082ffa508f714308c9bf0afab11"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/05-survey-build.md",
+      "git_blob": "2a4193df1331cba3717b98ad6e83b3ad3e1b3a86",
+      "sha256": "4f4ad6348a54cadc2054154577eafd36c3198a9fd7a0276057e0cb44c83cc6fd"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/prompts/06-post-parity.md",
+      "git_blob": "389f01c36e1cf098ead814d749c5bf747162088f",
+      "sha256": "5aae22624b0a31ba34f6ea3ea39394f3677c1b3367ac8f1df0c149e318d3bced"
+    },
+    {
+      "path": "sources/github.com/anthropics/code-migration-kit-with-claude-code/templates/RULEBOOK.md",
+      "git_blob": "7fc09595d81ee9d49f955a35359cf4c3c6b5ff55",
+      "sha256": "51db60923ed83af24ab2b2f407836ac9d0e7ce2cf0f995569037ce47a6ce453c"
+    },
+    {
+      "path": "sources/github.com/oven-sh/bun/commit-46d3bc29/LICENSE.md",
+      "git_blob": "31f19c5cd98909bbad850127f11a40f39fd34d99",
+      "sha256": "2b9623dab61b0de396e7899f18790435b2efab1247d31d49a22dfb260c492ca4"
+    },
+    {
+      "path": "sources/github.com/oven-sh/bun/commit-46d3bc29/SOURCE.md",
+      "git_blob": "0c1757ccdd3984d1d9428e0fa3ed4413b07b2549",
+      "sha256": "f30978a780a3b61e6730e9a8e595d6b45e9eafbef925f944a4516b21a12a7c33"
+    },
+    {
+      "path": "sources/github.com/oven-sh/bun/commit-46d3bc29/docs/PORTING.md",
+      "git_blob": "1346736f95daefc972f003e39eef9b52e3dd87ed",
+      "sha256": "6f02194397ed377b7ebd533efd530d4fc1b5f9d70f86d9d383a3ea61a44598ec"
+    },
+    {
+      "path": "sources/github.com/oven-sh/bun/commit-46d3bc29/scripts/port-batch.ts",
+      "git_blob": "75347771300a0c6291f5b029eb3735385f2a2aa8",
+      "sha256": "51dbcf6d039f1db852d324247f0a1b8ff9a6e69a57e201986545ec8a3a5eadc5"
+    },
+    {
+      "path": "upstream/bun-baseline.env",
+      "git_blob": "e98241c0dab958ec37d01a78cee22424c2324782",
+      "sha256": "7b6099df9b62fb062a95e2329c621b579d1957066da23714cc296c2164d85c5c"
+    }
+  ]
+}

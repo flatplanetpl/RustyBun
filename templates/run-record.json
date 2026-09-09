@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "status": "NOT_RUN",
   "run_id": null,
   "stage": null,
@@ -45,7 +45,35 @@
   "commands": [],
   "output_artifacts": [],
   "limitations": [],
-  "checkpoint": null,
+  "checkpoint": {
+    "at": null,
+    "input_manifest_sha256": null,
+    "source_sha": null,
+    "process_sha": null,
+    "protocol_sha256": null,
+    "candidate_sha256": null,
+    "evidence_artifacts": [],
+    "last_confirmed_state": null,
+    "open_findings": [],
+    "budget_snapshot": {
+      "plan_sha256": null,
+      "wall_seconds": {
+        "used": null,
+        "remaining": null
+      },
+      "human_attention_minutes": {
+        "used": null,
+        "remaining": null
+      },
+      "model_resource": {
+        "unit": null,
+        "used": null,
+        "remaining": null
+      },
+      "fix_rounds_used": null
+    },
+    "next_allowed_action": null
+  },
   "gate_decision": {
     "gate": null,
     "status": "PENDING",
@@ -54,5 +82,36 @@
     "artifact_hashes": []
   },
   "role_id": null,
-  "output_root": null
+  "output_root": null,
+  "session": {
+    "session_id": null,
+    "previous_run_record_sha256": null,
+    "change_reason": null
+  },
+  "budget": {
+    "plan_sha256": null,
+    "wall_seconds": {
+      "used": null,
+      "remaining": null
+    },
+    "human_attention_minutes": {
+      "used": null,
+      "remaining": null
+    },
+    "model_resource": {
+      "unit": null,
+      "used": null,
+      "remaining": null
+    },
+    "fix_rounds_used": null
+  },
+  "review": {
+    "kind": null,
+    "actor": null,
+    "candidate_sha256": null,
+    "protocol_sha256": null,
+    "report_sha256": null,
+    "independence": null
+  },
+  "interventions": []
 }

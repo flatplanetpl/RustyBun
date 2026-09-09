@@ -117,6 +117,21 @@ class DesignReviewTests(unittest.TestCase):
         self.assertEqual(record['launcher']['status'], 'NOT_LAUNCHED')
         self.assertFalse((run / 'output/design-review.md').exists())
 
+    def test_current_v02_template_fields_survive_design_preparation(self):
+        template = json.loads((ROOT / 'templates/run-record.json').read_bytes())
+        (self.repo / 'templates/run-record.json').write_bytes(design.json_bytes(template))
+        git(self.repo, 'add', 'templates/run-record.json')
+        git(self.repo, 'commit', '-m', 'Use current run-record template')
+        previous = files(self.prior), files(self.oldpack)
+        run = self.prepare()
+        record, _ = design.verify_run(run)
+        self.assertEqual(record['schema_version'], '0.2')
+        for key in ('session', 'budget', 'review', 'interventions', 'checkpoint'):
+            self.assertEqual(record[key], template[key])
+        self.assertEqual(record['status'], 'PREPARED')
+        self.assertEqual(record['gate_decision']['status'], 'PENDING')
+        self.assertEqual(previous, (files(self.prior), files(self.oldpack)))
+
     def test_default_has_no_implicit_authorization(self):
         run = self.prepare(allow=False)
         record, prompt = design.verify_run(run)

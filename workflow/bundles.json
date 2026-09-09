@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "source_sha": "0a7bed5873ad9cc8c2c9203ecf05c1e8754dc49f",
   "bundles": {
     "independent-design": {
@@ -39,7 +39,9 @@
         "tests/test_prepare_review_run.py",
         "scripts/independent-review.py",
         "scripts/design-review.py",
-        "tests/test_design_review.py"
+        "tests/test_design_review.py",
+        "docs/decisions/2026-09-09-pilot-v0.2.md",
+        "tests/test_workflow_contract.py"
       ]
     },
     "comparative-review": {
@@ -81,7 +83,9 @@
         "tests/test_context_pack.py",
         "docs/preflight-start.md",
         "scripts/prepare-review-run.py",
-        "tests/test_prepare_review_run.py"
+        "tests/test_prepare_review_run.py",
+        "docs/decisions/2026-09-09-pilot-v0.2.md",
+        "tests/test_workflow_contract.py"
       ]
     },
     "architect": {

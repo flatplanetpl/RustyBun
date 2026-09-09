@@ -1,72 +1,62 @@
 # RustyBun
 
-An experiment in migrating Bun from Zig to Rust: design the process and its contracts first, then run a measurable pilot using Codex under a subscription plan.
+An experiment in migrating Bun from Zig to Rust: prepare the process and its contracts, then run a measurable pilot using Codex under a subscription plan.
 
-**Status: v0.2 direction agreed; process implementation pending.** Damian has agreed the pilot decisions recorded on 2026-09-09: one bounded slice, one main sequential working session, baseline and a tested verifier before porting, a verification reserve, and accountable human edits/checkpoints. This is a decision-only update, not blanket acceptance of every detail in the reviewer's proposal. **G1–G5 remain PENDING; no migration is authorized.**
+**Status: process v0.2 prepared; operator review and G1–G5 remain PENDING.** The active plan, roles, prompts, templates and pipeline now implement [D01–D08](docs/decisions/2026-09-09-pilot-v0.2.md): one bounded slice, one main sequential working session and one active writer. This preparation does not select a Bun slice, approve a budget or authorize migration.
 
-The second-round reports remain archived with verdict **REVISE_PROCESS**, role status `COMPLETE`, launcher status `LAUNCH_ERROR` and **EXPLORATORY; INDEPENDENCE UNVERIFIED**. The launcher's error cause remains unknown. No Bun architecture analysis, baseline compilation or migration is claimed.
+The original must run and the verifier must pass positive and negative controls before G3 and implementation. Review is mandatory; two separate reviewers are not the default. Its kind and scope are agreed before implementation, self-review is disclosed, and Damian assesses evidence and accepts the result. Difficult boundaries require competent additional review or a narrower/different slice.
 
 ## Start here
 
-[Agreed pilot decisions](docs/decisions/2026-09-09-pilot-v0.2.md) · [Operator handoff](START-HERE.md) · [Project brief](docs/project-brief.md) · [Experiment plan](docs/experiment-plan.md) · [Roles](agents/roles.md) · [Shared contract](agents/contract.md) · [Prompts](prompts/) · [Presentation journal](docs/presentation-journal.md)
+[Operator handoff](START-HERE.md) · [Agreed decisions](docs/decisions/2026-09-09-pilot-v0.2.md) · [Project brief](docs/project-brief.md) · [Experiment plan](docs/experiment-plan.md) · [Roles](agents/roles.md) · [Shared contract and record fields](agents/contract.md) · [Prompts](prompts/) · [Presentation journal](docs/presentation-journal.md)
 
-## Read the second-round results
+## Prepared process and next steps
 
-[Archive and verification report](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md) · [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md) · [Candidate v0.2](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md) · [Original run record](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json)
+The [pipeline](workflow/pipeline.json) describes prerequisites; `executable_runner=false`. The operator checks evidence and approvals. The migration-unit template separates resource limits from verification reserves; the run record tracks usage, human/model edits and checkpoints. Unknown values remain null. Any candidate edit requires fresh review and parity for the new hash. A continuation preserves consumed resources and fix rounds; it does not restart the budget.
 
-The archive preserves 40 input/output files byte for byte, including the frozen first design and its supplied provenance. Its root `MANIFEST.json` records the archive mapping; `input/MANIFEST.json` is the original input manifest. Original absolute paths and the launcher error remain historical evidence. This is a closed run, not a workspace to restart.
+Review this preparatory change with Damian. Then separately prepare the required **comparative review** with historical materials, explicit inputs/hashes, frozen reports and proposal, a run record and execution conditions. That round has not been performed or waived. G1 still requires Damian's decision on a concrete process version and budget. Slice selection, environment, model/settings, numeric limits/reserves and the slice's review plan remain open.
 
-The review identifies gaps in baseline/judge ownership, verification reserves and accountable checkpoints, and recommends retaining negative judge controls. The [decision record](docs/decisions/2026-09-09-pilot-v0.2.md) now selects the direction for a separate v0.2 implementation commit. Existing scripts, prompts, templates and gate states have not been changed by this decision-only update.
+[Preparation checks and D01–D08 mapping](results/tooling-process-v02-20260909T174417Z/report.md) record tooling evidence. They do not establish Bun build readiness, verifier effectiveness, migration parity or human acceptance. No new review agent or orchestration platform was used to prepare v0.2.
 
-## Next step: implement the agreed process in a separate commit
+## Frozen methodology results
 
-Prepare a coherent v0.2 revision of the existing process documents, roles, prompts and templates; change tooling only where needed for that scope. Do not start a Bun port, select a slice, invent budget values or approve gates. Review the resulting changes with Damian before operational use. One main session is not merely the absence of parallel work: the earlier process already limited active writers, while the new direction also reduces mandatory session boundaries and preparation scope.
+[Archive and verification report](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md) · [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md) · [Reviewer's candidate v0.2](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md) · [Original run record](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json)
 
-The existing plan's separate comparative review with historical materials **has not been waived**. It remains required before G1; a documentation revision is not that review or a gate approval. G1 still requires the concrete process version and budget. Frozen reports and input packs must remain unchanged.
+The second-round archive preserves 40 input/output files byte for byte, including the first design and its supplied provenance. Verdict **REVISE_PROCESS**, role status `COMPLETE`, launcher status `LAUNCH_ERROR` and **EXPLORATORY; INDEPENDENCE UNVERIFIED** remain unchanged. The launcher's error cause, actual model/settings, quota and independence remain unknown. Original paths are historical metadata, not instructions to resume the closed run.
 
-[Operator handoff](START-HERE.md) describes the current state and evidence limits. To deliberately run another design review, use [the command guide](docs/design-review-command.md); rerunning the second round is not the current next step.
+The adopted decisions select the scope of this preparation; the reviewer's full proposal is not automatically accepted. Earlier reports and the decision record retain their historical meaning.
 
-## Independent design is a different task
+## Methodology review commands
 
-The first round designs an alternative from the brief **without** our proposal. To repeat that experiment deliberately on its existing pack:
+The three rounds remain **independent design → design review of our process and the frozen alternative → comparative review with historical migration materials**. They have separate context rules. This does not impose separate Architect/Planner/Fixer sessions on the pilot. A fresh independent-design export still receives only the neutral brief and administrative template, without the adopted method.
 
-```bash
-python3 scripts/independent-review.py --update --launch --allow-unverified-isolation
-```
-
-Unlike the new design-review command, this older command opens an empty session: select model/settings, then paste the printed prompt between its markers. It preserves the original pack SHA. See [independent-review instructions](docs/independent-review-command.md).
-
-The three rounds are: **independent design → design review of our process and the alternative → later comparison with historical migration materials**. They do not overwrite one another, and a completed report is not a gate approval.
+Repeating a completed round would be a new, explicitly selected attempt; it is not the next step. [Independent-design guide](docs/independent-review-command.md) · [Design-review guide](docs/design-review-command.md) · [Preflight and handoff](docs/preflight-start.md). The raw design-review exporter does not add the required prior report; its existing wrapper does. No comparative-review launcher is added here, and no operational comparative pack is prepared by this commit.
 
 ## Isolation and evidence
 
-A separate profile prevents intentional reuse of the old local client state, but is **not a container or proof of isolation**. System policy and other readable files may remain accessible. `isolation_verified` stays false. The first report disclosed a sandbox failure; the new design-review launcher uses `workspace-write` with approval policy `never` and provides no outside-sandbox retry. Known excluded context, inaccessible outputs, missing files or hash mismatches remain blocking. Both proposals are intentionally authorized inputs in the second round.
+A separate profile is not a container or proof of isolation. The existing design-review launcher requests `workspace-write` with approval policy `never`, without an outside-sandbox retry. `isolation_verified` stays false. Known excluded context, inaccessible outputs, missing files and hash mismatches remain blocking. Both proposals and the decision record are deliberately authorized inputs of new design-review packs; the journal and conversation history remain excluded.
 
-`--allow-unverified-isolation` is a separate, explicit authorization only for the selected exploratory design task. No migration, gate approval, API-key fallback, credit purchase or quota reset is authorized. Temporary client profiles are removed on normal exit; outputs remain. Never publish authentication caches or raw private session logs.
-
-`PREPARED` is not `COMPLETE`. Actual timestamps, model/settings and measurements must come from execution. The new command verifies the expected output files/hashes after client exit, but does not turn missing results into success.
+`--allow-unverified-isolation` authorizes only the explicitly selected exploratory methodology task. It does not approve migration, gates, paid API, credit purchases or quota resets. Never publish authentication caches or raw private sessions. `PREPARED`, `COMPLETE`, mechanical verification and operator acceptance mean different things.
 
 ## Baseline and archived sources
 
-Source for independent analysis: `0a7bed5873ad9cc8c2c9203ecf05c1e8754dc49f`.
+Pinned source: `0a7bed5873ad9cc8c2c9203ecf05c1e8754dc49f`.
 Reference guide commit: `46d3bc29f270fa881dd5730ef1549e88407701a5`.
 The latter adds `docs/PORTING.md` and `scripts/port-batch.ts` without changing Bun's implementation. It is a reproducible Phase A boundary, not proof of the first private session's exact state.
 
-[Baseline analysis](docs/upstream-baseline-analysis.md) · [Pinned SHAs](upstream/bun-baseline.env) · [Sources](sources/README.md) · [Clean-context protocol](docs/clean-context-review.md)
+[Baseline analysis](docs/upstream-baseline-analysis.md) · [Pinned SHAs](upstream/bun-baseline.env) · [Sources](sources/README.md) · [Context protocol](docs/clean-context-review.md)
 
-`sources/` is an archive; our process lives in `agents/`, `prompts/`, `workflow/` and `templates/`; `results/` stores explicitly labelled evidence. Upstream licences apply in their respective directories. This change grants no new repository-wide licence.
+`sources/` is an archive. Our process lives in `agents/`, `prompts/`, `workflow/` and `templates/`; `results/` stores labelled evidence. Upstream licences apply in their respective directories. This preparation grants no new repository-wide licence. No Bun source analysis, baseline compilation or migration is claimed.
 
-## Low-level tools and validation
-
-The existing exporter and preparation helper remain supported; see [preflight instructions](docs/preflight-start.md). Do not re-export an existing first-round pack to repair a run. The second-round wrapper adds the prior report before freezing a new pack; the raw exporter alone is not the complete second-round command.
+## Local validation
 
 ```bash
 python3 -m unittest discover -s tests -v
 ```
 
-[Design-review tests](results/tooling-design-review-20260908/report.md) · [Independent launcher tests](results/tooling-launcher-20260908/report.md) · [Preflight tests](results/tooling-preflight-20260908/report.md) · [Handoff tests](results/tooling-handoff-20260908/report.md)
+The tests exercise real local Git/export/preflight and simulated client calls; they do not run models or Bun. CLI and exporter manifest format remain unchanged; new process configuration/templates use version 0.2. Old packs are never rewritten to match new templates.
 
-Only after the relevant gate permits source analysis:
+Only after the relevant gate and source-access authorization:
 
 ```bash
 bash scripts/bootstrap-bun-baseline.sh

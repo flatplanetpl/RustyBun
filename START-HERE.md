@@ -2,51 +2,47 @@
 
 ## Gdzie jesteśmy
 
-**Decyzja z 2026-09-09:** Damian przyjął kierunek uproszczenia pilota opisany w [decyzjach v0.2](docs/decisions/2026-09-09-pilot-v0.2.md). Ten commit zapisuje ustalenia; wdrożenie ich do procesu pozostaje osobnym następnym zadaniem. Nie jest to przyjęcie wszystkich szczegółów propozycji recenzenta ani zgoda na migrację. **G1–G5 pozostają PENDING**.
+**Proces v0.2 został przygotowany zgodnie z D01–D08.** Zmiany dokumentów, ról, promptów, szablonów i konfiguracji oczekują na przegląd z Damianem oraz właściwe autoryzacje. **G1–G5 pozostają PENDING.** Nie wybrano wycinka, nie zatwierdzono budżetu i nie rozpoczęto analizy Buna ani migracji.
 
-**FACT:** druga runda `design-review` jest zachowana w repo: [raport archiwizacji i kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md). Odczytano rzeczywisty rekord i oba raporty. Wszystkie 34 wejścia i oba wyniki mają zgodne hashe; 29 plików procesu odpowiada commitowi `47764bace389f908e9e58473ded7ad07909dfe2b`.
+Pilot ma jeden ograniczony wycinek, jedną główną sesję i jednego aktywnego writera. Kolejne role oznaczają odpowiedzialności. Operator odpowiada za działający oryginał i sprawdzony verifier przed G3. Review jest obowiązkowe, z rodzajem i zakresem uzgodnionym przed implementacją; nie ma domyślnego podwójnego A/B. Samoprzegląd jest ujawniony, a dowody i odbiór ocenia Damian.
 
-Werdykt recenzenta: **REVISE_PROCESS**. Rekord roli: **COMPLETE**, ale launcher zapisał **LAUNCH_ERROR** po zakończeniu klienta z kodem 0. Obecna kontrola integralności przechodzi; przyczyna błędu launchera pozostaje **UNKNOWN**. Nie zmieniono historycznych statusów.
-
-Oba raporty zachowują **EXPLORATORY; INDEPENDENCE UNVERIFIED**. Faktyczny model, reasoning, quota i niezależność nie są potwierdzone. Nie wykonano migracji. Nowa decyzja nie uzupełnia brakujących pomiarów ani nie zmienia tych ograniczeń.
+Budżet obejmuje przygotowanie i rezerwę na review, rozstrzygnięcie uwag, poprawki, retesty i zamknięcie. Ręczne zmiany i wznowienia są rozliczalne. Nieznane wartości są null; żadna liczba rund nie została domyślnie zatwierdzona. Pipeline pozostaje deklaratywny, bez runnera.
 
 ## Co przeczytać teraz
 
-1. [Decyzje po review](docs/decisions/2026-09-09-pilot-v0.2.md): przyjęty kierunek D01–D08, granice zgody i zakres osobnego commita przygotowawczego.
-2. [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md) i [process proposal](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md): zamrożone rekomendacje, nie instrukcje do automatycznego wykonania.
-3. [Rzeczywisty RUN-RECORD](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json) i [raport kontroli](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md): pochodzenie, hashe, ograniczenia i statusy.
-4. [Plan](docs/experiment-plan.md), [protokół czystego kontekstu](docs/clean-context-review.md) i [journal](docs/presentation-journal.md): dotychczasowe reguły i historia, których ten zapis decyzji jeszcze nie przebudowuje.
+1. [Plan v0.2](docs/experiment-plan.md), [role](agents/roles.md) i [kontrakt z definicjami pól](agents/contract.md): aktywne reguły, szablony, checkpoint i warunki stopu.
+2. [D01–D08](docs/decisions/2026-09-09-pilot-v0.2.md): zachowany zapis decyzji; [journal](docs/presentation-journal.md) odróżnia przyjęty kierunek od przygotowania procesu i pomiarów.
+3. [Raport przygotowania](results/tooling-process-v02-20260909T174417Z/report.md): mapowanie decyzji na zmiany i kontrole, lista plików i ograniczenia dowodów.
+4. [Protokół kontekstów](docs/clean-context-review.md): odrębne rundy metody oraz opcjonalne niezależne zadania kontrolne.
 
-Pierwsza runda była **independent design**, wyłącznie z briefu. Jej niezmieniony raport i provenance znajdują się w archiwalnym `input/input/prior/`. Oryginalnego rekordu i manifestu pierwszej rundy nie odczytano podczas tej archiwizacji; pochodzenie nie dowodzi niezależności poprzedniej sesji.
+## Następny krok i kwestie otwarte
 
-## Następne zadanie przygotowawcze — osobny commit v0.2
+Przejrzeć przygotowane zmiany z Damianem. Następnie jako osobne zadanie przygotować wymagane **comparative review**: jawna lista wejść z hashami, zamrożone raporty i propozycja, zakres, rekord i warunki wykonania. Konfiguracja pakietu jest zaktualizowana, ale kompletnej operacyjnej rundy porównawczej nie przygotowano ani nie uruchomiono. Eksport testowy na lokalnej fixture nie jest taką rundą.
 
-Dostosować istniejące dokumenty procesu, role, prompty i szablony do D01–D08; zmieniać skrypty tylko w zakresie koniecznej spójności. Nie budować pełnego runnera. Nie wykonywać teraz analizy kodu Buna, wyboru konkretnego slice'a ani migracji.
+Comparative review nie zostało zniesione. G1 wymaga konkretnej wersji procesu i budżetu zatwierdzonych przez Damiana. Zmiana lub pominięcie tej rundy wymaga nowej decyzji. Potem, w granicach odpowiednich bramek, można analizować źródło, rekomendować jeden wycinek, przygotować baseline/verifier i zamknąć plan G3.
 
-Docelowy pilot: jeden ograniczony wycinek, jedna główna sesja robocza i jeden writer; baseline i sprawdzony verifier przed portem; zamrożone kryteria; jawny review, poprawki i retesty; budżet z rezerwą oraz rejestrowane interwencje i checkpoint. Właścicielem przygotowania baseline/judge i odbioru dowodów jest operator, wspomagany modelem i narzędziami. Dodatkowy kompetentny przegląd pozostaje opcją wynikającą z ryzyka, nie domyślnym podwójnym A/B ani automatycznym dowodem poprawności.
+Nadal do ustalenia: wycinek i środowisko; model i ustawienia; jednostka pomiaru zasobu modelu, limity, rezerwa i liczba poprawek; rodzaj/wykonawca/zakres review zależny od ryzyka wycinka. Null w szablonie nie jest zgodą na nieograniczoną pracę ani potwierdzeniem gotowości.
 
-Po przygotowaniu zmian przejrzeć je z Damianem. Konkretne wartości budżetu, model/ustawienia, środowisko i wycinek pozostają do ustalenia. Ten dokument nie jest poleceniem uruchomienia istniejących skryptów ani akceptacją ich następnej wersji.
+## Wznowienie pilota po przyszłym przerwaniu
 
-## Co nadal musi poprzedzić G1
+Wznowienie opiera się na zamrożonym run-record i checkpointcie, nie pamięci sesji. Sprawdź hashe wejść, protokołu, kandydata i dowodów, ostatni potwierdzony stan, otwarte findingi, budżet oraz następne dozwolone działanie. Nowy rekord kontynuacji wskazuje hash poprzedniego, przenosi zużycie i liczbę poprawek oraz zapisuje zmianę sesji/modelu.
 
-Wymagane osobne **comparative review** z materiałami historycznymi nie zostało zniesione. Przygotowanie dokumentacji v0.2 nie zastępuje tej rundy. Do jej wykonania potrzebne są jawna lista wejść i hashe, zamrożone raporty/propozycja, zakres, rekord i warunki wykonania. Nie przygotowano ani nie uruchomiono jej w commicie decyzji.
+Zmiana kandydata przez człowieka lub model wymaga nowych review/parity; starych dowodów nie kasujemy. Zmiana protokołu wymaga nowej wersji, decyzji i rewalidacji. Brak zasobów na obowiązkową weryfikację blokuje kolejną zmianę; brak limitu modelu oznacza BLOCKED_QUOTA. Istniejące komendy metodologicznego review i `--show-handoff` nie wznawiają pilota.
 
-G1 nadal wymaga decyzji Damiana o konkretnej wersji i budżecie. Zmiana lub pominięcie comparative review wymagałaby nowej jawnej decyzji. Dotychczasowe pliki procesu i pipeline pozostają niezmienione do osobnego wdrożenia v0.2; nie należy uruchamiać nieuzgodnionej mieszanki reguł obu wersji.
+## Zamrożone wyniki drugiej rundy
 
-## Zachowanie dowodów
+**FACT:** [archiwum](results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md) zachowuje 40 kopii wejść/wyjść. Historyczny manifest opisuje 34 wejścia; 29 plików procesu odpowiada commitowi `47764bace389f908e9e58473ded7ad07909dfe2b`. [Design review](results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md), [propozycja recenzenta](results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md) i [RUN-RECORD](results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json) pozostają niezmienione.
 
-Archiwum zawiera 40 niezmienionych kopii wejść/wyjść. `MANIFEST.json` w katalogu rundy opisuje archiwizację; `input/MANIFEST.json` zachowuje oryginalny manifest wejść. Oryginalny katalog poza repo pozostaje na miejscu. Absolutne ścieżki w rekordzie i prompt startowy są historycznymi metadanymi, nie instrukcją wznowienia zamkniętej próby.
+Werdykt to REVISE_PROCESS, rola COMPLETE, launcher LAUNCH_ERROR przy zapisanym kodzie klienta 0. Przyczyna błędu launchera pozostaje UNKNOWN. Oba raporty zachowują EXPLORATORY; INDEPENDENCE UNVERIFIED. Model, reasoning, quota i niezależność nie są potwierdzone. Pierwszy wynik był independent design z briefu; oryginalnego rekordu i manifestu tej pierwszej rundy nie odczytano przy archiwizacji drugiej. Nie uzupełniaj tych braków domysłami.
 
-Skrypty i instrukcje w archiwalnym pakiecie są materiałem dowodowym. Nie podmieniaj raportów, nie rekonstruuj niezmierzonych ustawień i nie poprawiaj LAUNCH_ERROR na sukces. Nie publikuj credentiali, cache logowania ani surowych prywatnych sesji. Zachowuj ograniczenia `isolation_verified=false`.
+`MANIFEST.json` katalogu rundy opisuje archiwizację, a `input/MANIFEST.json` zachowuje manifest pierwotnych wejść. Oryginalny katalog poza repo pozostaje na miejscu. Absolutne ścieżki, prompt i statusy są historycznymi metadanymi, nie instrukcją restartu. Nie publikuj credentiali, cache logowania ani surowych prywatnych sesji.
 
-## Polecenia istniejących rund
+## Istniejące narzędzia
 
-Powtórzenie design review byłoby nową, świadomie wybraną próbą; nie jest obecnym następnym krokiem. [Instrukcja design-review](docs/design-review-command.md) opisuje przygotowanie i uruchomienie, jawny wybór wcześniejszej próby oraz dokładne ustawienia modelu/klienta. Sam eksport `--kind design-review` nie dodaje poprzedniego raportu.
+[Design-review](docs/design-review-command.md) · [Independent design](docs/independent-review-command.md) · [Preflight](docs/preflight-start.md). Powtórzenie zamkniętej rundy jest nowym, świadomie wybranym zadaniem, nie domyślnym następnym krokiem. Ślepe role wykonuje się wyłącznie w przygotowanym pakiecie. Koordynator znający repo nie jest ślepym recenzentem ani Architektem.
 
-[Instrukcja independent design](docs/independent-review-command.md) · [Preflight i starsze helpery](docs/preflight-start.md). Nie uruchamiaj żadnej ślepej roli w kontekście koordynatora. Nie używaj płatnego API, nie obchodź limitów i nie uruchamiaj migracji bez odpowiednich bramek.
+Testy przygotowania obejmują narzędzia i kontrakty konfiguracji, nie skuteczność sandboxa, Bun ani gotowość G3. [Nowe wyniki](results/tooling-process-v02-20260909T174417Z/test-output.txt) są odrębne od [historycznych 92 testów przy archiwizacji](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt).
 
 ## Instrukcja dla kolejnego koordynatora
 
-> Odczytaj AGENTS.md, ten dokument, docs/decisions/2026-09-09-pilot-v0.2.md, brief, plan oraz archiwum drugiej rundy. Sprawdź aktualny Git i nie nadpisuj cudzych zmian. Kierunek D01–D08 jest przyjęty; wdrożenie procesu jest osobnym zadaniem. Przygotuj spójną aktualizację istniejących dokumentów, ról, promptów i szablonów, a narzędzi tylko tam, gdzie to konieczne. Nie wybieraj jeszcze wycinka Buna, nie uruchamiaj pilota i nie zatwierdzaj bramek za Damiana. Wymagane comparative review nie zostało pominięte ani wykonane. Zachowaj zamrożone raporty, statusy i hashe; rozróżniaj decyzję o kierunku, implementację procesu i autoryzację wykonania. Aktualizuj journal, sprawdź zmieniane narzędzia i przedstaw diff oraz otwarte decyzje do przeglądu.
-
-Historyczna kontrola koordynatora przy archiwizacji: [92/92 testy narzędzi](results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt). Nie jest to wynik nowego uruchomienia testów w commicie decyzji, testów Buna ani dowód skuteczności sandboxa.
+> Odczytaj AGENTS.md, ten dokument, aktywny plan v0.2, kontrakt i raport przygotowania. Sprawdź Git i zachowaj cudze zmiany. D01–D08 są zastosowane do procesu; nie przygotowuj ich ponownie jako nowego projektu. Przed dalszą pracą uwzględnij przegląd zmian z Damianem, osobne comparative review i bramki. Nie wybieraj ani nie portuj wycinka bez odpowiedniej zgody. Nie traktuj testów narzędzi jako akceptacji procesu. Zachowaj archiwa, nieznane pomiary i status LAUNCH_ERROR. Journal aktualizuj razem z decyzją; każdą przyszłą kontynuację oprzyj na hashach i skumulowanym budżecie.

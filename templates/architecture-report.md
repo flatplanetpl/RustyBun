@@ -1,27 +1,31 @@
-# Raport Architekta — SZABLON, NIE WYNIK
+# Raport analizy wycinka v0.2 — SZABLON, NIE WYNIK
 
-Status / run_id / source SHA / process SHA / input manifest SHA-256 / model / zakres odczytu.
+Status / run_id / session_id / source SHA / process SHA / input manifest SHA-256 / model / zakres odczytu / budżet i wykorzystanie.
 
-## 1. Zakres i ograniczenia
-Co odczytano w całości, co próbkowano, czego nie zbadano; platformy i build configuration. Polecenia uruchomione, niewykonane i powód.
+## 1. Zakres i kontekst
 
-## 2. System i przepływy
-Entry points, odpowiedzialności, przepływy danych, publiczne API. FACT/INFERENCE/UNKNOWN z path:line@SHA.
+Granice ograniczonej analizy, pełny odczyt/próbkowanie/pominięcia, platformy i build configuration. Główna sesja albo jawnie wybrana dodatkowa analiza; znany kontekst i ograniczenia niezależności. Polecenia wykonane/niewykonane i powód. Pełna mapa Buna nie jest produktem obowiązkowym.
 
-## 3. Zależności
-Wewnętrzne / zewnętrzne / generowane / build-time; metoda ekstrakcji, krawędzie z dowodem, unresolved, SCC, ograniczenia statycznej analizy. Osobno skutki projektowanego podziału na crates.
+## 2. Zachowanie i przepływy
 
-## 4. Kontrakty
-Wejścia, wyjścia, błędy, kodowanie, efekty uboczne, ordering, zasoby i cykl życia; producenci i konsumenci; sposób pomiaru parity.
+Rzeczywista ścieżka wejście → wynik, entry points, odpowiedzialności i API w badanym zakresie. FACT/INFERENCE/UNKNOWN z path:line@SHA. Atrapy nie zastępują wymaganej ścieżki.
 
-## 5. Strategia granic
-Boundary ID / warianty / rekomendacja / dowód / koszt i założenia / warunek obalenia / otwarte pytania.
+## 3. Istotne zależności
 
-## 6. Ryzyka
-Ownership/areny, FFI/GC, comptime, bytes/string, error model, concurrency i platformy. Dla każdej luki dowód, impact i sposób zamknięcia.
+Wewnętrzne / zewnętrzne / generowane / build-time; dowody, unresolved i ograniczenia. Jeśli potrzebny jest graf, podaj metodę i istotne cykle w zakresie wycinka; pełny graf/SCC i podział Buna na crates są odłożone.
 
-## 7. Pilotaż
-Do trzech kandydatów: kontrakt, zależności, testowalność, zakres integracji i powód wyboru. Nie nazywaj ich jednostkami zatwierdzonymi do wykonania.
+## 4. Kontrakty i strategie granic
 
-## 8. Rekomendacja G2
-GO / REVISE / BLOCKED; warunki, brakujące dowody i lista artefaktów. Akceptacja operatora: PENDING.
+Wejścia, wyjścia, błędy, kodowanie, efekty uboczne, ordering, cykl życia, ownership/FFI, producenci i konsumenci. Boundary ID / rozważane warianty / rekomendacja / dowód / koszt jako pomiar lub hipoteza / warunek obalenia.
+
+## 5. Jeden wycinek do pilota
+
+Rozważone kandydatury tylko w zakresie potrzebnym do rekomendacji jednej. Rekomendowany kontrakt, zależności, rzeczywista integracja, wykonalność baseline/verifiera i koszt weryfikacji. Właściciel przygotowania: Damian; wykonawca/uprawnienia/środowisko do wskazania. Nie nazywaj rekomendacji jednostką zatwierdzoną.
+
+## 6. Ryzyka i ocena operatora
+
+Dowód / wpływ / sposób zamknięcia. Czy potrzebny jest kompetentny dodatkowy przegląd przed G2 lub w planie review przed G3? Jeśli granica nie jest wiarygodnie ocenialna, warunki ograniczenia/zmiany wycinka. Brak baseline blokuje G3 i implementację, nie statyczne ustalenia.
+
+## 7. Rekomendacja G2 i kontynuacja
+
+GO / REVISE / BLOCKED; brakujące dowody, artefakty i ostatni potwierdzony stan. Checkpoint w run-record wiąże hashe, budżet i następne dozwolone działanie. Akceptacja Damiana: PENDING. Zmiana odpowiedzialności nie wymaga nowej sesji ani nie zeruje kosztu.

@@ -1,0 +1,649 @@
+{
+  "checked_at": "2026-09-09T17:53:58.407960+00:00",
+  "kind": "static-consistency-and-coordinator-self-review",
+  "markdown_files_checked": 24,
+  "local_links_checked": 123,
+  "json_files_checked": [
+    "templates/migration-unit.json",
+    "templates/run-record.json",
+    "workflow/bundles.json",
+    "workflow/pipeline.json"
+  ],
+  "diff_check_exit_code": 0,
+  "journal_history_preserved": true,
+  "publication_screened": [
+    "results/tooling-process-v02-20260909T174417Z/report.md",
+    "results/tooling-process-v02-20260909T174417Z/test-output.txt",
+    "results/tooling-process-v02-20260909T174417Z/test-run.json",
+    "results/tooling-process-v02-20260909T174417Z/integrity.json"
+  ],
+  "publication_check_limit": "Scoped pattern scan and coordinator inspection, not all possible sensitive data.",
+  "document_review_kind": "SELF_REVIEW",
+  "topics_checked": [
+    "one sequential slice",
+    "baseline and negative verifier controls before G3",
+    "review kind and operator acceptance",
+    "resource reserves and null unknowns",
+    "interventions and cumulative checkpoints",
+    "method rounds separate from pilot sessions",
+    "historical v0.1 references distinguished from current requirements"
+  ],
+  "errors": [],
+  "local_links": [
+    {
+      "document": "README.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/project-brief.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "prompts/",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "workflow/pipeline.json",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/upstream-baseline-analysis.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "upstream/bun-baseline.env",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "sources/README.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "docs/preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/tooling-process-v02-20260909T174417Z/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "START-HERE.md",
+      "target": "results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "agents/roles.md",
+      "target": "../docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "agents/roles.md",
+      "target": "contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/clean-context-review.md",
+      "target": "../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/clean-context-review.md",
+      "target": "preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/design-review.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/process-proposal.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/RUN-RECORD.json",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "target": "../../results/phase0-design-review-20260909T140149029117Z-9adbe645/input/input/workflow/pipeline.json",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "../START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/design-review-command.md",
+      "target": "../results/tooling-design-review-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/experiment-plan.md",
+      "target": "decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "docs/experiment-plan.md",
+      "target": "../workflow/pipeline.json",
+      "exists": true
+    },
+    {
+      "document": "docs/experiment-plan.md",
+      "target": "clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "docs/experiment-plan.md",
+      "target": "../templates/migration-unit.json",
+      "exists": true
+    },
+    {
+      "document": "docs/experiment-plan.md",
+      "target": "../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/independent-review-command.md",
+      "target": "../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/independent-review-command.md",
+      "target": "../results/tooling-launcher-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/preflight-start.md",
+      "target": "../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "upstream-baseline-analysis.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../sources/github.com/oven-sh/bun/commit-46d3bc29/docs/PORTING.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../sources/github.com/Lumafy/sumner-method/workflows/multi-agent-orchestration.ts",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-validation-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/prepare-review-run.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-preflight-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-handoff-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-missing-record-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/independent-review.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-launcher-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../scripts/design-review.py",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-design-review-20260908/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/phase0-design-review-20260909T140149029117Z-9adbe645/report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/phase0-design-review-20260909T140149029117Z-9adbe645/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "docs/presentation-journal.md",
+      "target": "../results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "test-run.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "integrity.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "consistency.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../AGENTS.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../README.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../START-HERE.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../agents/contract.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../agents/roles.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/clean-context-review.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/decisions/2026-09-09-pilot-v0.2.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/design-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/experiment-plan.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/independent-review-command.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/preflight-start.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../docs/presentation-journal.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/01-architect.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/02-planner.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/03-implementer.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/04-reviewer.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/05-fixer.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/06-referee-operator.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/08-design-review.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/09-comparative-review.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../prompts/10-architecture-review.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/MANIFEST.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/consistency.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/integrity.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/test-output.txt",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../results/tooling-process-v02-20260909T174417Z/test-run.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../templates/architecture-report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../templates/migration-unit.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../templates/review-report.md",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../templates/run-record.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../tests/test_design_review.py",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../tests/test_workflow_contract.py",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../workflow/bundles.json",
+      "exists": true
+    },
+    {
+      "document": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "target": "../../workflow/pipeline.json",
+      "exists": true
+    }
+  ]
+}

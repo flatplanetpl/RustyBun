@@ -1,5 +1,5 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
   "status": "DRAFT_TEMPLATE",
   "unit_id": null,
   "source_sha": null,
@@ -42,13 +42,47 @@
     "comparator_sha256": null,
     "mutation_checks": [],
     "existing_failures": [],
-    "acceptance_criteria": []
+    "acceptance_criteria": [],
+    "owner": "Damian",
+    "executor": null,
+    "status": "NOT_RUN",
+    "environment_record_sha256": null,
+    "baseline_evidence": [],
+    "verifier_evidence": [],
+    "protocol_version": null,
+    "protocol_manifest_sha256": null,
+    "frozen_at": null,
+    "tests_sha256": null,
+    "normalization_sha256": null,
+    "negative_control_requirements": [
+      "wrong_result",
+      "empty_test_set",
+      "missing_output",
+      "timeout",
+      "wrong_implementation"
+    ]
   },
   "budget": {
-    "max_fix_rounds": 2,
+    "includes_preparation": true,
+    "wall_seconds": {
+      "limit": null,
+      "verification_reserve": null
+    },
+    "human_attention_minutes": {
+      "limit": null,
+      "verification_reserve": null
+    },
+    "model_resource": {
+      "unit": null,
+      "measurement_basis": null,
+      "limit": null,
+      "verification_reserve": null
+    },
+    "max_fix_rounds": null,
     "max_active_writers": 1,
-    "quota_available": null,
-    "approved": false
+    "approved": false,
+    "approved_by": null,
+    "approved_at": null
   },
   "rollback": null,
   "open_questions": [],
@@ -58,5 +92,19 @@
     "by": null,
     "at": null,
     "artifact_sha256": null
+  },
+  "review": {
+    "required": true,
+    "kind": null,
+    "scope": [],
+    "reviewers": [],
+    "independence": null,
+    "additional_review": {
+      "required": null,
+      "reason": null,
+      "reviewers": []
+    },
+    "approved_by": null,
+    "approved_at": null
   }
 }

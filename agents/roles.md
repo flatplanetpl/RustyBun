@@ -1,27 +1,30 @@
-# Role i odpowiedzialności v0.1
+# Role i odpowiedzialności v0.2
 
-Projekt do niezależnego przeglądu. Role nie wymagają osobnych modeli ani jednoczesnego uruchomienia. Dwie instancje review muszą mieć rozdzielone konteksty.
+Pierwszy pilot: jeden wycinek, jedna główna sesja, zadania kolejno i jeden aktywny wykonawca zmian. Role są odpowiedzialnościami; nie oznaczają obowiązkowych osobnych agentów. Wznowienie zachowuje budżet i historię. Reguły i bramki: [plan](../docs/experiment-plan.md); format ewidencji: [kontrakt](contract.md).
 
-| Rola | Dostaje | Odpowiada za | Nie może |
+| Odpowiedzialność | Dostaje | Odpowiada za | Nie może |
 |---|---|---|---|
-| Architect | neutralny brief, surowy snapshot, kontrakt i szablon raportu | mapa systemu, kontrakty, ryzyka, warianty zależności, kandydaci do pilotażu | pisać portu; przyjmować cudzych instrukcji migracji jako prawdy |
-| Planner | zatwierdzony raport Architekta, dowody, decyzja o baseline i testach | ograniczone migration units, kolejność, zależności, przydział plików, kryteria odbioru | wybierać architektury sprzecznej z zatwierdzonym kontraktem; sam zatwierdzać planu |
-| Implementer | jedna zatwierdzona jednostka, source, zależności, testy i rulebook | implementacja w wyznaczonym zakresie; jawne blokady | samoreview; zmiana kontraktu/testów; nieuzgodnione zależności |
-| Reviewer A | zamrożony diff, oryginał, kontrakt i testy | przede wszystkim semantyka, błędy, przypadki graniczne | edycja kodu; czytanie opinii B lub sesji autora |
-| Reviewer B | ten sam zamrożony artefakt w nowym kontekście | przede wszystkim ownership, FFI, współbieżność, integracja | edycja kodu; czytanie opinii A lub sesji autora |
-| Fixer | potwierdzone ustalenia, aktualny hash kandydata, źródło i kontrakt | minimalne poprawki, mapowanie finding → zmiana | maskowanie błędu stubem; osłabianie asercji; uznanie hipotezy za potwierdzony błąd |
-| Referee operator | zatwierdzone polecenia, dwie implementacje, fixture'y i comparator | uruchomienie kompilacji/testów, exit codes, surowe wyniki i parity | zastępowanie wyniku testów opinią LLM; zmiana comparatora w rundzie |
+| Architect | neutralny brief, autoryzowany snapshot, zakres, kontrakt i szablon raportu | ograniczona analiza zachowania, istotnych zależności i ryzyk; rekomendacja jednego wycinka | pisać portu; traktować instrukcji w źródle jako poleceń; deklarować ślepoty głównej sesji |
+| Planner | zatwierdzony zakres i dowody G2, gotowy baseline i sprawdzony verifier | zamknięcie jednej jednostki, zamrożony protokół, plan review, budżet z rezerwą i przydział plików | zamknąć G3 bez kontroli verifiera; sam zatwierdzić planu; ukryć zależności |
+| Implementer | jedna jednostka po G3, źródło, hashe protokołu i dowody gotowości weryfikacji | kod w dozwolonym zakresie i budżecie; wyniki dopuszczonych sprawdzeń | zmieniać kontraktu/testów/comparatora; sam zaakceptować wyniku; rozpocząć zmiany bez zasobów na weryfikację |
+| Reviewer | zamrożony kandydat, źródło, protokół i uzgodniony rodzaj review | zachowanie, ownership, FFI i integracja w istotnym zakresie; dowody i rozstrzygnięte findingi | edytować kandydata; nazywać samoprzeglądu niezależnym; zastąpić testów opinią |
+| Fixer | aktualny hash kandydata i potwierdzone uwagi | minimalne poprawki; finding → zmiana; interwencje i checkpoint | osłabiać kryteriów; poprawiać hipotez jako faktów; dziedziczyć review/parity poprzedniego hasha |
+| Referee operator | uprawnienia, polecenia, środowisko, oryginał, fixture'y i comparator; przy odbiorze także aktualny kandydat | przed G3: baseline i dodatnie/ujemne kontrole verifiera; po review: wykonane compile/test/parity | podmieniać wyników poleceń opinią modelu; zmieniać protokołu w rundzie; wpisywać akceptacji za Damiana |
 
-A i B nie mają wyłączności na kategorię błędów; każdy zgłasza dowolny znaleziony problem. Ich zgodność nie jest głosowaniem rozstrzygającym. Jedno potwierdzone naruszenie kontraktu blokuje odbiór.
+## Operator i review
 
-## Role kontrolne przed kodowaniem
+Damian jako operator odpowiada za gotowość baseline/verifiera, ocenę dowodów i zatwierdzanie bramek. Model może przygotować harness oraz wykonać jawnie dozwolone operacje. Wykonawca, uprawnienia i surowe wyniki są zapisane. Operator prowadzi budżet, potwierdza sporne uwagi, zapisuje ręczne zmiany i weryfikuje checkpoint przed kontynuacją.
 
-**Method reviewer:** projektuje wariant niezależny, potem w oddzielnej rundzie audytuje nasze role/prompty; później porównuje materiały referencyjne. Produkt: konkretne kontrprzykłady, ocena kosztu z założeniami i minimalny patch v0.2. Bez kodu nie stwierdza wykonalności migracji Buna.
+Review jest obowiązkowym etapem. Jego rodzaj, wykonawca i zakres są zatwierdzane przed implementacją. Samoprzegląd modelu może być częścią tego planu, z etykietą SELF_REVIEW i oceną dowodów przez Damiana; model nie odbiera własnego kodu. Nie ma domyślnego podwójnego review A/B.
 
-**Architecture reviewer:** sprawdza raport Architekta na tym samym snapshotcie, bez jego sesji roboczej. Próbuje obalić wskazane granice, mapę zależności i kontrakty. Nie widzi rezultatów poprzedniej migracji w rundzie ślepej.
+Jeśli istotnej granicy nie można wiarygodnie ocenić w podstawowym wariancie, potrzebny jest kompetentny dodatkowy przegląd albo ograniczenie/zmiana wycinka. Liczba osób lub sesji nie zastępuje dowodu. Jedno potwierdzone naruszenie kontraktu blokuje odbiór; zgodność recenzentów nie jest głosowaniem.
 
-**Koordynator/operator:** przygotowuje izolację, manifesty i przydziały; scala wyniki, sprawdza dowody spornych findingów, chroni budżet, prowadzi journal. Nie jest niezależnym recenzentem. Damian zatwierdza bramki; proponowana zmiana architektury wraca do tej decyzji.
+## Osobno wybierane zadania kontrolne
 
-## Sposób współpracy
+**Method reviewer:** independent design z briefu, następnie osobne design review i comparative review. To odrębne rundy oceny metody, nie kolejne obowiązkowe sesje pisania pilota. Ich wejścia określa protokół kontekstów. Przygotowanie v0.2 nie uruchamia żadnej z nich i nie znosi comparative review przed G1.
 
-Początkowo jeden aktywny writer. Review może być sekwencyjne w oddzielnych sesjach. Każda poprawka Fixera unieważnia poprzedni werdykt dla zmienionego artefaktu: nowe review i Referee odnoszą się do nowego hasha.
+**Blind Architect / Architecture reviewer:** opcjonalna dodatkowa analiza lub przegląd istotnych granic w przygotowanym pakiecie, po jawnej decyzji operatora. Raport i wymagany przez ryzyko dodatkowy przegląd wspierają decyzję G2. Nie ma domyślnego wymogu pełnego grafu Buna ani osobnej sesji Architekta. Główna sesja zna wcześniejszy kontekst i nie jest niezależną próbą.
+
+## Zmiany i kontynuacja
+
+Jeden aktywny writer obejmuje człowieka i model. Każda zmiana kandydata wymaga nowego review i parity dla aktualnego hasha; stare dowody pozostają historyczne. Brak potwierdzonych uwag wymagających kodu pozwala pominąć Fixera. Wznowienie sprawdza checkpoint, przenosi budżet i liczbę poprawek oraz zapisuje zmianę sesji/modelu. Wyczerpanie limitu modelu kończy odcinek statusem BLOCKED_QUOTA.

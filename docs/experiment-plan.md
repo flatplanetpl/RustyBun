@@ -1,62 +1,74 @@
-# Plan wykonania RustyBun v0.1
+# Plan wykonania RustyBun v0.2
 
-Stan: kandydat procesu, bez uruchomionej migracji. Ten dokument zastępuje wcześniejszą kolejność, która kierowała do materiałów referencyjnych przed analizą niezależną. Nie zmienia przypiętego kodu.
+Stan: proces przygotowany zgodnie z [D01–D08](decisions/2026-09-09-pilot-v0.2.md), oczekuje na przegląd zmian z Damianem i wymagane bramki. G1–G5 pozostają PENDING. Ten plan nie uruchamia analizy Buna ani migracji. Kierunek, przygotowanie procesu i zgoda na wykonanie to odrębne decyzje.
 
 ## Kolejność i bramki
 
+Pierwszy pilot obejmuje **jeden ograniczony wycinek, jedną główną sesję roboczą i jednego aktywnego wykonawcę zmian**. Analiza, planowanie, implementacja, review i poprawki następują kolejno. Role oznaczają odpowiedzialności; zmiana odpowiedzialności nie wymaga nowego agenta. Wznowienia są dozwolone na podstawie checkpointu i skumulowanego budżetu.
+
 | Etap | Konkretna praca | Produkty | Warunek przejścia |
 |---|---|---|---|
-| G0 — przygotowanie | audyt repo, przypięcie wejść, role/prompty, eksport pakietów i testy narzędzi | obecny zestaw plików; manifest pakietu | narzędzia sprawdzone; brak deklarowania gotowej migracji |
-| G1 — projekt procesu | niezależny wariant → review naszej propozycji → osobne comparative review | raporty trzech rund, patch procesu, wykaz zaakceptowanych/odrzuconych zmian | Damian zatwierdza konkretną wersję procesu i budżet |
-| G2 — Architect | statyczna analiza surowego źródła, mapa i kontrakty; niezależny przegląd raportu | architecture-report, deterministyczna mapa w zakresie, rejestr luk i ryzyk | raport ma dowody; krytyczne niejasności wyjaśnione lub ograniczają zakres; decyzja Damiana przed Plannerem |
-| G3 — baseline i plan | kontrolowany build oryginału; inwentaryzacja testów; Planner wydziela jednostkę i projektuje judge | environment/run-record, baseline outputs, unit manifest, test plan | wykonalny kontrakt, realny baseline i zweryfikowany judge; akceptacja planu |
-| G4 — pilot | Implementer → A i B → potwierdzenie findingów → Fixer → ponowne review → Referee | diffy, findings, kompilacja, testy, wyniki old/new | brak potwierdzonych blokad; parity w zadeklarowanym zakresie; podpisana decyzja |
-| G5 — decyzja o skali | analiza jakości, uwagi człowieka, limitu i kosztu weryfikacji | porównanie wariantów i decyzja stop/zmień/rozszerz | nie skalujemy tylko dlatego, że istnieją pliki .rs |
+| G0 — przygotowanie | spójne dokumenty, szablony, deklaratywny pipeline i testy narzędzi | diff procesu, dowody kontroli | przygotowanie nie jest zgodą na pilota |
+| G1 — projekt procesu | independent design → design review → osobne comparative review | zamrożone raporty, konkretna wersja procesu i decyzje o zmianach | Damian zatwierdza wersję i budżet obejmujący przygotowanie oraz rezerwę |
+| G2 — analiza wycinka | ograniczona analiza źródła, istotnych zależności i kontraktów; ocena dowodów przez operatora | architecture-report, rekomendacja jednego wycinka, ryzyka i luki | Damian ocenia zakres i dowody; wymagany przez ryzyko dodatkowy przegląd musi być zakończony |
+| G3 — baseline, verifier i plan | operator z pomocą modelu przygotowuje oryginał i verifier; Planner zamyka manifest jednostki | środowisko, surowe wyniki kontroli dodatnich i ujemnych, zamrożony protokół, plan review i budżet wycinka | działający baseline i sprawdzony verifier; Damian zatwierdza manifest i kryteria przed implementacją |
+| G4 — pilot | implementacja → review → rozstrzygnięcie uwag → ewentualne poprawki → ponowne review i testy → Referee | diffy, rozliczone interwencje, review i parity dla aktualnego hasha | brak potwierdzonych blokad; wykonane porównanie w zadanym zakresie; decyzja Damiana |
+| G5 — decyzja o skali | analiza jakości, uwagi człowieka i całego kosztu dowodu | decyzja stop/zmień/rozszerz | rozszerzenie wymaga osobnej decyzji; wygenerowany kod nie dowodzi gotowości |
 
-G0 jest realizacją przygotowania, nie zgodą na G1–G5. Aktualny stan bramek zapisuje workflow/pipeline.json; rekord wykonania i decyzja z hashem są dowodem, nie samo pole statusu.
+Stan bramek zapisuje [pipeline](../workflow/pipeline.json). Jest deklaracją zależności, **nie runnerem ani automatycznym egzekwowaniem bramek**. Operator sprawdza rekordy, polecenia, hashe i decyzje. Istnienie pliku, status COMPLETE i testy narzędzi nie są akceptacją etapu.
 
-## G1: czego oczekujemy od niezależnej oceny
+## G1: ocena metody pozostaje osobnym procesem
 
-Pełny protokół: docs/clean-context-review.md. Minimalny input to brief, kryteria review, kontrakty I/O, propozycja procesu (dopiero w drugiej rundzie), ograniczenia narzędzi i budżetu. Historia naszej rozmowy, entuzjazm autora, journal i cudze wyniki nie należą do wejścia ślepego.
+[Protokół kontekstów](clean-context-review.md) zachowuje trzy odrębne rundy. Independent-design dostaje neutralny brief, bez przyjętej metody. Design-review dostaje wersjonowany proces, zapis decyzji jako jawne ograniczenia i zamrożoną alternatywę. Comparative-review wymaga wybranych materiałów historycznych oraz wcześniejszych raportów i propozycji jako jawnych wejść z hashami.
 
-Runda porównawcza może ulepszyć proces, ale nie kasuje oryginalnej wersji ani ślepego wyniku. Operator może znać oba warianty; Architekt dostaje tylko zatwierdzony minimalny kontrakt zadania, bez gotowych decyzji dotyczących Buna.
+Przygotowanie v0.2 nie jest kolejnym review i nie znosi comparative review przed G1. Nie uruchamiamy ponownie zamkniętych rund. Zmiana tej kolejności wymaga nowej decyzji Damiana. Wcześniejsze raporty i statusy zachowują swoje ograniczenia, w tym niezweryfikowaną niezależność.
 
-## G2: zakres analizy Architekta
+## G2: ograniczona analiza, jeden wycinek
 
-Przejdź od entry points do odpowiedzialności, danych, zależności i obserwowalnych efektów. Rejestruj zależności wewnętrzne, biblioteki zewnętrzne, komponenty C/C++, generowany kod i zależności builda osobno. Sam graf @import nie jest kompletną mapą semantyczną.
+Po G1 badaj wyłącznie zakres potrzebny do wskazania testowalnego wycinka i jego rzeczywistej ścieżki wejście → wynik. Można porównać ograniczoną listę kandydatur; do pilota trafia jedna. Nie wybieramy jej w commicie przygotowawczym. Granicę określa zachowanie i wykonalność weryfikacji, nie liczba plików. Atrapy służą testom izolowanym; nie zastępują wymaganej rzeczywistej ścieżki.
 
-Skrypt analityczny ma deterministycznie emitować krawędzie z pochodzeniem i unresolved sites. Uwzględnij warunki platformowe i build configuration; oblicz silnie spójne składowe, a następnie ponownie sprawdź cykle po proponowanym podziale na crates. Nie wyprowadzaj kolejności builda z niezweryfikowanego grafu.
+Zapisuj entry points, producentów/konsumentów, ownership, błędy, efekty uboczne i platformy. Rozróżniaj zależności wewnętrzne, zewnętrzne, generowane i build-time. Graf, gdy jest potrzebny w tym zakresie, ma dowody krawędzi, unresolved sites i sprawdzone istotne cykle. Pełna mapa Buna, pełny graf SCC i podział całego systemu na crates są odłożone.
 
-Dla każdej badanej granicy porównaj PORT_1_TO_1 / ADAPT / MINIMAL_CONTRACT / BRIDGE / REDESIGN. Uzasadnij wybór przez rzeczywiście używany interfejs, ownership, błędy, efekty uboczne i koszty integracji. Mały interfejs może kryć duży kontrakt: np. callback lifetime, kodowanie, ordering czy backpressure.
+Dla istotnych granic porównaj PORT_1_TO_1 / ADAPT / MINIMAL_CONTRACT / BRIDGE / REDESIGN. Uzasadnij strategię rzeczywiście używanym interfejsem, cyklem życia i integracją. C/C++ i FFI wymagają świadomej decyzji; nie każdą zależność trzeba przepisać w Rust.
 
-Nie zakładaj, że każda zależność musi być przepisana w Rust. Przypadki C/C++ i FFI wymagają osobnej decyzji, nie automatycznego zastępstwa crate'em. Nie wprowadzaj zmian implementacji na tym etapie.
+Główna sesja nie jest ślepym Architektem. Osobna analiza w pakiecie architect oraz dodatkowy przegląd raportu są opcjami wybieranymi jawnie z powodu ryzyka. Damian ocenia dowody do G2. Brak builda dopuszcza ograniczoną analizę statyczną, ale blokuje G3 i implementację.
 
-## G3: baseline i niezależny judge
+## G3: działający oryginał i sprawdzony verifier
 
-Najpierw odtwórz środowisko dla przypiętego źródła. Zapisz wersje narzędzi, system, CPU/RAM, konfigurację i pobrane zależności. Niemożność pobrania toolchainu to BLOCKED_ENVIRONMENT, nie błąd portu. Brak builda nie blokuje statycznego G2, ale blokuje dowód gotowości G4.
+**Właścicielem gotowości baseline i verifiera jest Damian jako operator.** Model może projektować harness i wykonywać dozwolone polecenia. Przed startem trzeba wskazać wykonawcę, dozwolone operacje i środowisko; operator nie musi ręcznie wpisywać każdej komendy. Planner może przygotować draft podczas budowy harnessu, ale zamknięcie planu i G3 wymagają rzeczywistych wyników.
 
-Uruchom testy oryginału i sklasyfikuj existing failures, flaky i braki środowiska. Nie zmieniaj oczekiwanych wyników tylko po to, by suite był zielony. Judge używa identycznego publicznego interfejsu, wejść i comparatora dla old/new. Znane błędy bezpieczeństwa/UB dokumentuj; nie wymagaj odtwarzania UB ani luk w nowej implementacji. Każde dopuszczone odstępstwo od zachowania musi mieć jawny test i decyzję.
+Odtwórz środowisko przypiętego źródła w wymaganym zakresie. Zapisz wersje narzędzi, konfigurację, system, CPU/RAM i pobrane zależności. Uruchom oryginalny punkt odniesienia i jego testy; oddziel existing failures, flaky i braki środowiska. Niemożliwy build to BLOCKED_ENVIRONMENT. Nie zmieniaj oczekiwanych wyników dla uzyskania zielonej suite.
 
-Sprawdź judge na oryginale i na kilku kontrolowanych mutacjach w kopii testowej. Musi wykryć każdą wybraną mutację; nie przedstawiaj tego jako dowodu pełnego pokrycia. Baseline fixture'y i comparator zamroź przed implementacją.
+Judge/verifier oznacza mechaniczny łańcuch uruchomienia i porównania. Old/new muszą używać identycznego publicznego interfejsu, danych, normalizacji i comparatora. Zapisz tożsamość faktycznie uruchomionego artefaktu. Znane luki/UB dokumentuj; nie wymagaj ich odtwarzania. Dopuszczone odstępstwo wymaga decyzji i jawnego testu.
 
-Planner wybiera najpierw jedną funkcjonalną jednostkę o zamkniętym, testowalnym kontrakcie. Kolejne dwa trudniejsze przypadki są propozycją rozszerzenia po pierwszym wyniku — nie obowiązkiem migracji trzech arbitralnych plików.
+Najpierw sprawdź poprawne wykonanie oryginału, następnie odrzucenie kontrolowanych mutacji z właściwego powodu. Wymagane przypadki: celowo błędny wynik (`wrong_result`), pusty zestaw testów (`empty_test_set`), brak wyniku (`missing_output`), timeout oraz błędna identyfikacja uruchamianego old/new (`wrong_implementation`). Każdy musi uniemożliwiać PASS. Kontrole wykonuj na kopiach testowych; kilka mutacji nie dowodzi pełnego pokrycia. Szablon wymagań nie jest dowodem ich wykonania.
 
-## G4: bounded execution
+Przed implementacją zamroź **kontrakt, dane, testy, normalizację, comparator i kryteria akceptacji**. Manifest protokołu identyfikuje wszystkie te artefakty, dozwolone komendy i wersję środowiska. Ich hashe oraz surowe dowody gotowości wpisz do manifestu jednostki. Zmiana protokołu wymaga nowej wersji, jawnej decyzji i ponownej walidacji baseline/verifiera oraz dowodów kandydata, których dotyczy. Implementer i Fixer nie mogą go osłabiać.
 
-Przydział plików i shared ownership przed pracą. Domyślnie jeden writer, dwie niezależne sesje review. Wspólna zmiana wraca do koordynatora. Żadnych jednoczesnych edycji tych samych plików.
+## G4: review, poprawki i mechaniczny odbiór
 
-Budżet roboczy do zatwierdzenia: najwyżej dwie rundy poprawek jednostki, bez automatycznego fan-outu. Po wyczerpaniu budżetu/limitu zapisz dowody i checkpoint. Samo istnienie pliku nie oznacza ukończenia: stan obejmuje PLANNED, IMPLEMENTED, REVIEWED, VERIFIED, ACCEPTED lub BLOCKED.
+Przed G3 ustal rodzaj review, zakres, wykonawcę, deklarację niezależności oraz potrzebę dodatkowych kompetencji. Review jest obowiązkowe, bez domyślnego podwójnego A/B. Samoprzegląd modelu jest oznaczony jako SELF_REVIEW i obejmuje osobny etap pracy; model nie akceptuje własnego wyniku. Damian ocenia dowody i odbiera wynik.
 
-Używaj tanich sprawdzeń wcześnie, gdy są dostępne. Centralizuj kosztowny pełny build, gdy pomiar uzasadnia to rozwiązanie. Zakaz kompilacji z cudzej instrukcji nie jest domyślną regułą RustyBun.
+Gdy ownership/FFI/unsafe lub inna istotna granica przekracza możliwości podstawowego przeglądu, przed implementacją zaplanuj kompetentny dodatkowy przegląd albo ogranicz/zmień wycinek. Zmiana nazwy roli lub nowy profil nie dowodzą niezależności. Każdy przegląd obejmuje zachowanie i istotne granice, niezależnie od specjalizacji recenzenta.
 
-## Pomiary i porównanie
+Przydziel dozwolone pliki i własność współdzielonych elementów. Jeden aktywny writer obejmuje również ręczne zmiany operatora. Findingi wymagają dowodów i rozstrzygnięcia confirmed/hypothesis. Potwierdzona blokada zatrzymuje odbiór. Gdy uwagi nie wymagają zmian kodu, po ich rozstrzygnięciu przejdź do Referee; Fixer nie jest obowiązkową pustą rundą.
 
-Mierz osobno: kontrakty pokryte testami, attempted/verified units, wyniki kompilacji i parity, potwierdzone findingi, regresje, liczbę rund, zmiany rulebooka, czas człowieka, czas wykonania i wykorzystanie limitu. Unknown zapisuj jako null/UNKNOWN, nie zero.
+Każda zmiana kandydata przez model lub człowieka wymaga nowego review i parity dla nowego hasha. Nie przenoś poprzedniego werdyktu na zmieniony artefakt i nie usuwaj starych logów. Referee wykonuje polecenia dla aktualnych old/new i protokołu, zapisuje exit codes, stdout/stderr, timeout i porównanie. Compile/test/parity i akceptacja Damiana pozostają odrębne. Niewykonane sprawdzenie to NOT_RUN.
 
-Porównanie strukturalnego portu z podejściem kontraktowym: ten sam SHA, zakres, harness testowy, budżet i możliwie ten sam model/ustawienia; oddzielne sesje i workspace'y. Zapisuj kolejność prób i wpływ wiedzy operatora. Zmiana modelu i metody jednocześnie jest confounderem. Abonament i historyczny rachunek API nie są równoważnymi miarami kosztu.
+## Budżet, interwencje i checkpoint
 
-## Git i materiały do prezentacji
+G1 zatwierdza budżet obejmujący przygotowanie, a G3 konkretny przydział wycinka. [Manifest jednostki](../templates/migration-unit.json) rozdziela limit i rezerwę czasu kalendarzowego, uwagi człowieka oraz zasobu modelu/planu. Jednostka i sposób pomiaru zasobu modelu wymagają jawnego ustalenia. Rezerwa obejmuje review, rozstrzygnięcie uwag, poprawki, retesty i zamknięcie. Jej wykorzystanie na te czynności jest planowym wydatkiem; nie wolno przeznaczyć jej na nową implementację bez zapewnienia obowiązkowej weryfikacji.
 
-Wejścia archiwalne pozostają w sources/. Nasze decyzje i prompty są wersjonowane poza nimi. Każda runda ma unikalne results/<run-id>/, manifest wejść, run-record, raport i dowody. Nie nadpisuj wyników wcześniejszej rundy. Zmiany procesu po zatwierdzeniu wprowadzaj jako osobny reviewowany commit/PR; journal aktualizuj razem z decyzją.
+Nie rozpoczynaj nowej zmiany, jeśli pozostałe zasoby nie wystarczą na zmianę i jej wymagane sprawdzenia. Brak zatwierdzonych wartości blokuje wykonanie pilota, nie przygotowanie tego procesu. `max_fix_rounds=null` oznacza brak uzgodnionej wartości, nie nieskończone próby. Limit dwóch rund nie jest przyjętym domyślnym budżetem. Brak pomiaru zapisuj jako null/UNKNOWN, nie zero; nie dodawaj płatnego API ani nie obchodź limitów.
 
-Przed pierwszym realnym runem wymagane są: G1, faktyczny model i tryb logowania, limit, uprawnienia narzędzi i izolacja. Żadne z tych pól nie zostało automatycznie zatwierdzone przez przygotowanie plików.
+[Kontrakt wykonania](../agents/contract.md) definiuje pola ręcznych interwencji i checkpointu w istniejącym run-record. Interwencja zapisuje aktora, cel, powód, czas i hashe przed/po. Checkpoint wiąże wejścia, protokół, kandydata, dowody, ostatni potwierdzony stan, otwarte uwagi, zużyty/pozostały budżet i następne dozwolone działanie.
+
+Przy braku zasobów zatrzymaj pracę i zamroź rekord. Brak limitu modelu oznacza BLOCKED_QUOTA; wyczerpanie innej części budżetu oznacza NEEDS_REVISION z przyczyną i checkpointem. Wznowienie tworzy nowy rekord kontynuacji wskazujący hash poprzedniego; nie zmienia zamkniętych wyników. Operator sprawdza hashe i przenosi skumulowane zużycie oraz liczbę poprawek. Zmianę sesji/modelu zapisuje się jawnie. Komendy review z fazy G1 nie służą do wznawiania pilota.
+
+## Pomiary i zachowanie dowodów
+
+Mierz osobno attempted/verified units, pokryte kontrakty, kompilację, parity, potwierdzone findingi, regresje, rundy poprawek, zmiany protokołu, czas człowieka, czas wykonania i zasób modelu. Stan jednostki PLANNED / IMPLEMENTED / REVIEWED / VERIFIED / ACCEPTED lub BLOCKED wymaga odpowiednich dowodów. COMPLETE dotyczy odpowiedzialności, a nie odbioru wycinka.
+
+Ewentualne późniejsze porównanie metod wymaga tego samego SHA, zakresu, harnessu i budżetu oraz odnotowania modeli, kolejności i wiedzy operatora. Abonament i historyczny rachunek API nie są równoważnymi kosztami. Mniejszy narzut jednej sesji pozostaje hipotezą do pomiaru.
+
+Archiwa sources/ i wcześniejsze results/ pozostają niezmienione. Nowe wyniki zapisuj w unikalnym results/<run-id>/ z manifestem, rekordem i surowymi dowodami; sprawdź dane prywatne przed publikacją. Journal aktualizuj razem z decyzją. Nadal do ustalenia: wycinek, środowisko, model/ustawienia, budżet/rezerwa, plan review i warunki osobnego comparative review. Nie zatwierdzaj żadnego z tych pól za Damiana.

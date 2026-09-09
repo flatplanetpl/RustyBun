@@ -1,4 +1,8 @@
-# Weryfikacja bez odziedziczonego kontekstu
+# Konteksty pilota i niezależnych ocen v0.2
+
+Pilot domyślnie prowadzi jedna główna sesja, kolejno dla jednego wycinka, z jednym aktywnym writerem. Zmiana odpowiedzialności nie wymaga osobnego agenta. Główna sesja zna wcześniejszy kontekst; samoprzegląd oznacza SELF_REVIEW i nie jest niezależny. Damian ocenia dowody i odbiera wynik. Rodzaj, zakres i wykonawca review są uzgodnione przed G3. Trudna granica wymaga kompetentnego dodatkowego przeglądu albo ograniczenia/zmiany wycinka.
+
+Poniższe reguły czystego wejścia dotyczą odrębnych rund metody i jawnie wybranych niezależnych zadań, nie każdej odpowiedzialności pilota. Wznowienie głównej pracy zachowuje checkpoint, hashe i budżet zgodnie z [kontraktem](../agents/contract.md). Przygotowanie v0.2 nie uruchamia żadnej rundy.
 
 ## Co oznacza „czysty”
 
@@ -13,10 +17,14 @@ Nie usuniemy wiedzy z treningu modelu. „Blind” oznacza brak udostępnienia o
 | Pakiet | Co dostaje agent | Czego nie dostaje | Produkt |
 |---|---|---|---|
 | independent-design | brief, zadanie zaprojektowania procesu i format odpowiedzi | nasze role/prompty/workflow, źródła historyczne, journal | niezależny wariant i lista potrzebnych danych |
-| design-review | brief, nasz plan, role, kontrakt, prompty, pipeline i szablony | historia rozmowy, journal, źródła historyczne | findingi z dowodami, kontrprzykłady, minimalny patch v0.2 |
-| comparative-review | propozycja procesu oraz wybrany, jawnie opisany materiał upstream | nieograniczony dostęp do innych repo i sesji | tabela adopt/adapt/reject z uzasadnieniem i kosztami |
+| design-review | brief, aktualny proces, D01–D08 jako jawne ograniczenia oraz zamrożony independent design z provenance | historia rozmowy, journal, źródła historyczne | findingi z dowodami, kontrprzykłady, minimalny patch v0.2 |
+| comparative-review | aktualny proces, D01–D08, zamrożone wcześniejsze raporty/propozycja oraz wybrany materiał upstream | nieograniczony dostęp do innych repo i sesji | tabela adopt/adapt/reject z uzasadnieniem i kosztami |
 
-Najpierw zamroź i zapisz wynik independent-design. Drugą i trzecią rundę uruchom w nowych sesjach. Wcześniejsze raporty można dodać jako jawne dodatkowe wejścia z hashami; nie wklejaj historii konwersacji. Wynik porównania nie zastępuje wyniku niezależnego.
+Wynik independent-design zamraża się przed drugą rundą. Drugą i trzecią rundę wykonuje się w nowych sesjach po odpowiedniej autoryzacji; nie wkleja się historii konwersacji. Zamkniętych wyników nie uruchamiamy ponownie. Comparative review nadal jest wymagane przed G1; rewizja dokumentów go nie zastępuje.
+
+Bieżące pakiety design-review i comparative-review zawierają zapis decyzji jako jawne ograniczenia operatora, nie ocenę niezależnego recenzenta. Jego historyczne odnośniki nie uprawniają do czytania plików spoza manifestu. Independent-design pozostaje neutralny: bez D01–D08, ról i pipeline; administracyjny run-record nie narzuca liczby sesji ani metody.
+
+Wrapper design-review dołącza zamrożony independent design i provenance. Sam eksport comparative-review zawiera skonfigurowane dokumenty i materiały, ale nie dodaje automatycznie wcześniejszych raportów ani propozycji. Operator ma je jawnie wskazać, sprawdzić hashe i ująć w finalnym manifeście nowego pakietu przed osobną rundą. Ich brak oznacza BLOCKED_INPUT. Nie zmieniaj zamrożonych pakietów; nie budujemy nowego launchera porównawczego.
 
 ## Co jeszcze jest inputem
 
@@ -30,9 +38,9 @@ Oceń 0–2 (0 brak, 1 częściowe, 2 wystarczające na pilotaż): granice ról;
 
 Dla każdego findingu: ID, severity, status potwierdzenia, ścieżka/sekcja, scenariusz błędu, konsekwencja, minimalna poprawka i sposób sprawdzenia poprawki. „Dodaj więcej agentów” bez korzyści i kosztu nie jest rozwiązaniem. Recenzent może pozostawić dobre elementy bez zmian; nie nagradzamy długości listy uwag.
 
-## Osobny blind Architect
+## Opcjonalny blind Architect i dodatkowy przegląd
 
-Pakiet architect zawiera brief, kontrakt zadania, prompt Architekta i szablon raportu oraz eksport surowego źródła. Nie zawiera PORTING.md, materiałów porównawczych, naszego journal ani historii Git. Nie dołączaj pełnego RustyBun jako drugiego mounta. Recenzent raportu otrzymuje ten sam source snapshot, raport, dowody i prompts/10-architecture-review.md, bez sesji roboczej Architekta.
+Pakiet architect służy dodatkowej, jawnie wybranej analizie po G1. Nie jest domyślną sesją pilota ani wymogiem pełnego grafu Buna. Zawiera brief, kontrakt zadania, prompt Architekta i szablon ograniczonego raportu oraz eksport surowego źródła. Nie zawiera PORTING.md, materiałów porównawczych, naszego journal ani historii Git. Nie dołączaj pełnego RustyBun jako drugiego mounta. Jeśli wybrano niezależny przegląd raportu, jego pakiet musi zawierać ten sam source snapshot, raport, dowody, zakres i prompts/10-architecture-review.md, bez sesji roboczej autora. Operator przygotowuje ten zakres jawnie; eksporter nie dostarcza osobnego rodzaju pakietu architecture-review. Analiza i próbkowanie obejmują istotne granice wycinka.
 
 Eksporter pomija znane pliki instrukcji i linki symboliczne; listę pominięć zachowuje w MANIFEST.json. Ta lista jest kontrolą wejścia, nie dowodem całkowitego braku uprzedzeń. Brakujące build inputs nie mogą zostać zignorowane przy późniejszej kompilacji.
 
@@ -52,4 +60,4 @@ Sam eksport i TASK.md nie wystarczają: operator dostarcza dodatkowo uzupełnion
 
 PREPARED oznacza przygotowane metadane, nie ukończony raport. Nieznane ustawienia runtime pozostają unknown, przyszłe pomiary/timestampy null. Nie zmienia to wymogu dowodów dla deklaracji COMPLETE.
 
-Wyłącznie przy independent-design operator może jawnie dopuścić run rozpoznawczy flagą --allow-unverified-isolation. Isolation_verified pozostaje false, a raport musi ujawniać niezweryfikowaną niezależność. Bez tej zgody helper nie autoryzuje wykonania. Znany wyciek treści lub problem z wejściem/outputem nadal blokuje pracę. To nie jest zgoda na pomijanie bramek dla następnych etapów ani na nazywanie runu rozpoznawczego zweryfikowanym blind review.
+Helper prepare-review-run obsługuje flagę --allow-unverified-isolation wyłącznie dla independent-design. Osobny launcher design-review ma własną zgodę o zakresie design-review-only; nie dziedziczy zgody pierwszej rundy. Isolation_verified pozostaje false, a raport musi ujawniać niezweryfikowaną niezależność. Bez tej zgody helper nie autoryzuje wykonania. Znany wyciek treści lub problem z wejściem/outputem nadal blokuje pracę. To nie jest zgoda na pomijanie bramek dla następnych etapów ani na nazywanie runu rozpoznawczego zweryfikowanym blind review.

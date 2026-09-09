@@ -1,5 +1,7 @@
 # Independent design: one operator command
 
+**v0.2 scope:** these commands prepare or display explicitly selected independent-design attempts. They do not resume the main pilot, reset its budget or authorize later gates. Pilot continuations use the checkpoint and cumulative accounting in [the shared contract](../agents/contract.md). New exports use the current run-record template; existing packs keep their original bytes and SHA. Unused pilot-related metadata stays null/empty during methodology preparation.
+
 ## Why this exists
 
 On 2026-09-08, the operator reported a reviewer stopping because unrelated project instructions and memory were already visible. The reviewer reported saving a blocking report and closing its run record without starting the design or rechecking input hashes. We have the operator's message, not an independently inspected copy of that session or its files. The exact origin of the extra context remains unknown.

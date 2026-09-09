@@ -1,0 +1,286 @@
+{
+  "schema_version": "1",
+  "kind": "process-preparation-evidence",
+  "process_version": "0.2",
+  "base_commit": "b1ba7a9f946cd0de6c1c79869faeaa110ac96782",
+  "created_at": "2026-09-09T17:55:19.371325+00:00",
+  "status": "TOOLING_CHECKED_OPERATOR_REVIEW_PENDING",
+  "self_hash_policy": "This manifest is identified by the containing Git commit; it does not hash itself.",
+  "changed_files": [
+    "AGENTS.md",
+    "README.md",
+    "START-HERE.md",
+    "agents/contract.md",
+    "agents/roles.md",
+    "docs/clean-context-review.md",
+    "docs/decisions/2026-09-09-pilot-v0.2.md",
+    "docs/design-review-command.md",
+    "docs/experiment-plan.md",
+    "docs/independent-review-command.md",
+    "docs/preflight-start.md",
+    "docs/presentation-journal.md",
+    "prompts/01-architect.md",
+    "prompts/02-planner.md",
+    "prompts/03-implementer.md",
+    "prompts/04-reviewer.md",
+    "prompts/05-fixer.md",
+    "prompts/06-referee-operator.md",
+    "prompts/08-design-review.md",
+    "prompts/09-comparative-review.md",
+    "prompts/10-architecture-review.md",
+    "results/tooling-process-v02-20260909T174417Z/MANIFEST.json",
+    "results/tooling-process-v02-20260909T174417Z/consistency.json",
+    "results/tooling-process-v02-20260909T174417Z/integrity.json",
+    "results/tooling-process-v02-20260909T174417Z/report.md",
+    "results/tooling-process-v02-20260909T174417Z/test-output.txt",
+    "results/tooling-process-v02-20260909T174417Z/test-run.json",
+    "templates/architecture-report.md",
+    "templates/migration-unit.json",
+    "templates/review-report.md",
+    "templates/run-record.json",
+    "tests/test_design_review.py",
+    "tests/test_workflow_contract.py",
+    "workflow/bundles.json",
+    "workflow/pipeline.json"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "bac0c160ffc1ce06a5c42b419bf3d1aa09e5b5ef6d58f8e6536bf2c39084d43b",
+      "bytes": 3016
+    },
+    {
+      "path": "README.md",
+      "sha256": "489b8e4b0e1e49c2e1a6f616cc6af1018e882ad6ebd922c60ccc815910febf25",
+      "bytes": 6744
+    },
+    {
+      "path": "START-HERE.md",
+      "sha256": "9adcfe8b6bf8cd1004d2498be4059d92b0cf1156ef1a7d57e1990f89718f3ef7",
+      "bytes": 6355
+    },
+    {
+      "path": "agents/contract.md",
+      "sha256": "7a9e207dd0a1891d99d602017b0185e85bf49b4953dcc73e132fe9cd28230ea0",
+      "bytes": 8607
+    },
+    {
+      "path": "agents/roles.md",
+      "sha256": "9276fcb13f698697d8eb70da7e0a3f95e6d08416847f61594a6e5a389d48960d",
+      "bytes": 4288
+    },
+    {
+      "path": "docs/clean-context-review.md",
+      "sha256": "4753cb8c3d5fd50a8ee3de766a46762657c0406de9030ae9045b425971a4bf20",
+      "bytes": 8172
+    },
+    {
+      "path": "docs/decisions/2026-09-09-pilot-v0.2.md",
+      "sha256": "a1953354e7ac00864bd21226800e2de2aafcc799b5099752f403a22e9a7fc447",
+      "bytes": 11315
+    },
+    {
+      "path": "docs/design-review-command.md",
+      "sha256": "13f253821956bd69934efeb594ca1798ba2e258457161ebd327f85e763a4a302",
+      "bytes": 10511
+    },
+    {
+      "path": "docs/experiment-plan.md",
+      "sha256": "6f9b7333820e6569bc0eeeccc14b3324c87543de0432e9a004042bfa5b993626",
+      "bytes": 11302
+    },
+    {
+      "path": "docs/independent-review-command.md",
+      "sha256": "ae129baced990a29e43adcf4e7ef892c711cc834419c248b827ed995f017b4f5",
+      "bytes": 11236
+    },
+    {
+      "path": "docs/preflight-start.md",
+      "sha256": "d847b4b674ac49685fc87063d018d5ce3df10c17fe156ede724e9a089825ef0d",
+      "bytes": 6155
+    },
+    {
+      "path": "docs/presentation-journal.md",
+      "sha256": "10891909b69f67859f454b8d1931cabe6afebbc78b9b21451b29120b6b36aac6",
+      "bytes": 28591
+    },
+    {
+      "path": "prompts/01-architect.md",
+      "sha256": "d64fbf7f0934bb8bea5f8d830c125f7bb66787ce66e337103feaee337cd4310c",
+      "bytes": 1825
+    },
+    {
+      "path": "prompts/02-planner.md",
+      "sha256": "ddbbb268706f8c830ae58f554857f7319689b518468a91fef0b2e52dce6c1fef",
+      "bytes": 1949
+    },
+    {
+      "path": "prompts/03-implementer.md",
+      "sha256": "6b65656ba5316a243130fdaddceb646047cdd7f4a78739739cefde5a38dc9d97",
+      "bytes": 1532
+    },
+    {
+      "path": "prompts/04-reviewer.md",
+      "sha256": "1c57f8544e791a15d21cd05be26c82bfcb63d0d234ce228a4ca7ade3ccbcdc79",
+      "bytes": 1674
+    },
+    {
+      "path": "prompts/05-fixer.md",
+      "sha256": "4b8b75f0008e27db93495493200b3002bfb01c280d54d54a1797124788a349bb",
+      "bytes": 1351
+    },
+    {
+      "path": "prompts/06-referee-operator.md",
+      "sha256": "576f5668483ced9f3a5d397aef3784fe6dabca385fa4813f7e97141800c03e5e",
+      "bytes": 2191
+    },
+    {
+      "path": "prompts/08-design-review.md",
+      "sha256": "543435d76acc76b147b87bdb347494baf0fd825098e048d6cb805676c5b1ed3d",
+      "bytes": 4428
+    },
+    {
+      "path": "prompts/09-comparative-review.md",
+      "sha256": "74fe8105fa4f7584b53860afc74f2970a5a871b7ed108f413663373015d7a86c",
+      "bytes": 1826
+    },
+    {
+      "path": "prompts/10-architecture-review.md",
+      "sha256": "659f5bb803a5ae204e1c1f657dd48652816f392fc61bc7d83aa8a4ceefeba2d4",
+      "bytes": 1409
+    },
+    {
+      "path": "results/tooling-process-v02-20260909T174417Z/consistency.json",
+      "sha256": "ae22e2bd31c8b30db674cf538faf8d20a8c45895cab6e55a3b6c4958dc2a1c46",
+      "bytes": 19417
+    },
+    {
+      "path": "results/tooling-process-v02-20260909T174417Z/integrity.json",
+      "sha256": "9e678314f0ba5db3dd3a6241def7cd4cd398c1964925da259f75d963e4731d5a",
+      "bytes": 22377
+    },
+    {
+      "path": "results/tooling-process-v02-20260909T174417Z/report.md",
+      "sha256": "7e6818d2d47596c58397b80bd00f46ac8756977e2ab88318773e77ddf8ea4f69",
+      "bytes": 8787
+    },
+    {
+      "path": "results/tooling-process-v02-20260909T174417Z/test-output.txt",
+      "sha256": "9c0da0830786e37bd67b01bf4409edfa7157e380593f2556443268b603ff9708",
+      "bytes": 14328
+    },
+    {
+      "path": "results/tooling-process-v02-20260909T174417Z/test-run.json",
+      "sha256": "ffbf2bd69790a02369cdf83dd3d11ad29163959fe4a04513635a28a0bcf40fd6",
+      "bytes": 532
+    },
+    {
+      "path": "templates/architecture-report.md",
+      "sha256": "9d007fee3b98c30bb095344fd1e28ce4c36be23be0919cb1bfef23d01b34e00a",
+      "bytes": 2219
+    },
+    {
+      "path": "templates/migration-unit.json",
+      "sha256": "d67042ba5d304828389ef83f4f78d81a4c79b86736df08127f1cc33bfb4f26b4",
+      "bytes": 2398
+    },
+    {
+      "path": "templates/review-report.md",
+      "sha256": "959af80483128c5a6aaa8e4f86e07f71f4a59307838068ad0cd65f19f2b2bfcd",
+      "bytes": 2051
+    },
+    {
+      "path": "templates/run-record.json",
+      "sha256": "13d6ef19ae35037e29a628d309a1e118f6bd61538c66e3646cdc38e1c6d3d0d2",
+      "bytes": 2563
+    },
+    {
+      "path": "tests/test_design_review.py",
+      "sha256": "7534bc7de828a11c53cd7568f30a3999f3aedcbf58c17a808c6fcec056e3213a",
+      "bytes": 21592
+    },
+    {
+      "path": "tests/test_workflow_contract.py",
+      "sha256": "cdfecb410e41c007179a9a246f6364829f1d9e5042fab7c1853454b09c4bc490",
+      "bytes": 11081
+    },
+    {
+      "path": "workflow/bundles.json",
+      "sha256": "4091bd862a1c2a65a32800ab5a72eb83d877914838fb2bde2c9ac87517aebad7",
+      "bytes": 3812
+    },
+    {
+      "path": "workflow/pipeline.json",
+      "sha256": "a2dd3a72d4044be26f64b35a6978a745e9184ffbb8b38d801bc888272814a359",
+      "bytes": 7289
+    }
+  ],
+  "tooling_sources": [
+    {
+      "path": "scripts/build-context-pack.py",
+      "sha256": "de8b632148cbcee11092a3fa89578f58198067bee24ed302df8adcafbdcae73e",
+      "bytes": 9090
+    },
+    {
+      "path": "scripts/design-review.py",
+      "sha256": "eae6342a2041ea6545ffa0547dad0a1d8def7f32075aef82735c4445156dfc73",
+      "bytes": 26057
+    },
+    {
+      "path": "scripts/independent-review.py",
+      "sha256": "e736c6f10da55d7b7d17a27d73c3778de0297b931ef6d53dcb2b43df3d3dc668",
+      "bytes": 13383
+    },
+    {
+      "path": "scripts/prepare-review-run.py",
+      "sha256": "2a7e53fffb8f1da7edb60bf3c4f26a244e13093d1736eedb2f3fe2e6bb6a81aa",
+      "bytes": 17551
+    },
+    {
+      "path": "tests/test_context_pack.py",
+      "sha256": "ff06d1bb0f4b31ba03e2d9f2dcb330c305659de3e050c7fd53c1e6cc4070e4f8",
+      "bytes": 5506
+    },
+    {
+      "path": "tests/test_design_review.py",
+      "sha256": "7534bc7de828a11c53cd7568f30a3999f3aedcbf58c17a808c6fcec056e3213a",
+      "bytes": 21592
+    },
+    {
+      "path": "tests/test_independent_review.py",
+      "sha256": "a1c3ffc973815a74b5743dc2faf0d55ec594275fc81b5eb0da532105df68bade",
+      "bytes": 14079
+    },
+    {
+      "path": "tests/test_missing_handoff.py",
+      "sha256": "a657095fae08b7164be871457fe301c2fe06b4d23994cd946e7db73c40ed052b",
+      "bytes": 6175
+    },
+    {
+      "path": "tests/test_prepare_review_run.py",
+      "sha256": "5e402bfb0ae2c1fdebd0f749de9e2af5464dad9fe9d8a5655b6705376e559d9e",
+      "bytes": 12965
+    },
+    {
+      "path": "tests/test_workflow_contract.py",
+      "sha256": "cdfecb410e41c007179a9a246f6364829f1d9e5042fab7c1853454b09c4bc490",
+      "bytes": 11081
+    }
+  ],
+  "not_run": [
+    "comparative-review",
+    "Bun analysis/build",
+    "verifier controls on Bun",
+    "migration/parity",
+    "pilot resume",
+    "real model/login/sandbox test",
+    "push"
+  ],
+  "gate_statuses": {
+    "G1": "PENDING",
+    "G2": "PENDING",
+    "G3": "PENDING",
+    "G4": "PENDING",
+    "G5": "PENDING"
+  }
+}

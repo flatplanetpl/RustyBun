@@ -1,18 +1,25 @@
-# Raport review — SZABLON, NIE WYNIK
+# Raport review v0.2 — SZABLON, NIE WYNIK
 
-run_id / review kind / candidate SHA-256 / process SHA / source SHA / reviewer model / input manifest SHA-256.
+run_id / session_id / rodzaj zadania / review kind / aktor i kompetencje / candidate SHA-256 / protocol SHA-256 / process SHA / source SHA / model (jeśli użyty) / input manifest SHA-256.
 
-## Zakres
-Odczytane materiały, wykonane sprawdzenia, pominięcia, narzędzia i stan izolacji. Bez narzędzi nie potwierdzaj wykonania testów.
+## Zakres i rodzaj przeglądu
 
-## Ustalenia
-ID / severity (blocker, high, medium, low) / confirmed lub hypothesis / path:line@SHA lub sekcja / kontrprzykład / skutek / minimalna poprawka / test poprawki.
+Uzgodniony zakres oraz wykonawcy; faktycznie odczytane materiały, wykonane sprawdzenia, pominięcia i narzędzia. Kind: self-review / human-review / independent-review. Dla review kandydata podaj odnośnik do zatwierdzonego planu. Dla oceny metody oznacz jej osobne zadanie i zakres.
+
+Deklaracja kontekstu: SELF_REVIEW / UNVERIFIED / VERIFIED z dowodami. Samoprzegląd modelu i zmiana nazwy roli nie są niezależnym review. Czy istotne granice wymagają dodatkowych kompetencji albo ograniczenia/zmiany wycinka? Bez wyników poleceń nie potwierdzaj testów. Nie ma domyślnego wymogu dwóch osobnych recenzentów.
+
+## Ustalenia i rozstrzygnięcie
+
+ID / severity (blocker, high, medium, low) / confirmed lub hypothesis / path:line@SHA albo sekcja / kontrprzykład / skutek / minimalna poprawka / test poprawki / rozstrzygnięcie operatora i dowód.
 
 ## Elementy poprawne i odrzucone podejrzenia
-Co zachować; które podejrzenia odrzucono i dlaczego. Brak findingów nie jest dowodem pełnej poprawności.
 
-## Propozycja zmian
-Minimalny diff lub pełne nowe wersje wyłącznie zmienianych artefaktów; uzasadnienie i koszt. Nie zmieniaj kandydata w miejscu.
+Co zachować i dlaczego odrzucono podejrzenia. Brak findingów nie dowodzi pełnej poprawności. Potwierdzona blokada wymaga zamknięcia przed odbiorem; zgodność opinii nie zastępuje dowodu.
 
-## Werdykt
-Rekomendacja GO / REVISE / BLOCKED; nierozwiązane blokady; zakres ważności. Akceptacja operatora: PENDING. Nowy hash kandydata wymaga nowego werdyktu.
+## Propozycja zmian i ważność dowodów
+
+Minimalna propozycja, bez edycji kandydata. Wskaż potrzebne poprawki, ich weryfikację i zasoby. Każda zmiana przez model lub człowieka wymaga nowego review/parity dla nowego hasha; zachowaj poprzednie raporty. Proponowana zmiana protokołu wymaga wersji, decyzji i rewalidacji.
+
+## Werdykt i kontynuacja
+
+Rekomendacja GO / REVISE / BLOCKED; nierozwiązane blokady, dokładny hash i zakres ważności. Bez zmian wymagających kodu można przejść do Referee po rozstrzygnięciu uwag. Zużycie i checkpoint zapisane w run-record; koszt nie zeruje się przy wznowieniu. Akceptacja Damiana: PENDING. Review nie jest mechanicznym werdyktem testów.

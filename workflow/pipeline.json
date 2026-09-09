@@ -1,12 +1,11 @@
 {
-  "schema_version": "0.1",
-  "status": "DESIGN_CANDIDATE_NOT_APPROVED",
+  "schema_version": "0.2",
+  "status": "PROCESS_PREPARED_NOT_APPROVED",
   "executable_runner": false,
   "policy": "docs/experiment-plan.md",
   "limits": {
     "max_active_writers": 1,
-    "reviewer_instances": 2,
-    "max_fix_rounds": 2,
+    "max_fix_rounds": null,
     "paid_api_allowed": false,
     "auto_merge_allowed": false,
     "approved": false
@@ -39,7 +38,9 @@
       "prompt": "prompts/09-comparative-review.md",
       "bundle": "comparative-review",
       "requires": [
-        "method-review:frozen"
+        "method-review:frozen",
+        "prior-reports:hash-verified",
+        "process-proposal:frozen"
       ],
       "output": "results/<run-id>/comparative-review.md",
       "gate_after": "G1"
@@ -47,26 +48,36 @@
     {
       "id": "architect",
       "prompt": "prompts/01-architect.md",
-      "bundle": "architect",
       "requires": [
         "G1:approved"
       ],
-      "output": "results/<run-id>/architecture-report.md"
+      "output": "results/<run-id>/architecture-report.md; bounded slice recommendation for operator review",
+      "gate_after": "G2",
+      "produces": [
+        "architect:frozen"
+      ]
     },
     {
-      "id": "architecture-review",
-      "prompt": "prompts/10-architecture-review.md",
+      "id": "baseline-verifier",
+      "prompt": "prompts/06-referee-operator.md",
+      "task_mode": "baseline-verifier-preparation",
+      "owner": "Damian",
       "requires": [
-        "architect:frozen"
+        "G2:approved"
       ],
-      "output": "results/<run-id>/architecture-review.md",
-      "gate_after": "G2"
+      "produces": [
+        "baseline:validated",
+        "verifier:validated"
+      ],
+      "output": "results/<run-id>/baseline-verifier.json; environment and raw positive/negative controls"
     },
     {
       "id": "planner",
       "prompt": "prompts/02-planner.md",
       "requires": [
-        "G2:approved"
+        "G2:approved",
+        "baseline:validated",
+        "verifier:validated"
       ],
       "output": "results/<run-id>/migration-unit.json",
       "gate_after": "G3"
@@ -75,65 +86,103 @@
       "id": "implementer",
       "prompt": "prompts/03-implementer.md",
       "requires": [
-        "G3:approved"
+        "G3:approved",
+        "baseline:validated",
+        "verifier:validated",
+        "protocol:frozen",
+        "review-plan:approved",
+        "budget:approved",
+        "verification-reserve:available"
       ],
-      "output": "isolated worktree + candidate diff"
+      "output": "isolated worktree + candidate diff",
+      "produces": [
+        "candidate:frozen"
+      ]
     },
     {
-      "id": "review-A",
+      "id": "review",
       "prompt": "prompts/04-reviewer.md",
-      "focus": "behavior",
       "requires": [
-        "implementer:frozen"
+        "candidate:frozen",
+        "review-plan:approved"
       ],
-      "output": "results/<run-id>/review-A.md"
-    },
-    {
-      "id": "review-B",
-      "prompt": "prompts/04-reviewer.md",
-      "focus": "ownership-ffi-integration",
-      "requires": [
-        "implementer:frozen"
-      ],
-      "output": "results/<run-id>/review-B.md"
+      "output": "results/<run-id>/review.md; confirmed/hypothesis findings for current candidate hash",
+      "produces": [
+        "review:frozen",
+        "candidate:reviewed"
+      ]
     },
     {
       "id": "fixer",
       "prompt": "prompts/05-fixer.md",
       "requires": [
-        "review-A:frozen",
-        "review-B:frozen",
-        "findings:confirmed"
+        "review:frozen",
+        "findings:confirmed",
+        "protocol:frozen",
+        "budget:approved",
+        "G3:approved",
+        "review-plan:approved",
+        "baseline:validated",
+        "verifier:validated",
+        "verification-reserve:available"
       ],
-      "output": "new candidate hash; re-review mandatory"
+      "output": "new candidate hash; re-review mandatory",
+      "when": "Confirmed findings require code changes; otherwise proceed to Referee after review.",
+      "next": "review",
+      "produces": [
+        "candidate:frozen"
+      ]
     },
     {
       "id": "referee",
       "prompt": "prompts/06-referee-operator.md",
       "requires": [
         "candidate:reviewed",
+        "candidate:no-confirmed-blockers",
         "baseline:validated",
-        "judge:validated"
+        "verifier:validated",
+        "protocol:frozen",
+        "G3:approved"
       ],
       "output": "results/<run-id>/verification.json",
-      "gate_after": "G4"
+      "gate_after": "G4",
+      "task_mode": "candidate-verification"
     }
   ],
   "gates": {
     "G1": {
       "status": "PENDING",
       "approved_by": null,
-      "artifact_hashes": []
+      "artifact_hashes": [],
+      "evidence_required": [
+        "method-independent:frozen",
+        "method-review:frozen",
+        "method-comparative:frozen",
+        "process-version:identified",
+        "budget:approved"
+      ]
     },
     "G2": {
       "status": "PENDING",
       "approved_by": null,
-      "artifact_hashes": []
+      "artifact_hashes": [],
+      "evidence_required": [
+        "bounded-analysis",
+        "operator-review",
+        "risk-required-additional-review-if-selected"
+      ]
     },
     "G3": {
       "status": "PENDING",
       "approved_by": null,
-      "artifact_hashes": []
+      "artifact_hashes": [],
+      "evidence_required": [
+        "baseline:validated",
+        "verifier:validated",
+        "protocol:frozen",
+        "review-plan:approved",
+        "budget:approved"
+      ]
     },
     "G4": {
       "status": "PENDING",
@@ -146,5 +195,42 @@
       "artifact_hashes": []
     }
   },
-  "resume_policy": "Check input and output hashes; changed artifacts invalidate downstream acceptance. File existence alone is not completion."
+  "resume_policy": "Operator checks input, protocol, candidate and evidence hashes against the frozen checkpoint. Carry used/remaining budget and fix rounds; record session/model changes. Any human/model candidate edit requires fresh review and parity for its hash; preserve old evidence. Protocol changes require a new version, operator decision and repeated validation.",
+  "execution": {
+    "mode": "sequential",
+    "main_working_sessions": 1,
+    "max_units": 1,
+    "roles_are_responsibilities": true,
+    "session_continuation": "Checkpoint and cumulative budget; record session/model changes."
+  },
+  "review_policy": {
+    "required": true,
+    "kind_decided_before": "G3",
+    "acceptance_owner": "Damian",
+    "self_review_is_independent": false,
+    "candidate_hash_must_match": true,
+    "additional_review": "Competence/risk decision before implementation; otherwise narrow or replace the slice."
+  },
+  "optional_tasks": [
+    {
+      "id": "blind-architect",
+      "prompt": "prompts/01-architect.md",
+      "bundle": "architect",
+      "requires": [
+        "G1:approved",
+        "operator:authorized"
+      ],
+      "output": "results/<run-id>/architecture-report.md; explicitly scoped independent analysis"
+    },
+    {
+      "id": "architecture-review",
+      "prompt": "prompts/10-architecture-review.md",
+      "requires": [
+        "architect:frozen",
+        "operator:authorized"
+      ],
+      "output": "results/<run-id>/architecture-review.md"
+    }
+  ],
+  "budget_policy": "G1 approves the preparation envelope; G3 approves the slice allocation including verification reserves. Do not start a change without resources for its mandatory verification. Unknown is not zero. Stop with a checkpoint; quota exhaustion is BLOCKED_QUOTA. No default fix-round limit."
 }

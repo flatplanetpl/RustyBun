@@ -1,5 +1,7 @@
 # Preparing the first review run
 
+**v0.2 scope:** these commands prepare or display explicitly selected independent-design attempts. They do not resume the main pilot, reset its budget or authorize later gates. Pilot continuations use the checkpoint and cumulative accounting in [the shared contract](../agents/contract.md). New exports use the current run-record template; existing packs keep their original bytes and SHA. Unused pilot-related metadata stays null/empty during methodology preparation.
+
 The exporter creates immutable input files and a NOT_RUN template. It does not create a completed preflight record or an output directory. Passing TASK.md alone is therefore insufficient.
 
 ## Existing independent-design pack

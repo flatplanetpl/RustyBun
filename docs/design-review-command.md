@@ -1,12 +1,14 @@
 # Design review: compare the two process proposals
 
+**v0.2 preparation:** this command is retained for a deliberately selected new methodology review, not the next automatic task. The closed second round remains archived. New packs include D01–D08 as explicit operator constraints and the current process; the required comparative review remains a separate step before G1. Main pilot responsibilities do not require new sessions. See [handoff](../START-HERE.md).
+
 ## Which round is this?
 
 `independent-design` produced an alternative process from the neutral brief, without our proposal. **`design-review` now critiques our committed process and that frozen alternative together.** A later `comparative-review` can introduce historical migration materials. They are different tasks, not repeated attempts to obtain a preferred verdict.
 
 On 2026-09-08 the operator supplied the first design as pasted terminal output and requested this next round. That report labels itself `EXPLORATORY; INDEPENDENCE UNVERIFIED`, describes a sandbox failure followed by approved outside-sandbox file operations, and discloses one internal subagent. These are the report's statements, not an independent audit of the server. The original `RUN-RECORD.json` was not available during development. The new command checks it locally at preparation time; it does not manufacture it from the pasted transcript.
 
-The reviewer must not be steered to prefer fewer agents or to defend the existing process. It should identify what to keep, change, defer or reject, and propose the smallest credible pilot process without weakening evidence. Its recommendation is **not** Damian's G1 approval.
+The reviewer assesses evidence without assuming that fewer agents improve quality. D01–D08 explicitly select the scope of the prepared pilot; a recommendation to change those decisions must be labelled for the operator, not silently applied. It should identify what to keep, change, defer or reject, and propose the smallest credible pilot process without weakening evidence. Its recommendation is **not** Damian's G1 approval.
 
 ## One command on the server
 
@@ -40,7 +42,7 @@ The command reads only the selected `independent-design.md` and `RUN-RECORD.json
 
 Supported output-artifact forms are a list of objects with `path` and `sha256`, or a map from filename to digest/object. `file` and `filename` are accepted path aliases. A matching absolute original output path is also accepted when a closed run was moved. Ambiguous entries, absent hashes, mismatches and BLOCKED/PREPARED attempts fail before a new pack is published. Do not edit the old record or hash just to pass a check. A different record layout requires an explicit, reviewed adapter, not silent guessing.
 
-The existing exporter freezes the `design-review` allowlist from one committed `HEAD`. The command adds a byte-for-byte report copy and a minimal provenance JSON before finalizing a **new** manifest. The raw old record, terminal transcript, session IDs and coordinator commentary are not copied. The source report itself is not redacted or rewritten. Review its contents before any public sharing.
+The existing exporter freezes the `design-review` allowlist from one committed `HEAD`, including the current process and D01–D08 as explicitly authorized constraints. The journal and conversation transcript remain excluded. The command adds a byte-for-byte report copy and a minimal provenance JSON before finalizing a **new** manifest. The raw old record, terminal transcript, session IDs and additional coordinator commentary are not copied; D01–D08 is the explicit decision input described above. The source report itself is not redacted or rewritten. Review its contents before any public sharing.
 
 The provenance preserves the old process/manifest identifiers, completion claim, report/record hashes and reported isolation/model metadata. It explicitly states that the previous input manifest and session were **not** re-audited. Hash agreement proves the copied bytes agree with the supplied record, not that the record is signed, authentic, or the session was independent. The old `RustyBun-review-01` pack, its SHA and all earlier results remain untouched. `--update` changes tooling/current proposal only, not the earlier experiment.
 
@@ -65,7 +67,7 @@ phase0-design-review-<timestamp>-<suffix>/
     ├── START-REVIEW.txt          # Automatically submitted with --launch
     ├── PROFILE.toml             # Requested settings, no credentials
     ├── design-review.md         # Created by reviewer, not preparation
-    └── process-proposal.md      # Proposed v0.2, not automatically applied
+    └── process-proposal.md      # Proposed correction of assessed v0.2, not automatically applied
 ```
 
 New input files receive read-only permission bits; old files' permissions are not changed. Their owner can still change permissions, so this is not an immutable mount or a security boundary. The launcher rechecks input integrity before launch, after login and after client exit. COMPLETE requires both reports, their matching recorded hashes and execution timestamps. Client exit alone returns a non-success result (code 3 when the client itself exited zero without a completed review). The script never changes the reviewer's task status to COMPLETE or approves a gate.
@@ -74,7 +76,7 @@ New input files receive read-only permission bits; old files' permissions are no
 
 This round reuses the existing profile/environment helpers: a new HOME/CODEX_HOME/XDG set, restricted inherited environment, requested disabled memory, app integrations, browsing and subagents. The main repo and coordinator history are not supplied as task inputs. The new command additionally requests **`workspace-write` with approval policy `never`**: no escalation outside the sandbox when it fails. It does not use a bypass flag. A sandbox failure is a blocker, not permission to repeat file operations without it.
 
-A fresh profile and file modes do not enforce a complete read allowlist. System/admin policy and readable external files may still exist. Keep `isolation_verified=false`; preserve the exploratory label. General platform instructions still apply. Both supplied proposals are intentionally allowed in this round; other project histories/instructions remain excluded. Do not ask the reviewer to ignore known exposure. Do not treat a failed sandbox as fixed merely because the launcher exists.
+A fresh profile and file modes do not enforce a complete read allowlist. System/admin policy and readable external files may still exist. Keep `isolation_verified=false`; preserve the exploratory label. General platform instructions still apply. Both supplied proposals and D01–D08 are intentionally allowed in new packs for this round; other project histories/instructions remain excluded. Do not ask the reviewer to ignore known exposure. Do not treat a failed sandbox as fixed merely because the launcher exists.
 
 `--allow-unverified-isolation` here authorizes **design-review only**, separately from the earlier independent-design authorization. It does not authorize migration, extra agents, paid API, gate approval or modifying either proposal. Without it, preparation is possible but review execution is blocked.
 
@@ -94,7 +96,7 @@ python3 scripts/design-review.py --show-handoff ../phase0-design-review-<id>
 
 `--output-parent PATH` and `--run-id ID` are optional. Existing destinations are never overwritten. Dirty checkouts, failed fast-forward updates, missing earlier records, bad hashes and incompatible clients stop the command. A login attempt or started/closed review is not restarted with redisplay. Another normal invocation creates another attempt; preserve failures. No automatic resume, sandbox relaxation or API fallback occurs.
 
-The old exporter/preflight/independent launcher remain available and unchanged. Exporting `--kind design-review` alone is not sufficient for this second-round prompt: it also requires the frozen prior result. Use this wrapper for the complete step. No gate state in `workflow/pipeline.json` is changed.
+Exporter/preflight/independent-launcher CLI and profile behavior remain unchanged. New configuration/templates use schema_version 0.2; the exporter manifest format remains 0.1. Existing packs retain their original template and process SHA. Exporting `--kind design-review` alone is not sufficient for this second-round prompt: it also requires the frozen prior result. Use this wrapper for the complete step. No gate state in `workflow/pipeline.json` is changed.
 
 ## Documentation basis and validation
 
